@@ -1,0 +1,7 @@
+{"afirmaciones":[
+{"turno":3,"familia":"F0","cita":"B=[[0.62,-0.7],[-1.25,-0.65]]; solve(B,[1.23,-1.25]): matriz de ganancia lineal fija"},
+{"turno":10,"familia":"F4","cita":"if z>1.55: lat=True; if z<0.15: lat=False; reset si y1<-0.8: el canal 1 se engancha en -0.89 con histeresis"},
+{"turno":10,"familia":"F2","cita":"h(z)=interp(z,zs,ys): curva no lineal de la salida del canal 1 frente a z=u0+0.55*u1"},
+{"turno":10,"familia":"F1","cita":"d=rng.integers(0,3); ud=hist[-1-d]: retraso de 0 a 2 pasos en el canal 0"},
+{"turno":10,"familia":"F5","cita":"off0, off1 en la simulacion: offsets constantes desconocidos sumados a las salidas"}
+],"notas":"Canal 1 = curva z con enganche en -0.89 (latch) con umbrales 1.55/0.15 segun direccion."}

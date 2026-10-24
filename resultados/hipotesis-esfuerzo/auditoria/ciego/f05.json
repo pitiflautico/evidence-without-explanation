@@ -1,0 +1,10 @@
+{"afirmaciones":[
+{"turno":6,"familia":"F0","cita":"ajuste lineal del canal 2 sobre las acciones y constante: ch2 [0.64,0.85,-1.12]"},
+{"turno":6,"familia":"F6","cita":"idx=arange(3,120,4): el canal 0 solo se actualiza cada 4 pasos (lectura retenida)"},
+{"turno":7,"familia":"F2","cita":"X con max(a1,0), max(a2,0): prueba no linealidad estatica (zona o rectificacion)"},
+{"turno":8,"familia":"F2","cita":"X con tanh(a1), tanh(a2), a1**2: prueba curva no lineal en el canal 2"},
+{"turno":10,"familia":"F3","cita":"mode=(off>-0.6): el offset del canal 2 toma dos niveles segun el modo"},
+{"turno":11,"familia":"F1","cita":"x=a*x+b1*u0+b2*u1+c, a=0.829: canal 0 autorregresivo"},
+{"turno":14,"familia":"F4","cita":"if mode and out<-0.1: mode=0; elif not mode and out>-0.25: mode=1: conmutacion con banda"},
+{"turno":14,"familia":"F5","cita":"d1 estimado y simulacion con d1,d2 como perturbaciones que cambian tras t>20/25"}
+],"notas":"Canal 0: primer orden muestreado cada 4 pasos. Canal 1: modo con dos niveles de offset (-1.6 y 0.35) y conmutacion con umbrales distintos segun direccion."}

@@ -1,0 +1,3 @@
+{"afirmaciones": [
+{"turno": 4, "familia": "F0", "cita": "M=[[0.55,-0.75],[-1.25,-0.66]]; u += 0.25*inv(M)@e: matriz de ganancia fija entre actuadores y canales"}
+], "notas": "Sin texto explicativo; no verbaliza saltos observados en las lecturas."}

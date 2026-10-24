@@ -1,0 +1,1 @@
+{"afirmaciones": [{"turno": 3, "familia": "F1", "cita": "ARX con Y[t-1], Y[t-2], U[t], U[t-1], U[t-2] y constante"}, {"turno": 6, "familia": "F0", "cita": "Integrador con signo fijo s=[-1,1]: ganancia de signo constante por canal"}], "notas": "Sin texto explícito. Las lecturas se mantienen y saltan a veces y el canal 1 satura en +-0.98; el modelo no lo afirma."}

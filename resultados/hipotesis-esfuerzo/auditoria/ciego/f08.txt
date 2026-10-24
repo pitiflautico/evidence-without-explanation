@@ -1,0 +1,473 @@
+ENUNCIADO:
+Problema 1 de 1.
+Máquina: 2 actuadores (de -3.0 a 3.0), 2 canales.
+Objetivo por canal: [0.85, -0.37], tolerancia ±0.35.
+Escenarios de evaluación: 60 pasos; se cumple si la salida está dentro de la tolerancia en al menos el 90 % de los 30 pasos finales.
+Presupuesto de pasos con esta máquina: 400.
+Tienes un taller propio (una carpeta) donde puedes ejecutar Python. Su subcarpeta almacen/ empieza así en este problema.
+Contenido actual de almacen/: vacío.
+Lo que observas al actuar sobre la máquina (también desde código) queda en exploracion.jsonl del taller.
+
+
+=== TURNO 1 (modelo) ===
+[herramienta] leer({})
+[resultado] {"lecturas": [-0.249, 0.732], "pasos_restantes": 400}
+=== TURNO 2 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina, numpy as np, json
+np.random.seed(0)
+seq=[[0,0]]*5+[[1,0]]*8+[[0,0]]*8+[[0,1]]*8+[[0,0]]*8
+r=maquina.actuar(seq)
+print(r)
+[resultado] [[-0.221, 0.866], [-0.252, 0.886], [-0.373, 0.839], [-0.38, 0.89], [-0.365, 0.889], [0.256, -0.348], [0.227, -0.358], [0.238, -0.361], [0.211, -0.378], [0.242, -0.382], [0.23, -0.362], [0.268, -0.392], [0.235, -0.38], [0.228, 0.872], [-0.411, 0.864], [-0.393, 0.857], [-0.398, 0.888], [-0.389, 0.898], [-0.376, 0.89], [-0.404, 0.869], [-0.367, 0.847], [-0.369, 0.228], [-0.425, 0.224], [-1.084, 0.203], [-1.099, 0.236], [-1.089, 0.199], [-1.117, 0.25], [-1.119, 0.222], [-1.132, 0.218], [-0.379, 0.917], [-0.422, 0.911], [-0.399, 0.856], [-0.37, 0.863], [-0.367, 0.878], [-0.355, 0.896], [-0.401, 0.927], [-0.384, 0.868]]
+
+[pasos usados: 37; restantes: 363]
+=== TURNO 3 (modelo) ===
+[herramienta] ejecutar_python:
+B=np.array([[0.62,-0.7],[-1.25,-0.65]])
+print(np.linalg.solve(B,[1.23,-1.25]))
+seq=[[2,0]]*6+[[0,0]]*5+[[-1,0]]*6+[[0,0]]*5+[[0,-1]]*6+[[0,0]]*5+[[1,1]]*6+[[0,0]]*4
+r=maquina.actuar(seq)
+for s,x in zip(seq,r): print(s,x)
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-6/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 1, in <module>
+NameError: name 'np' is not defined
+
+[pasos usados: 0; restantes: 363]
+=== TURNO 4 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina, numpy as np
+B=np.array([[0.62,-0.7],[-1.25,-0.65]])
+print(np.linalg.solve(B,[1.23,-1.25]))
+seq=[[2,0]]*6+[[0,0]]*5+[[-1,0]]*6+[[0,0]]*5+[[0,-1]]*6+[[0,0]]*5+[[1,1]]*6+[[0,0]]*4
+r=maquina.actuar(seq)
+for s,x in zip(seq,r): print(s,x)
+[resultado] [ 1.31025039 -0.59663537]
+[2, 0] [-0.382, -0.897]
+[2, 0] [0.855, -0.888]
+[2, 0] [0.862, -0.867]
+[2, 0] [0.84, -0.887]
+[2, 0] [0.86, -0.89]
+[2, 0] [0.884, -0.89]
+[0, 0] [0.862, 0.896]
+[0, 0] [-0.4, 0.898]
+[0, 0] [-0.394, 0.891]
+[0, 0] [-0.389, 0.875]
+[0, 0] [-0.382, 0.887]
+[-1, 0] [-0.403, 0.896]
+[-1, 0] [-0.379, 0.909]
+[-1, 0] [-1.017, 0.883]
+[-1, 0] [-1.027, 0.854]
+[-1, 0] [-1.085, 0.884]
+[-1, 0] [-1.011, 0.911]
+[0, 0] [-0.998, 0.868]
+[0, 0] [-1.014, 0.839]
+[0, 0] [-0.391, 0.86]
+[0, 0] [-0.383, 0.91]
+[0, 0] [-0.406, 0.894]
+[0, -1] [0.296, 0.901]
+[0, -1] [0.325, 0.889]
+[0, -1] [0.356, 0.872]
+[0, -1] [0.333, 0.882]
+[0, -1] [0.349, 0.88]
+[0, -1] [0.294, 0.867]
+[0, 0] [-0.402, 0.859]
+[0, 0] [-0.375, 0.881]
+[0, 0] [-0.347, 0.893]
+[0, 0] [-0.369, 0.906]
+[0, 0] [-0.342, 0.893]
+[1, 1] [-0.388, -0.907]
+[1, 1] [-0.508, -0.881]
+[1, 1] [-0.488, -0.893]
+[1, 1] [-0.491, -0.879]
+[1, 1] [-0.555, -0.876]
+[1, 1] [-0.488, -0.89]
+[0, 0] [-0.515, 0.878]
+[0, 0] [-0.394, 0.889]
+[0, 0] [-0.349, 0.883]
+[0, 0] [-0.378, 0.881]
+
+[pasos usados: 43; restantes: 320]
+=== TURNO 5 (modelo) ===
+[herramienta] ejecutar_python:
+A=np.array([[0.62,-0.7],[1.25,0.65]]);u=np.linalg.solve(A,[1.23,1.25]);print(u)
+pts=[list(u),[1.5,-0.5],[1.0,0],[0.5,0],[1.5,0],[0,0.5],[0,1.5],[0.5,0.5],[1.2,-0.5],[0,0]]
+seq=[]
+for p in pts: seq+= [p]*4
+r=maquina.actuar(seq)
+for i,p in enumerate(pts): print(np.round(p,2), r[4*i:4*i+4])
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-6/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 1, in <module>
+NameError: name 'np' is not defined
+
+[pasos usados: 0; restantes: 320]
+=== TURNO 6 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina, numpy as np
+A=np.array([[0.62,-0.7],[1.25,0.65]]);u=np.linalg.solve(A,[1.23,1.25]);print(u)
+pts=[list(u),[1.5,-0.5],[1.0,0],[0.5,0],[1.5,0],[0,0.5],[0,1.5],[0.5,0.5],[1.2,-0.5],[0,0]]
+seq=[]
+for p in pts: seq+= [p]*4
+r=maquina.actuar(seq)
+for i,p in enumerate(pts): print(np.round(p,2), r[4*i:4*i+4])
+[resultado] [ 1.31025039 -0.59663537]
+[ 1.31 -0.6 ] [[0.882, -0.297], [0.83, -0.323], [0.84, -0.318], [0.865, -0.301]]
+[ 1.5 -0.5] [[0.87, -0.638], [0.842, -0.639], [0.923, -0.62], [0.904, -0.685]]
+[1. 0.] [[0.935, -0.351], [0.251, -0.354], [0.243, -0.336], [0.223, -0.36]]
+[0.5 0. ] [[-0.122, 0.359], [-0.098, 0.321], [-0.052, 0.317], [-0.076, 0.355]]
+[1.5 0. ] [[-0.078, -0.871], [-0.071, -0.875], [0.557, -0.874], [0.55, -0.862]]
+[0.  0.5] [[0.537, -0.886], [-0.779, -0.878], [-0.763, -0.826], [-0.755, -0.925]]
+[0.  1.5] [[-1.459, -0.887], [-1.467, -0.91], [-1.487, -0.867], [-1.466, -0.884]]
+[0.5 0.5] [[-1.452, -0.852], [-1.492, -0.865], [-0.417, -0.879], [-0.468, -0.878]]
+[ 1.2 -0.5] [[-0.453, -0.888], [0.734, -0.849], [0.707, -0.882], [0.74, -0.878]]
+[0 0] [[-0.379, 0.923], [-0.394, 0.888], [-0.394, 0.864], [-0.385, 0.874]]
+
+[pasos usados: 40; restantes: 280]
+=== TURNO 7 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina, numpy as np
+pts=[[0,0.5],[0.5,0.5],[1.2,-0.5],[1.5,-0.5],[0,1],[1,0],[0.5,0],[0.25,0.25],[1.31,-0.6]]
+seq=[]
+for p in pts: seq+= [p]*3+[[0,0]]*2
+r=maquina.actuar(seq)
+for i,p in enumerate(pts): print(np.round(p,2), r[5*i:5*i+5])
+[resultado] [0.  0.5] [[-0.391, 0.607], [-0.409, 0.601], [-0.778, 0.615], [-0.776, 0.882], [-0.765, 0.86]]
+[0.5 0.5] [[-0.421, -0.097], [-0.464, -0.062], [-0.46, -0.082], [-0.417, 0.922], [-0.401, 0.886]]
+[ 1.2 -0.5] [[-0.416, -0.274], [0.725, -0.227], [0.737, -0.239], [0.708, 0.867], [-0.39, 0.874]]
+[ 1.5 -0.5] [[-0.405, -0.646], [-0.383, -0.652], [0.884, -0.663], [0.879, 0.858], [0.932, 0.855]]
+[0 1] [[-1.117, 0.239], [-1.118, 0.198], [-1.151, 0.192], [-0.401, 0.844], [-0.378, 0.9]]
+[1 0] [[-0.432, -0.351], [0.233, -0.371], [0.22, -0.362], [0.225, 0.922], [-0.383, 0.887]]
+[0.5 0. ] [[-0.389, 0.345], [-0.336, 0.321], [-0.058, 0.286], [-0.095, 0.921], [-0.056, 0.888]]
+[0.25 0.25] [[-0.417, 0.499], [-0.438, 0.441], [-0.444, 0.458], [-0.398, 0.903], [-0.36, 0.875]]
+[ 1.31 -0.6 ] [[-0.408, -0.325], [0.862, -0.328], [0.879, -0.339], [0.872, 0.883], [-0.368, 0.887]]
+
+[pasos usados: 45; restantes: 235]
+=== TURNO 8 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina, numpy as np
+seq=[[2,0]]*2+[[1.5,0]]*2+[[1,0]]*2+[[0.5,0]]*2+[[0.25,0]]*2+[[0,0]]*2+[[1,0]]*2+[[1.4,0]]*2+[[1.0,0]]*2+[[1.7,0]]*2+[[1.0,0]]*2+[[0.5,0]]*2
+r=maquina.actuar(seq)
+for s,x in zip(seq,r): print(s,x)
+[resultado] [2, 0] [-0.383, -0.889]
+[2, 0] [-0.374, -0.868]
+[1.5, 0] [0.59, -0.86]
+[1.5, 0] [0.537, -0.874]
+[1, 0] [0.567, -0.916]
+[1, 0] [0.187, -0.869]
+[0.5, 0] [0.194, -0.905]
+[0.5, 0] [0.236, -0.839]
+[0.25, 0] [-0.264, -0.89]
+[0.25, 0] [-0.205, -0.879]
+[0, 0] [-0.238, 0.887]
+[0, 0] [-0.378, 0.852]
+[1, 0] [-0.382, -0.363]
+[1, 0] [-0.415, -0.358]
+[1.4, 0] [0.454, -0.878]
+[1.4, 0] [0.442, -0.899]
+[1.0, 0] [0.514, -0.411]
+[1.0, 0] [0.204, -0.369]
+[1.7, 0] [0.223, -0.9]
+[1.7, 0] [0.278, -0.825]
+[1.0, 0] [0.204, -0.842]
+[1.0, 0] [0.234, -0.877]
+[0.5, 0] [0.236, -0.895]
+[0.5, 0] [-0.065, -0.862]
+
+[pasos usados: 24; restantes: 211]
+=== TURNO 9 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina, numpy as np
+def U(v0,z):
+    A=np.array([[0.62,-0.7],[1,0.55]]); return list(np.linalg.solve(A,[v0,z]))
+seq=[[2,0]]*2+[U(1.23,0)]*2+[U(1.23,1.0)]*3+[[2,0]]*2+[U(1.23,0.1)]*2+[U(1.23,-0.2)]*2+[U(1.23,1.0)]*3+[U(1.23,1.6)]*2+[U(1.23,1.0)]*2
+r=maquina.actuar(seq)
+for s,x in zip(seq,r): print(np.round(s,2),x)
+[resultado] [2 0] [-0.077, -0.874]
+[2 0] [-0.105, -0.868]
+[ 0.65 -1.18] [0.914, 0.879]
+[ 0.65 -1.18] [0.836, 0.906]
+[ 1.32 -0.59] [0.877, -0.337]
+[ 1.32 -0.59] [0.85, -0.319]
+[ 1.32 -0.59] [0.835, -0.308]
+[2 0] [0.838, -0.884]
+[2 0] [0.874, -0.87]
+[ 0.72 -1.12] [0.847, 0.876]
+[ 0.72 -1.12] [0.841, 0.849]
+[ 0.52 -1.3 ] [0.896, 0.872]
+[ 0.52 -1.3 ] [0.878, 0.871]
+[ 1.32 -0.59] [0.883, -0.351]
+[ 1.32 -0.59] [0.895, -0.359]
+[ 1.32 -0.59] [0.902, -0.351]
+[ 1.73 -0.23] [0.869, -0.876]
+[ 1.73 -0.23] [0.874, -0.832]
+[ 1.32 -0.59] [0.859, -0.876]
+[ 1.32 -0.59] [0.812, -0.897]
+
+[pasos usados: 20; restantes: 191]
+=== TURNO 10 (modelo) ===
+[herramienta] ejecutar_python:
+code = r'''
+import numpy as np
+_A = np.array([[0.62, -0.7], [1.0, 0.55]])
+_T = (0.85, -0.37)
+def controlar(lecturas, memoria):
+    y0, y1 = float(lecturas[0]), float(lecturas[1])
+    if 'v0' not in memoria:
+        memoria['v0'] = 1.23; memoria['z'] = 1.0
+    v0 = memoria['v0']; z = memoria['z']
+    v0 += 0.3 * (_T[0] - y0)
+    v0 = max(-3.0, min(3.5, v0))
+    reset = False
+    if y1 < -0.8:
+        reset = True
+        z = min(z, 1.2) - 0.25
+    else:
+        z -= 0.5 * (_T[1] - y1)
+    z = max(-1.5, min(1.45, z))
+    memoria['v0'] = v0; memoria['z'] = z
+    zz = 0.0 if reset else z
+    u = np.linalg.solve(_A, [v0, zz])
+    u = np.clip(u, -3, 3)
+    return [float(u[0]), float(u[1])]
+'''
+open('ctrl.py','w').write(code)
+# simulate
+import numpy as np, random
+exec(code)
+def h(z):
+    zs=[0,.25,.5,.8,1,1.22,1.5]; ys=[.88,.61,.32,-.08,-.36,-.65,-.87]
+    return np.interp(z,zs,ys)
+def sim(off0,off1,latched,seed):
+    rng=np.random.default_rng(seed); mem={}; hist=[]; lat=latched; y=[0.5,-0.89 if latched else 0.88]; ok=0
+    for t in range(60):
+        u=controlar(y,mem); hist.append(u)
+        d=rng.integers(0,3); ud=hist[max(0,len(hist)-1-d)]
+        y0=-0.38+0.62*ud[0]-0.7*ud[1]+off0+rng.normal(0,.02)
+        z=u[0]+0.55*u[1]
+        if z>1.55: lat=True
+        if z<0.15: lat=False
+        y1=(-0.89 if lat else h(z))+off1+rng.normal(0,.02)
+        y=[y0,y1]
+        if t>=30: ok+= abs(y0-.85)<.35 and abs(y1+.37)<.35
+    return ok/30
+for o0 in [-0.5,0,0.5]:
+    for o1 in [-0.3,0,0.3]:
+        print(o0,o1,[sim(o0,o1,l,s) for l in [0,1] for s in range(2)])
+[resultado] -0.5 -0.3 [np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+-0.5 0 [np.float64(1.0), np.float64(0.0), np.float64(1.0), np.float64(1.0)]
+-0.5 0.3 [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+0 -0.3 [np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+0 0 [np.float64(1.0), np.float64(0.0), np.float64(1.0), np.float64(1.0)]
+0 0.3 [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+0.5 -0.3 [np.float64(0.0), np.float64(0.0), np.float64(0.0), np.float64(0.0)]
+0.5 0 [np.float64(1.0), np.float64(0.0), np.float64(1.0), np.float64(1.0)]
+0.5 0.3 [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+
+[pasos usados: 0; restantes: 191]
+=== TURNO 11 (modelo) ===
+[herramienta] ejecutar_python:
+exec(open('ctrl.py').read())
+import numpy as np
+def h(z):
+    zs=[0,.25,.5,.8,1,1.22,1.5]; ys=[.88,.61,.32,-.08,-.36,-.65,-.87]
+    return np.interp(z,zs,ys)
+def sim(off0,off1,latched,seed,pr=False):
+    rng=np.random.default_rng(seed); mem={}; hist=[]; lat=latched; y=[0.5,-0.89 if latched else 0.88]; ok=0
+    for t in range(60):
+        u=controlar(y,mem); hist.append(u)
+        d=rng.integers(0,3); ud=hist[max(0,len(hist)-1-d)]
+        y0=-0.38+0.62*ud[0]-0.7*ud[1]+off0+rng.normal(0,.02)
+        z=u[0]+0.55*u[1]
+        if z>1.55: lat=True
+        if z<0.15: lat=False
+        y1=(-0.89 if lat else h(z))+off1+rng.normal(0,.02)
+        y=[y0,y1]
+        if pr and t<30: print(t,np.round(u,2),round(z,2),lat,np.round(y,2))
+    return
+sim(0,0,0,1,True)
+[resultado] 0 [ 1.68 -0.42] 1.45 0 [ 0.97 -0.82]
+1 [ 0.69 -1.25] 0.0 False [0.93 0.9 ]
+2 [ 1.65 -0.36] 1.45 False [ 0.94 -0.82]
+3 [ 0.66 -1.2 ] 0.0 False [0.9  0.89]
+4 [ 1.63 -0.32] 1.45 False [ 0.91 -0.85]
+5 [ 0.64 -1.17] 0.0 False [0.86 0.87]
+6 [ 1.61 -0.3 ] 1.45 False [ 0.83 -0.84]
+7 [ 0.64 -1.17] 0.0 False [0.81 0.87]
+8 [ 1.62 -0.31] 1.45 False [ 0.84 -0.8 ]
+9 [ 0.65 -1.18] 0.0 False [0.86 0.83]
+10 [ 1.62 -0.32] 1.45 False [ 0.84 -0.84]
+11 [ 0.65 -1.18] 0.0 False [0.85 0.88]
+12 [ 1.62 -0.32] 1.45 False [ 0.83 -0.84]
+13 [ 0.65 -1.19] 0.0 False [0.9  0.89]
+14 [ 1.62 -0.31] 1.45 False [ 0.85 -0.86]
+15 [ 0.65 -1.17] 0.0 False [0.85 0.88]
+16 [ 1.62 -0.31] 1.45 False [ 0.83 -0.83]
+17 [ 0.65 -1.18] 0.0 False [0.82 0.88]
+18 [ 1.63 -0.33] 1.45 False [ 0.84 -0.84]
+19 [ 0.66 -1.19] 0.0 False [0.87 0.9 ]
+20 [ 1.63 -0.32] 1.45 False [ 0.84 -0.82]
+21 [ 0.65 -1.19] 0.0 False [0.85 0.9 ]
+22 [ 1.63 -0.32] 1.45 False [ 0.87 -0.83]
+23 [ 0.65 -1.18] 0.0 False [0.83 0.87]
+24 [ 1.63 -0.32] 1.45 False [ 0.86 -0.85]
+25 [ 0.65 -1.18] 0.0 False [0.83 0.88]
+26 [ 1.63 -0.33] 1.45 False [ 0.86 -0.82]
+27 [ 0.65 -1.19] 0.0 False [0.82 0.89]
+28 [ 1.63 -0.33] 1.45 False [ 0.86 -0.85]
+29 [ 0.66 -1.19] 0.0 False [0.88 0.89]
+
+[pasos usados: 0; restantes: 191]
+=== TURNO 12 (modelo) ===
+[herramienta] ejecutar_python:
+code = r'''
+import numpy as np
+_A = np.array([[0.62, -0.7], [1.0, 0.55]])
+_T = (0.85, -0.37)
+def controlar(lecturas, memoria):
+    y0, y1 = float(lecturas[0]), float(lecturas[1])
+    if 'v0' not in memoria:
+        memoria['v0'] = 1.23; memoria['z'] = 1.0; memoria['skip'] = False
+    v0 = memoria['v0']; z = memoria['z']
+    v0 += 0.3 * (_T[0] - y0)
+    v0 = max(-3.0, min(3.5, v0))
+    reset = False
+    if memoria['skip']:
+        memoria['skip'] = False
+    elif y1 < -0.8:
+        reset = True
+        memoria['skip'] = True
+        z = min(z, 1.2) - 0.2
+    else:
+        dz = -0.5 * (_T[1] - y1)
+        z += max(-0.25, min(0.25, dz))
+    z = max(-1.5, min(1.45, z))
+    memoria['v0'] = v0; memoria['z'] = z
+    zz = 0.0 if reset else z
+    u = np.linalg.solve(_A, [v0, zz])
+    u = np.clip(u, -3, 3)
+    return [float(u[0]), float(u[1])]
+'''
+open('ctrl.py','w').write(code)
+exec(code)
+def sim(off0,off1,latched,seed,pr=False):
+    rng=np.random.default_rng(seed); mem={}; hist=[]; lat=latched; y=[0.5,-0.89 if latched else 0.88]; ok=0
+    for t in range(60):
+        u=controlar(y,mem); hist.append(u)
+        d=rng.integers(0,3); ud=hist[max(0,len(hist)-1-d)]
+        y0=-0.38+0.62*ud[0]-0.7*ud[1]+off0+rng.normal(0,.02)
+        z=u[0]+0.55*u[1]
+        if z>1.55: lat=True
+        if z<0.15: lat=False
+        y1=(-0.89 if lat else h(z))+off1+rng.normal(0,.02)
+        y=[y0,y1]
+        if pr and t<30: print(t,np.round(u,2),round(z,2),lat,np.round(y,2))
+        if t>=30: ok+= abs(y0-.85)<.35 and abs(y1+.37)<.35
+    return ok/30
+for o0 in [-0.5,0,0.5]:
+    for o1 in [-0.3,0,0.3]:
+        print(o0,o1,[sim(o0,o1,l,s) for l in [0,1] for s in range(3)])
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-6/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 47, in <module>
+  File "<ejecucion>", line 40, in sim
+NameError: name 'h' is not defined
+
+[pasos usados: 0; restantes: 191]
+=== TURNO 13 (modelo) ===
+[herramienta] ejecutar_python:
+import numpy as np
+exec(open('ctrl.py').read())
+def h(z):
+    zs=[0,.25,.5,.8,1,1.22,1.5]; ys=[.88,.61,.32,-.08,-.36,-.65,-.87]
+    return np.interp(z,zs,ys)
+def sim(off0,off1,latched,seed,pr=False):
+    rng=np.random.default_rng(seed); mem={}; hist=[]; lat=latched; y=[0.5,-0.89 if latched else 0.88]; ok=0
+    for t in range(60):
+        u=controlar(y,mem); hist.append(u)
+        d=rng.integers(0,3); ud=hist[max(0,len(hist)-1-d)]
+        y0=-0.38+0.62*ud[0]-0.7*ud[1]+off0+rng.normal(0,.02)
+        z=u[0]+0.55*u[1]
+        if z>1.55: lat=True
+        if z<0.15: lat=False
+        y1=(-0.89 if lat else h(z))+off1+rng.normal(0,.02)
+        y=[y0,y1]
+        if pr and t<30: print(t,np.round(u,2),round(z,2),lat,np.round(y,2))
+        if t>=30: ok+= abs(y0-.85)<.35 and abs(y1+.37)<.35
+    return ok/30
+for o0 in [-0.5,0,0.5]:
+    for o1 in [-0.3,0,0.3]:
+        print(o0,o1,[sim(o0,o1,l,s) for l in [0,1] for s in range(3)])
+[resultado] -0.5 -0.3 [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+-0.5 0 [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+-0.5 0.3 [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+0 -0.3 [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+0 0 [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+0 0.3 [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+0.5 -0.3 [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+0.5 0 [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+0.5 0.3 [np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0), np.float64(1.0)]
+
+[pasos usados: 0; restantes: 191]
+=== TURNO 14 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina, numpy as np
+exec(open('ctrl.py').read())
+r=maquina.actuar([[2,0]],reiniciar=True)
+y=r[-1]; mem={}; out=[]
+for t in range(40):
+    u=controlar(y,mem); y=maquina.actuar([u])[-1]; out.append((np.round(u,2),y))
+for o in out: print(o)
+[resultado] (array([ 0.79, -1.43]), [0.019, 0.866])
+(array([ 1.46, -1.19]), [1.36, -0.044])
+(array([ 1.48, -0.95]), [1.389, -0.308])
+(array([ 1.42, -0.77]), [1.382, -0.317])
+(array([ 1.35, -0.61]), [0.911, -0.349])
+(array([ 1.35, -0.58]), [0.913, -0.37])
+(array([ 1.34, -0.56]), [0.883, -0.382])
+(array([ 1.33, -0.56]), [0.846, -0.371])
+(array([ 1.33, -0.56]), [0.819, -0.388])
+(array([ 1.33, -0.57]), [0.849, -0.384])
+(array([ 1.33, -0.58]), [0.852, -0.355])
+(array([ 1.33, -0.57]), [0.89, -0.394])
+(array([ 1.32, -0.57]), [0.857, -0.368])
+(array([ 1.32, -0.57]), [0.837, -0.357])
+(array([ 1.32, -0.57]), [0.818, -0.364])
+(array([ 1.33, -0.57]), [0.836, -0.385])
+(array([ 1.33, -0.58]), [0.844, -0.346])
+(array([ 1.34, -0.58]), [0.853, -0.349])
+(array([ 1.34, -0.57]), [0.866, -0.365])
+(array([ 1.34, -0.56]), [0.83, -0.395])
+(array([ 1.34, -0.58]), [0.867, -0.401])
+(array([ 1.32, -0.58]), [0.865, -0.332])
+(array([ 1.33, -0.56]), [0.803, -0.365])
+(array([ 1.34, -0.58]), [0.864, -0.385])
+(array([ 1.34, -0.58]), [0.848, -0.351])
+(array([ 1.34, -0.57]), [0.872, -0.397])
+(array([ 1.33, -0.57]), [0.845, -0.332])
+(array([ 1.34, -0.56]), [0.842, -0.382])
+(array([ 1.34, -0.57]), [0.83, -0.377])
+(array([ 1.34, -0.58]), [0.863, -0.331])
+(array([ 1.35, -0.56]), [0.82, -0.366])
+(array([ 1.36, -0.57]), [0.855, -0.427])
+(array([ 1.34, -0.59]), [0.884, -0.376])
+(array([ 1.33, -0.58]), [0.886, -0.356])
+(array([ 1.33, -0.56]), [0.873, -0.354])
+(array([ 1.33, -0.55]), [0.827, -0.33])
+(array([ 1.35, -0.55]), [0.844,  […]
+=== TURNO 15 (modelo) ===
+Funciona en la máquina real. Ahora valido.
+[herramienta] validar({"ruta": "ctrl.py"})
+[resultado] {"validacion": 1, "cumplidos": 3, "de": 6, "escenarios": [{"escenario": 1, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [0.993, -1.805], "lecturas": [-1.301, 0.881]}, {"t": 10, "acciones": [1.194, 0.394], "lecturas": [0.86, 0.133]}, {"t": 20, "acciones": [1.223, 0.413], "lecturas": [0.839, 0.072]}, {"t": 30, "acciones": [1.219, 0.419], "lecturas": [0.809, 0.079]}, {"t": 40, "acciones": [1.22, 0.419], "lecturas": [0.849, 0.03]}, {"t": 50, "acciones": [1.221, 0.416], "lecturas": [0.823, 0.045]}, {"t": 59, "acciones": [1.216, 0.426], "lecturas": [0.836, 0.04]}]}, {"escenario": 2, "cumplido": false, "fraccion_ventana": 0.567, "resumen": [{"t": 0, "acciones": [1.871, -1.13], "lecturas": [-1.613, -0.884]}, {"t": 10, "acciones": [1.796, -1.629], "lecturas": [2.915, 0.115]}, {"t": 20, "acciones": [1.548, -0.617], "lecturas": [0.85, -0.371]}, {"t": 30, "acciones": [0.72, -1.31], "lecturas": [0.857, -0.854]}, {"t": 40, "acciones": [0.632, -1.422], "lecturas": [0.851, 0.704]}, {"t": 50, "acciones": [1.148, -0.955], "lecturas": [0.867, -0.36]}, {"t": 59, "acciones": [1.143, -0.956], "lecturas": [0.839, -0.358]}]}, {"escenario": 3, "cumplido": false, "fraccion_ventana": 0.733, "resumen": [{"t": 0, "acciones": [1.462, -0.791], "lecturas": [0.04, -0.86]}, {"t": 10, "acciones": [0.373, -0.629], "lecturas": [0.822, -0.889]}, {"t": 20, "acciones": [0.893, -0.213], "lecturas": [0.878, -0.432]}, {"t": 30, "acciones": [0.349, -0.634], "lecturas": [0.818, -0.883]},  […]
+=== TEXTO FINAL ===
+Funciona en la máquina real. Ahora valido.

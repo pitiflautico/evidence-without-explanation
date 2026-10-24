@@ -1,0 +1,3 @@
+modo excitado con acciones extremas: esperado identificable; resultado identificable (BIEN) | RMS verdad 0.020, umbral 0.040, mejor alternativa deriva 1.022
+saturación no alcanzada (ident-sat-1): esperado no identificable; resultado no identificable (BIEN) | RMS verdad 0.020, umbral 0.040, mejor alternativa histeresis 0.019
+modo que no cambia ni difiere entre escenarios (ident-modo-fijo-26): esperado no identificable; resultado no identificable (BIEN) | RMS verdad 0.020, umbral 0.040, mejor alternativa saturacion 0.020

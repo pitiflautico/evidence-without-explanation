@@ -1,0 +1,86 @@
+ENUNCIADO:
+Problema 1 de 1.
+Máquina: 2 actuadores (de -3.0 a 3.0), 2 canales.
+Objetivo por canal: [1.09, 0.51], tolerancia ±0.35.
+Escenarios de evaluación: 60 pasos; se cumple si la salida está dentro de la tolerancia en al menos el 90 % de los 30 pasos finales.
+Presupuesto de pasos con esta máquina: 400.
+Tienes un taller propio (una carpeta) donde puedes ejecutar Python. Su subcarpeta almacen/ empieza así en este problema.
+Contenido actual de almacen/: vacío.
+Lo que observas al actuar sobre la máquina (también desde código) queda en exploracion.jsonl del taller.
+
+
+=== TURNO 1 (modelo) ===
+[herramienta] leer({})
+[resultado] {"lecturas": [0.091, 1.22], "pasos_restantes": 400}
+=== TURNO 2 (modelo) ===
+Exploro con escalones.
+[herramienta] actuar(16 pasos, reiniciar=False): [[0, 0], [0, 0], [0, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 0], [0, 0], [0, 0]]
+[resultado] {"lecturas": [[0.189, 1.201], [0.174, 1.219], [0.135, 1.224], [0.175, 1.177], [0.157, 1.214], [-0.985, 1.206], [-0.983, 1.212], [-0.958, 1.164], [-1.978, 1.196], [-2.028, 1.186], [-0.873, 1.087], [-0.841, 1.085], [-0.84, 1.087], [0.135, 1.189], [0.163, 1.177], [0.171, 1.2]], "pasos_restantes": 384}
+=== TURNO 3 (modelo) ===
+[herramienta] actuar(13 pasos, reiniciar=False): [[-2, 0], [-2, 0], [-2, 0], [-2, 0], [-2, 0], [0, -2], [0, -2], [0, -2], [0, -2], [0, -2], [0, 0], [0, 0], [0, 0]]
+[resultado] {"lecturas": [[0.149, 1.201], [0.185, 1.177], [2.473, -1.194], [2.495, -1.191], [2.493, -1.19], [4.535, -1.158], [4.509, -1.182], [2.12, 1.215], [2.184, 1.192], [2.162, 1.175], [0.167, 1.186], [0.174, 1.227], [0.155, 1.202]], "pasos_restantes": 371}
+=== TURNO 4 (modelo) ===
+[herramienta] actuar(6 pasos, reiniciar=False): [[-0.6, -0.3], [-0.6, -0.3], [-0.6, -0.3], [-0.6, -0.3], [-0.6, -0.3], [-0.6, -0.3]]
+[resultado] {"lecturas": [[0.458, 1.205], [0.472, 1.174], [1.151, 1.166], [1.152, 1.183], [1.163, 1.191], [1.193, 1.198]], "pasos_restantes": 365}
+=== TURNO 5 (modelo) ===
+[herramienta] actuar(8 pasos, reiniciar=False): [[-1, 0], [-1, 0], [-1, 0], [-1, 0], [-1.5, 0], [-1.5, 0], [-1.5, 0], [-1.5, 0]]
+[resultado] {"lecturas": [[0.872, 1.182], [0.828, 1.192], [1.324, 0.806], [1.326, 0.757], [1.307, 0.784], [1.278, 0.778], [1.923, 0.279], [1.903, 0.277]], "pasos_restantes": 357}
+=== TURNO 6 (modelo) ===
+[herramienta] actuar(5 pasos, reiniciar=False): [[-1.2, 0.45], [-1.2, 0.45], [-1.2, 0.45], [-1.2, 0.45], [-1.2, 0.45]]
+[resultado] {"lecturas": [[1.467, -0.108], [1.427, -0.086], [1.081, 0.203], [1.092, 0.222], [1.096, 0.225]], "pasos_restantes": 352}
+=== TURNO 7 (modelo) ===
+[herramienta] validar:
+def controlar(l, m):
+    u1=m.get('u1',-1.1); u2=m.get('u2',0.45)
+    e1=l[0]-1.09; e2=l[1]-0.51
+    if m.get('t',0)>0:
+        u1+=0.12*e2
+        u2+=0.5*e1
+    u1=max(-3,min(3,u1)); u2=max(-3,min(3,u2))
+    m['u1']=u1; m['u2']=u2; m['t']=m.get('t',0)+1
+    return [u1,u2]
+[resultado] {"validacion": 1, "cumplidos": 0, "de": 6, "escenarios": [{"escenario": 1, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [-1.1, 0.45], "lecturas": [-0.126, -1.073]}, {"t": 10, "acciones": [-3.0, -2.662], "lecturas": [0.75, -1.23]}, {"t": 20, "acciones": [-3.0, -3.0], "lecturas": [0.805, -1.187]}, {"t": 30, "acciones": [-3.0, -3.0], "lecturas": [0.847, -1.153]}, {"t": 40, "acciones": [-3.0, -3.0], "lecturas": [0.849, -1.205]}, {"t": 50, "acciones": [-3.0, -3.0], "lecturas": [0.839, -1.206]}, {"t": 59, "acciones": [-3.0, -3.0], "lecturas": [0.865, -1.191]}]}, {"escenario": 2, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [-1.1, 0.45], "lecturas": [-0.658, -1.214]}, {"t": 10, "acciones": [-3.0, -3.0], "lecturas": [0.548, -1.194]}, {"t": 20, "acciones": [-3.0, -3.0], "lecturas": [-0.249, -1.196]}, {"t": 30, "acciones": [-3.0, -3.0], "lecturas": [-0.295, -1.188]}, {"t": 40, "acciones": [-3.0, -3.0], "lecturas": [-0.272, -1.19]}, {"t": 50, "acciones": [-3.0, -3.0], "lecturas": [-0.301, -1.231]}, {"t": 59, "acciones": [-3.0, -3.0], "lecturas": [-0.288, -1.195]}]}, {"escenario": 3, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [-1.1, 0.45], "lecturas": [0.213, -1.155]}, {"t": 10, "acciones": [-3.0, 2.236], "lecturas": [1.565, -1.202]}, {"t": 20, "acciones": [-3.0, 3.0], "lecturas": [1.137, -1.143]}, {"t": 30, "acciones": [-3.0, 3.0], "lecturas": [1.137, -1.21]}, {"t": 40, "acciones": [-3.0, 3 […]
+=== TURNO 8 (modelo) ===
+[herramienta] validar:
+def controlar(l, m):
+    u1=m.get('u1',-1.1); u2=m.get('u2',0.45)
+    e1=l[0]-1.09; e2=l[1]-0.51
+    if m.get('t',0)>0:
+        u1-=0.12*e2
+        u2+=0.5*e1
+    u1=max(-3,min(3,u1)); u2=max(-3,min(3,u2))
+    m['u1']=u1; m['u2']=u2; m['t']=m.get('t',0)+1
+    return [u1,u2]
+[resultado] {"validacion": 2, "cumplidos": 3, "de": 6, "escenarios": [{"escenario": 1, "cumplido": true, "fraccion_ventana": 1.0, "resumen": [{"t": 0, "acciones": [-1.1, 0.45], "lecturas": [-0.126, -1.073]}, {"t": 10, "acciones": [0.926, -0.463], "lecturas": [1.461, -1.23]}, {"t": 20, "acciones": [1.152, 0.623], "lecturas": [0.969, 1.193]}, {"t": 30, "acciones": [0.527, -0.023], "lecturas": [0.996, 0.564]}, {"t": 40, "acciones": [0.619, -0.1], "lecturas": [1.121, 0.452]}, {"t": 50, "acciones": [0.602, -0.058], "lecturas": [1.075, 0.499]}, {"t": 59, "acciones": [0.61, -0.07], "lecturas": [1.112, 0.504]}]}, {"escenario": 2, "cumplido": false, "fraccion_ventana": 0.867, "resumen": [{"t": 0, "acciones": [-1.1, 0.45], "lecturas": [-0.658, -1.214]}, {"t": 10, "acciones": [0.951, -0.925], "lecturas": [1.46, -1.194]}, {"t": 20, "acciones": [1.981, 0.288], "lecturas": [1.126, 1.184]}, {"t": 30, "acciones": [1.166, -0.291], "lecturas": [0.935, 1.192]}, {"t": 40, "acciones": [0.85, -0.826], "lecturas": [1.08, 0.387]}, {"t": 50, "acciones": [0.936, -0.789], "lecturas": [1.115, 0.471]}, {"t": 59, "acciones": [0.919, -0.756], "lecturas": [1.083, 0.529]}]}, {"escenario": 3, "cumplido": true, "fraccion_ventana": 0.9, "resumen": [{"t": 0, "acciones": [-1.1, 0.45], "lecturas": [0.213, -1.155]}, {"t": 10, "acciones": [0.872, -0.565], "lecturas": [0.635, 1.178]}, {"t": 20, "acciones": [0.053, -0.831], "lecturas": [1.27, 1.237]}, {"t": 30, "acciones": [-0.766, 0.112], "lecturas": [1.271, 1.17]}, {"t": 40, "a […]
+=== TURNO 9 (modelo) ===
+[herramienta] validar:
+def controlar(l, m):
+    u1=m.get('u1',-1.1); u2=m.get('u2',0.45)
+    e1=l[0]-1.09; e2=l[1]-0.51
+    h=m.get('h',[0,0])
+    if m.get('t',0)>0:
+        if abs(l[1])>1.1:
+            d=-0.3*(1 if e2>0 else -1)
+        else:
+            d=-0.15*e2
+        u1n=max(-3,min(3,u1+d)); d=u1n-u1; u1=u1n
+        u2+=0.6*e1 - 1.15*h[0]
+        h=[h[1],d]
+    u2=max(-3,min(3,u2))
+    m['h']=h; m['u1']=u1; m['u2']=u2; m['t']=m.get('t',0)+1
+    return [u1,u2]
+[resultado] {"validacion": 3, "cumplidos": 1, "de": 6, "escenarios": [{"escenario": 1, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [-1.1, 0.45], "lecturas": [-0.126, -1.073]}, {"t": 10, "acciones": [1.837, -0.395], "lecturas": [2.118, -1.072]}, {"t": 20, "acciones": [-0.169, 0.605], "lecturas": [0.093, 1.063]}, {"t": 30, "acciones": [1.894, -0.341], "lecturas": [2.095, -1.153]}, {"t": 40, "acciones": [0.591, 1.288], "lecturas": [0.104, 1.175]}, {"t": 50, "acciones": [0.943, -1.104], "lecturas": [2.009, -1.206]}, {"t": 59, "acciones": [1.759, 1.843], "lecturas": [0.664, 1.189]}]}, {"escenario": 2, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [-1.1, 0.45], "lecturas": [-0.658, -1.214]}, {"t": 10, "acciones": [1.9, -0.835], "lecturas": [2.111, -1.194]}, {"t": 20, "acciones": [0.595, 0.327], "lecturas": [0.131, 1.184]}, {"t": 30, "acciones": [1.551, -1.595], "lecturas": [2.059, -1.188]}, {"t": 40, "acciones": [1.462, 1.07], "lecturas": [0.118, 1.19]}, {"t": 50, "acciones": [0.844, -1.986], "lecturas": [1.8, -1.231]}, {"t": 59, "acciones": [2.7, 0.122], "lecturas": [2.092, 1.185]}]}, {"escenario": 3, "cumplido": false, "fraccion_ventana": 0.067, "resumen": [{"t": 0, "acciones": [-1.1, 0.45], "lecturas": [0.213, -1.155]}, {"t": 10, "acciones": [0.0, -1.119], "lecturas": [1.108, 1.178]}, {"t": 20, "acciones": [0.34, -0.104], "lecturas": [1.089, -0.776]}, {"t": 30, "acciones": [-1.221, 1.153], "lecturas": [1.079, -1.21]}, {"t": 40, […]
+=== TURNO 10 (modelo) ===
+[herramienta] entregar:
+def controlar(l, m):
+    u1=m.get('u1',-1.1); u2=m.get('u2',0.45)
+    e1=l[0]-1.09; e2=l[1]-0.51
+    if m.get('t',0)>0:
+        u1-=0.13*e2
+        u2+=0.5*e1
+    u1=max(-3,min(3,u1)); u2=max(-3,min(3,u2))
+    m['u1']=u1; m['u2']=u2; m['t']=m.get('t',0)+1
+    return [u1,u2]
+[resultado] Entregado.
+=== TEXTO FINAL ===
+Exploro con escalones.

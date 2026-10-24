@@ -1,0 +1,46 @@
+rama | problema | validación | M | contrastar | auditor | acuerdo
+  RETRO | 200-3 | 1 | modo | verdad 0.019 | mejor alternativa saturacion,histeresis (0.476) | identificable | 159 s | identificable | sí
+  RETRO | 200-3 | 1 | saturacion | verdad 0.019 | mejor alternativa modo,acumulador (0.138) | identificable | 159 s | identificable | sí
+  RETRO | 200-3 | 2 | modo | verdad 0.019 | mejor alternativa saturacion,deriva (0.357) | identificable | 162 s | identificable | sí
+  RETRO_SIN_ALMACEN | 200-3 | 1 | modo | verdad 0.019 | mejor alternativa saturacion,histeresis (0.476) | identificable | 160 s | identificable | sí
+  RETRO_SIN_ALMACEN | 200-3 | 1 | saturacion | verdad 0.019 | mejor alternativa modo,acumulador (0.138) | identificable | 160 s | identificable | sí
+  RETRO_SIN_ALMACEN | 200-3 | 2 | modo | verdad 0.019 | mejor alternativa saturacion,acumulador (0.314) | identificable | 157 s | identificable | sí
+  RETRO_SIN_ALMACEN | 200-3 | 3 | modo | verdad 0.020 | mejor alternativa saturacion,deriva (0.286) | identificable | 156 s | identificable | sí
+  RETRO | 200-5 | 1 | acumulador | verdad 0.018 | mejor alternativa modo,saturacion,aliasing (0.242) | identificable | 142 s | identificable | sí
+  RETRO | 200-5 | 1 | saturacion | verdad 0.018 | mejor alternativa acumulador,modo (0.096) | identificable | 136 s | identificable | sí
+  RETRO_SIN_ALMACEN | 200-5 | 1 | modo | verdad 0.018 | mejor alternativa acumulador,saturacion,histeresis (0.081) | identificable | 137 s | identificable | sí
+  RETRO_SIN_ALMACEN | 200-5 | 1 | saturacion | verdad 0.018 | mejor alternativa acumulador,modo (0.057) | identificable | 136 s | identificable | sí
+  RETRO | 200-11 | 1 | saturacion | verdad 0.019 | mejor alternativa modo (0.115) | identificable | 172 s | identificable | sí
+  RETRO | 200-11 | 2 | saturacion | verdad 0.019 | mejor alternativa (ninguno) (0.058) | identificable | 176 s | identificable | sí
+  RETRO_SIN_ALMACEN | 200-11 | 2 | saturacion | verdad 0.019 | mejor alternativa (ninguno) (0.033) | identificable | 177 s | NO identificable | NO
+  RETRO_SIN_ALMACEN | 200-14 | 2 | deriva | verdad 0.020 | mejor alternativa modo,saturacion (0.109) | identificable | 139 s | identificable | sí
+  RETRO_SIN_ALMACEN | 200-14 | 2 | modo | verdad 0.020 | mejor alternativa deriva,saturacion,aliasing (0.176) | identificable | 136 s | identificable | sí
+  RETRO_SIN_ALMACEN | 200-14 | 2 | saturacion | verdad 0.020 | mejor alternativa deriva,modo,aliasing (0.110) | identificable | 136 s | identificable | sí
+  T0 | 200-17 | 1 | saturacion | verdad 0.021 | mejor alternativa acumulador (0.043) | identificable | 155 s | identificable | sí
+  T_TODO | 200-17 | 1 | acumulador | verdad 0.020 | mejor alternativa saturacion,retardo (0.325) | identificable | 159 s | identificable | sí
+  T_TODO | 200-17 | 1 | saturacion | verdad 0.020 | mejor alternativa acumulador,histeresis (0.212) | identificable | 155 s | identificable | sí
+  T_HISTORIAL | 200-17 | 1 | saturacion | verdad 0.021 | mejor alternativa acumulador (0.042) | identificable | 155 s | identificable | sí
+  T_HISTORIAL | 200-17 | 2 | saturacion | verdad 0.021 | mejor alternativa acumulador (0.037) | identificable | 155 s | NO identificable | NO
+  T_SIN_CODIGO | 200-17 | 1 | saturacion | verdad 0.020 | mejor alternativa acumulador,histeresis (0.030) | NO identificable | 155 s | NO identificable | sí
+  T_TODO | 200-18 | 1 | acumulador | verdad 0.019 | mejor alternativa deriva (0.397) | identificable | 176 s | identificable | sí
+  T0 | 200-20 | 2 | retardo | verdad 0.021 | mejor alternativa saturacion,acumulador (0.260) | identificable | 158 s | identificable | sí
+  T_HISTORIAL | 200-24 | 2 | saturacion | verdad 0.020 | mejor alternativa modo,aliasing (0.062) | identificable | 160 s | identificable | sí
+  T_TODO | 200-28 | 1 | acumulador | verdad 0.020 | mejor alternativa aliasing,retardo (0.308) | identificable | 154 s | identificable | sí
+  T_TODO | 200-28 | 1 | aliasing | verdad 0.020 | mejor alternativa acumulador,saturacion (0.086) | identificable | 155 s | identificable | sí
+  T_TODO | 200-28 | 2 | acumulador | verdad 0.020 | mejor alternativa aliasing,retardo (0.238) | identificable | 155 s | identificable | sí
+  T_CODIGO_TEXTO | 200-28 | 1 | aliasing | verdad 0.020 | mejor alternativa acumulador (0.100) | identificable | 154 s | identificable | sí
+  T_CODIGO_TEXTO | 200-28 | 2 | acumulador | verdad 0.020 | mejor alternativa aliasing,retardo (0.258) | identificable | 154 s | identificable | sí
+  T_CODIGO_TEXTO | 200-28 | 2 | aliasing | verdad 0.020 | mejor alternativa acumulador,saturacion (0.154) | identificable | 156 s | identificable | sí
+  T_SIN_CODIGO | 200-28 | 2 | acumulador | verdad 0.020 | mejor alternativa aliasing,retardo (0.267) | identificable | 154 s | identificable | sí
+  T_SIN_CODIGO | 200-28 | 2 | aliasing | verdad 0.020 | mejor alternativa acumulador,saturacion (0.075) | identificable | 155 s | identificable | sí
+  T0 | 200-29 | 1 | deriva | verdad 0.020 | mejor alternativa histeresis (0.553) | identificable | 157 s | identificable | sí
+  T0 | 200-29 | 2 | deriva | verdad 0.020 | mejor alternativa histeresis,acumulador (0.287) | identificable | 157 s | identificable | sí
+  T_TODO | 200-29 | 2 | deriva | verdad 0.020 | mejor alternativa histeresis (0.206) | identificable | 159 s | identificable | sí
+  T_TODO | 200-29 | 3 | deriva | verdad 0.020 | mejor alternativa histeresis (0.251) | identificable | 158 s | identificable | sí
+  T_HISTORIAL | 200-29 | 1 | deriva | verdad 0.020 | mejor alternativa histeresis,acumulador (0.268) | identificable | 157 s | identificable | sí
+  T_HISTORIAL | 200-29 | 2 | deriva | verdad 0.020 | mejor alternativa histeresis (0.253) | identificable | 158 s | identificable | sí
+  T_CODIGO_TEXTO | 200-29 | 1 | deriva | verdad 0.020 | mejor alternativa histeresis (0.272) | identificable | 158 s | identificable | sí
+  T_CODIGO_TEXTO | 200-29 | 2 | deriva | verdad 0.020 | mejor alternativa histeresis (0.336) | identificable | 158 s | identificable | sí
+  T_SIN_CODIGO | 200-29 | 1 | deriva | verdad 0.020 | mejor alternativa histeresis,saturacion (0.203) | identificable | 158 s | identificable | sí
+
+Acuerdo con el auditor: 41 de 43.

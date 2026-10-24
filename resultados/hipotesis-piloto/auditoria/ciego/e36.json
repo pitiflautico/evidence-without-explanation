@@ -1,0 +1,10 @@
+{"afirmaciones": [
+{"turno": 7, "familia": "F1", "cita": "regresion de Y[t] sobre U[t..t-6] (K=7 retardos): busca respuesta con memoria/retardo de varios pasos"},
+{"turno": 11, "familia": "F0", "cita": "J=[[-1,-0.3],[-0.75,1.4]]; u += 0.15*inv(J)@e: matriz de ganancia lineal fija"},
+{"turno": 14, "familia": "F2", "cita": "ajusta y2 = sin(p0*u0+p1*u1+p2) a los datos: el canal 1 es una funcion sinusoidal (no lineal, acotada) de la entrada"},
+{"turno": 15, "familia": "F5", "cita": "c1=lecturas[0]-0.69*u0-1.4*u1 re-estimado cada 9 pasos: offset desconocido del canal 0 que hay que reestimar"},
+{"turno": 15, "familia": "F6", "cita": "if k>=9: actualiza con la lectura solo cada 9 pasos (lectura retenida/muestreada a baja frecuencia)"},
+{"turno": 18, "familia": "F6", "cita": "simulador: y1 se actualiza solo si t%4==3 y usa hist[-3]; controlador actualiza si t%4==0: lectura muestreada cada 4 pasos con retraso"},
+{"turno": 18, "familia": "F1", "cita": "simulacion de planta con y=f(hist[-3]): retraso de 3 pasos entre entrada y salida"},
+{"turno": 18, "familia": "F2", "cita": "y2=sin(c2+A[1]@u); inversion con asin y ramas pi-s, 2*pi*k: canal con curva seno"}
+], "notas": "Sin explicacion verbal. F5 dudoso (offset constante por escenario vs deriva); lo tomo por F5 porque c1 y c2 se reestiman en linea. F0 tambien implicito en A (T15) como parte lineal dentro del seno."}

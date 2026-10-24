@@ -1,0 +1,1 @@
+{"afirmaciones": [{"turno": 7, "familia": "F0", "cita": "acoplo cruzado estático: u1 -= 0.12*e2, u2 += 0.5*e1"}, {"turno": 9, "familia": "F2", "cita": "abs(l[1])>1.1 trata el canal 2 como saturado y cambia la estrategia"}, {"turno": 9, "familia": "F1", "cita": "h guarda incrementos pasados y u2 -= 1.15*h[0]: compensa efecto retrasado dos pasos de u1"}], "notas": ""}

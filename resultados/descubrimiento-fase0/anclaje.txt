@@ -1,0 +1,71 @@
+Auditoría de anclaje (notas/diseno-descubrimiento.md §1). Una línea por episodio:
+rama | problema | tipos | cumple | clase | validaciones (n: cumplidos, verificada, causas de los escenarios fallidos → el entregado sigue fallando por, cobertura entregado/fallido)
+  RETRO | 200-3 | modo,saturacion | sí | recuperado | 1: 0/6 causas {'modo': 5, 'saturacion': 2} → entregado falla 1/6 por —, cobertura 0.02; 2: 0/6 causas {'modo': 5} → entregado falla 1/6 por —, cobertura 0.02; 3: 4/6 (no verificada)
+  RETRO_SIN_ALMACEN | 200-3 | modo,saturacion | no | revisión insuficiente | 1: 0/6 causas {'modo': 5, 'saturacion': 2} → entregado falla 6/6 por {'modo': 5}, cobertura 0.73; 2: 1/6 causas {'modo': 2} → entregado falla 5/5 por {'modo': 4}, cobertura 0.94; 3: 0/6 causas {'modo': 5} → entregado falla 6/6 por {'modo': 5}, cobertura 0.72
+  RETRO | 200-4 | deriva,modo,saturacion | no | indeterminado | 1: 0/6 (no verificada)
+  RETRO_SIN_ALMACEN | 200-4 | deriva,modo,saturacion | no | sin señal | sin validaciones
+  RETRO | 200-5 | acumulador,modo,saturacion | no | indeterminado | 1: 1/6 causas {'saturacion': 2, 'acumulador': 1} → entregado falla 2/5 por {'saturacion': 1}, cobertura 0.1; 2: 3/6 (no verificada); 3: 1/6 (no verificada)
+  RETRO_SIN_ALMACEN | 200-5 | acumulador,modo,saturacion | no | indeterminado | 1: 3/6 causas {'modo': 2, 'saturacion': 1} → entregado falla 1/3 por —, cobertura 0.05; 2: 4/6 (no verificada)
+  RETRO | 200-6 | deriva | sí | sin fallo visible | 1: 6/6
+  RETRO_SIN_ALMACEN | 200-6 | deriva | sí | sin fallo visible | 1: 6/6
+  RETRO | 200-11 | saturacion | sí | recuperado | 1: 0/6 causas {'saturacion': 6} → entregado falla 0/6 por —, cobertura 0.78; 2: 3/6 causas {'saturacion': 3} → entregado falla 0/3 por —, cobertura 1.0; 3: 6/6
+  RETRO_SIN_ALMACEN | 200-11 | saturacion | sí | recuperado | 1: 0/6 causas ninguna aislable → entregado falla 0/6 por —, cobertura 0.0; 2: 3/6 causas {'saturacion': 3} → entregado falla 0/3 por —, cobertura 0.84; 3: 6/6
+  RETRO | 200-12 | deriva | sí | sin fallo visible | 1: 6/6
+  RETRO_SIN_ALMACEN | 200-12 | deriva | sí | sin fallo visible | 1: 6/6
+  RETRO | 200-14 | deriva,modo,saturacion | sí | recuperado | 1: 3/6 (no verificada); 2: 4/6 (no verificada); 3: 6/6
+  RETRO_SIN_ALMACEN | 200-14 | deriva,modo,saturacion | no | revisión insuficiente | 1: 3/6 causas ninguna aislable → entregado falla 2/3 por —, cobertura 0.38; 2: 0/6 causas {'saturacion': 6, 'deriva': 5, 'modo': 1} → entregado falla 2/6 por —, cobertura 0.0
+  RETRO | 200-15 | saturacion | sí | sin fallo visible | 1: 5/6
+  RETRO_SIN_ALMACEN | 200-15 | saturacion | sí | sin fallo visible | 1: 5/6
+  T0 | 200-16 | acumulador | sí | sin fallo visible | 1: 6/6
+  T_TODO | 200-16 | acumulador | sí | sin fallo visible | 1: 6/6; 2: 6/6
+  T_HISTORIAL | 200-16 | acumulador | sí | sin fallo visible | 1: 6/6
+  T_CODIGO_TEXTO | 200-16 | acumulador | sí | sin fallo visible | 1: 6/6
+  T_SIN_CODIGO | 200-16 | acumulador | sí | sin fallo visible | 1: 6/6
+  T0 | 200-17 | acumulador,saturacion | sí | recuperado | 1: 0/6 causas {'saturacion': 6} → entregado falla 0/6 por —, cobertura 1.0; 2: 0/6 causas ninguna aislable → entregado falla 0/6 por —, cobertura 0.83; 3: 6/6
+  T_TODO | 200-17 | acumulador,saturacion | no | recursos | 1: 2/6 causas {'acumulador': 3, 'saturacion': 1}; 2: 5/6; 3: 5/6
+  T_HISTORIAL | 200-17 | acumulador,saturacion | sí | recuperado | 1: 1/6 causas {'saturacion': 5} → entregado falla 0/5 por —, cobertura 0.73; 2: 1/6 causas {'saturacion': 5} → entregado falla 0/5 por —, cobertura 0.92; 3: 6/6
+  T_CODIGO_TEXTO | 200-17 | acumulador,saturacion | no | misma estructura, sin causa persistente aislable | 1: 1/6 causas ninguna aislable → entregado falla 2/5 por —, cobertura 0.87; 2: 1/6 causas ninguna aislable → entregado falla 2/5 por —, cobertura 0.87; 3: 5/6
+  T_SIN_CODIGO | 200-17 | acumulador,saturacion | no | anclaje | 1: 4/6 causas {'saturacion': 2} → entregado falla 2/2 por {'saturacion': 2}, cobertura 1.0
+  T0 | 200-18 | acumulador | sí | sin fallo visible | 1: 6/6
+  T_TODO | 200-18 | acumulador | sí | recuperado | 1: 0/6 causas {'acumulador': 6} → entregado falla 0/6 por —, cobertura 0.42; 2: 6/6
+  T_HISTORIAL | 200-18 | acumulador | sí | sin fallo visible | 1: 6/6
+  T_CODIGO_TEXTO | 200-18 | acumulador | sí | sin fallo visible | 1: 6/6
+  T_SIN_CODIGO | 200-18 | acumulador | sí | sin fallo visible | 1: 6/6
+  T0 | 200-20 | retardo,saturacion | sí | recuperado | 1: 5/6; 2: 0/6 causas {'retardo': 6} → entregado falla 0/6 por —, cobertura 1.0; 3: 6/6
+  T_TODO | 200-20 | retardo,saturacion | sí | sin fallo visible | 1: 6/6
+  T_HISTORIAL | 200-20 | retardo,saturacion | sí | sin fallo visible | 1: 6/6
+  T_CODIGO_TEXTO | 200-20 | retardo,saturacion | sí | sin fallo visible | 1: 6/6
+  T_SIN_CODIGO | 200-20 | retardo,saturacion | sí | sin fallo visible | 1: 5/6 (no verificada); 2: 6/6
+  T0 | 200-24 | modo,saturacion | sí | recuperado | 1: 4/6 causas ninguna aislable → entregado falla 1/2 por {'saturacion': 1}, cobertura 0.0; 2: 5/6 (no verificada)
+  T_TODO | 200-24 | modo,saturacion | sí | sin fallo visible | 1: 6/6
+  T_HISTORIAL | 200-24 | modo,saturacion | sí | recuperado | 1: 4/6 causas ninguna aislable → entregado falla 2/2 por {'saturacion': 2}, cobertura 0.0; 2: 4/6 causas {'saturacion': 2} → entregado falla 2/2 por {'saturacion': 2}, cobertura 0.93; 3: 4/6 causas ninguna aislable → entregado falla 2/2 por {'saturacion': 2}, cobertura 0.98
+  T_CODIGO_TEXTO | 200-24 | modo,saturacion | no | misma estructura, sin causa persistente aislable | 1: 4/6 causas ninguna aislable → entregado falla 2/2 por —, cobertura 0.7; 2: 4/6 causas ninguna aislable → entregado falla 2/2 por —, cobertura 0.81; 3: 4/6 causas ninguna aislable → entregado falla 2/2 por —, cobertura 1.0
+  T_SIN_CODIGO | 200-24 | modo,saturacion | sí | sin fallo visible | 1: 6/6
+  T0 | 200-27 | saturacion | sí | sin fallo visible | 1: 6/6
+  T_TODO | 200-27 | saturacion | sí | sin fallo visible | 1: 6/6
+  T_HISTORIAL | 200-27 | saturacion | sí | sin fallo visible | 1: 6/6
+  T_CODIGO_TEXTO | 200-27 | saturacion | sí | sin fallo visible | 1: 6/6
+  T_SIN_CODIGO | 200-27 | saturacion | no | sin señal | 1: 5/6
+  T0 | 200-28 | acumulador,aliasing | sí | sin fallo visible | 1: 6/6
+  T_TODO | 200-28 | acumulador,aliasing | sí | recuperado | 1: 3/6 causas {'acumulador': 3, 'aliasing': 3} → entregado falla 0/3 por —, cobertura 0.66; 2: 4/6 causas {'acumulador': 2} → entregado falla 0/2 por —, cobertura 1.0; 3: 6/6
+  T_HISTORIAL | 200-28 | acumulador,aliasing | sí | recuperado | 1: 0/6 (no verificada); 2: 6/6
+  T_CODIGO_TEXTO | 200-28 | acumulador,aliasing | no | recursos | 1: 0/6 causas {'aliasing': 5}; 2: 0/6 causas {'acumulador': 6, 'aliasing': 1}
+  T_SIN_CODIGO | 200-28 | acumulador,aliasing | no | revisión insuficiente | 1: 0/6 causas ninguna aislable → entregado falla 1/6 por {'acumulador': 1}, cobertura 0.26; 2: 3/6 causas {'acumulador': 3, 'aliasing': 2} → entregado falla 1/3 por {'acumulador': 1}, cobertura 0.45; 3: 5/6
+  T0 | 200-29 | deriva,histeresis | sí | recuperado | 1: 0/6 causas {'deriva': 1} → entregado falla 1/6 por —, cobertura 0.2; 2: 0/6 causas {'deriva': 1} → entregado falla 1/6 por —, cobertura 0.26; 3: 5/6
+  T_TODO | 200-29 | deriva,histeresis | no | recursos | 1: 1/6 (no verificada); 2: 1/6 causas {'deriva': 1}; 3: 4/6 causas {'deriva': 2}
+  T_HISTORIAL | 200-29 | deriva,histeresis | sí | recuperado | 1: 1/6 causas {'deriva': 1} → entregado falla 1/5 por {'deriva': 1}, cobertura 0.63; 2: 2/6 causas {'deriva': 4} → entregado falla 1/4 por {'deriva': 1}, cobertura 1.0
+  T_CODIGO_TEXTO | 200-29 | deriva,histeresis | no | recursos | 1: 1/6 causas {'deriva': 3}; 2: 2/6 causas {'deriva': 4}; 3: 2/6 causas ninguna aislable
+  T_SIN_CODIGO | 200-29 | deriva,histeresis | sí | recuperado | 1: 1/6 causas {'deriva': 1} → entregado falla 0/5 por —, cobertura 0.1; 2: 6/6
+
+Resumen por clase (episodios):
+  sin fallo visible: 26 (RETRO 3, RETRO_SIN_ALMACEN 3, T0 4, T_CODIGO_TEXTO 4, T_HISTORIAL 4, T_SIN_CODIGO 4, T_TODO 4)
+  recuperado: 15 (RETRO 3, RETRO_SIN_ALMACEN 1, T0 4, T_HISTORIAL 4, T_SIN_CODIGO 1, T_TODO 2)
+  recursos: 4 (T_CODIGO_TEXTO 2, T_TODO 2)
+  revisión insuficiente: 3 (RETRO_SIN_ALMACEN 2, T_SIN_CODIGO 1)
+  indeterminado: 3 (RETRO 2, RETRO_SIN_ALMACEN 1)
+  sin señal: 2 (RETRO_SIN_ALMACEN 1, T_SIN_CODIGO 1)
+  misma estructura, sin causa persistente aislable: 2 (T_CODIGO_TEXTO 2)
+  anclaje: 1 (T_SIN_CODIGO 1)
+
+Causas de las validaciones fallidas verificadas (escenarios):
+  {'modo': 25, 'saturacion': 46, 'acumulador': 24, 'deriva': 23, 'retardo': 6, 'aliasing': 11}; escenarios sin causa aislable: 83

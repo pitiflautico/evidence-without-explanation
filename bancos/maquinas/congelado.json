@@ -1,0 +1,25 @@
+{
+ "modelo": "claude-opus-5-5",
+ "esfuerzo": "low",
+ "entorno_taller": {
+  "python": "3.12.11",
+  "numpy": "2.5.4",
+  "scipy": "1.18.1"
+ },
+ "sha256": {
+  "generadores/maquinas.py": "693f650a32a4ac547c3f8eb4c646e7468173cd20ba07cfeb17e9bfb59641c509",
+  "base/maquinas_entorno.py": "b9a9bdb87355f5b7f3dbcf0cee38851d99114647e72f67be190ca0869ce168b5",
+  "base/maquinas_ramas.py": "d7c902d954087f388584f4efa01cf3fefd26d37c4260225dc2196f8f134a911d",
+  "ejecutor/maquinas_correr.py": "33f21cfae4141713cc145a40a000416da70851e24368c4517d46cacf2ca9f4f9",
+  "medir/maquinas.py": "2dd4d7b941fbf53200f5fae43d490deb360c90f2cc352eb26cf32c4b216912f1",
+  "base/maquinas_retro.py": "9de3223ceff8b6cb4b7a771f95a61dfa52f64575dbc1343a680d1be370a5dac8",
+  "medir/oportunidades_maquinas.py": "1112e0b4e9ef3533314a13942f2de1c9a6932b779e1c02269a672b0e2844604d",
+  "base/maquinas_hipotesis.py": "5fb93c1d4400d5cc63b40609c9472f8875dad328ce5c0610fc85e02453158e34",
+  "base/taller/contraste.py": "7e3560bc5c17d341650e77f8c1fe16df51c61acf9013836a297629851e98dcad",
+  "ejecutor/hipotesis_correr.py": "96120cfa600dd7dec2a54fa69c3f864e2b0c3c8b382043dc0d122341be602128",
+  "medir/familias.py": "d11e4fa6bb9a0e22e17d313a1d8d407228b4b25c0135fff3c774ff6540434e91",
+  "medir/validar_contraste.py": "bebc85834b4633a4db2ce4139df3d76ee1ca5e1ffb9a3bbeb74c89412adf72ed",
+  "bancos/maquinas/hipotesis.json": "3e990567a75a5ec4d5d89336708df98ecbb5fb4e476a6cea7819887533ac7688",
+  "bancos/maquinas/hipotesis_equilibrado.json": "1a498e33c55185645a3f9f0eb5937db34ab43a1ecd180a6c48fb388d0ea81545"
+ }
+}

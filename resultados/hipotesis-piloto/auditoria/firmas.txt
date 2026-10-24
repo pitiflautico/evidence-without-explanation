@@ -1,0 +1,46 @@
+brazo | problema | controladores | firmas distintas | firmas en orden
+A | axe-1 | 2 | 1 | memoria+no_lineal; memoria+no_lineal
+A_PISTA | axe-1 | 4 | 2 | memoria; memoria; memoria+conmuta; memoria
+A_MAS | axe-1 | 3 | 2 | memoria; memoria+no_lineal; memoria
+X | axe-1 | 3 | 2 | memoria; memoria+conmuta; memoria+conmuta
+A_PISTA | axe-2 | 4 | 1 | memoria; memoria; memoria; memoria
+A_MAS | axe-2 | 2 | 1 | memoria+no_lineal; memoria+no_lineal
+X | axe-2 | 4 | 2 | memoria; memoria; memoria+no_lineal; memoria+no_lineal
+A | axe-2 | 3 | 1 | memoria; memoria; memoria
+A_MAS | axe-3 | 1 | 1 | memoria+no_lineal
+X | axe-3 | 4 | 3 | memoria; memoria+no_lineal; memoria; memoria+no_lineal+conmuta
+A | axe-3 | 3 | 3 | memoria; memoria+no_lineal; lineal_sin_memoria
+A_PISTA | axe-3 | 1 | 1 | memoria
+X | axe-4 | 1 | 1 | memoria
+A | axe-4 | 1 | 1 | memoria+no_lineal
+A_PISTA | axe-4 | 1 | 1 | memoria+no_lineal
+A_MAS | axe-4 | 1 | 1 | memoria
+A | axe-5 | 3 | 2 | memoria; lineal_sin_memoria; lineal_sin_memoria
+A_PISTA | axe-5 | 1 | 1 | lineal_sin_memoria
+A_MAS | axe-5 | 4 | 2 | memoria; memoria; memoria+no_lineal; memoria+no_lineal
+X | axe-5 | 2 | 2 | memoria; memoria+no_lineal
+A_PISTA | axe-6 | 2 | 1 | memoria; memoria
+A_MAS | axe-6 | 3 | 2 | memoria; memoria+no_lineal; memoria+no_lineal
+X | axe-6 | 2 | 1 | memoria; memoria
+A | axe-6 | 2 | 1 | memoria; memoria
+A_MAS | axe-8 | 3 | 1 | memoria; memoria; memoria
+X | axe-8 | 4 | 2 | memoria; memoria; memoria+no_lineal; memoria
+A | axe-8 | 4 | 3 | lineal_sin_memoria; memoria; memoria+conmuta; memoria+conmuta
+A_PISTA | axe-8 | 4 | 1 | memoria; memoria; memoria; memoria
+X | axe-9 | 4 | 2 | lineal_sin_memoria; memoria; memoria; memoria
+A | axe-9 | 3 | 1 | memoria; memoria; memoria
+A_PISTA | axe-9 | 3 | 1 | memoria; memoria; memoria
+A_MAS | axe-9 | 3 | 1 | memoria; memoria; memoria
+A | axe-10 | 2 | 2 | memoria; memoria+no_lineal
+A_PISTA | axe-10 | 3 | 2 | memoria; memoria+conmuta; memoria+conmuta
+A_MAS | axe-10 | 2 | 1 | memoria; memoria
+X | axe-10 | 4 | 2 | memoria; memoria; memoria+no_lineal; memoria+no_lineal
+A_PISTA | axe-12 | 3 | 2 | memoria; memoria; memoria+no_lineal+conmuta
+A_MAS | axe-12 | 2 | 1 | memoria; memoria
+X | axe-12 | 4 | 2 | memoria; memoria; memoria+no_lineal+conmuta; memoria+no_lineal+conmuta
+A | axe-12 | 2 | 1 | memoria; memoria
+
+A: firmas distintas por episodio 1.60; episodios con más de una 4 de 10
+A_PISTA: firmas distintas por episodio 1.30; episodios con más de una 3 de 10
+A_MAS: firmas distintas por episodio 1.30; episodios con más de una 3 de 10
+X: firmas distintas por episodio 1.90; episodios con más de una 8 de 10

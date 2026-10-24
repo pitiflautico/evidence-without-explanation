@@ -1,0 +1,1 @@
+{"afirmaciones": [{"turno": 9, "familia": "F0", "cita": "jacobiano estático J=[[-0.8,-1.3],[0.6,-0.7]] invertido para el control"}, {"turno": 13, "familia": "F6", "cita": "detecta salto >0.25 y fase k%4: actualiza el control solo una vez cada 4 pasos (lectura/respuesta por bloques de 4)"}], "notas": "Turno 14 estima J online (variante de F0)"}

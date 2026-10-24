@@ -1,0 +1,7 @@
+{"afirmaciones": [
+{"turno": 7, "familia": "F1", "cita": "ajusta y0 con retardos de u (lag 2 en u0, lag 0 en u1): modelo con retraso de 2 pasos en el canal 0 (residuo ~0)"},
+{"turno": 18, "familia": "F0", "cita": "J=[[1.0,-1.16],[0.78,1.05]]; du=0.3*Ji@e: matriz de ganancia fija entre actuadores y canales"},
+{"turno": 18, "familia": "F2", "cita": "if abs(y[1])<1.15 ... else: canal 1 saturado a ~±1.2, no responde a u salvo cuando |y1|<1.15"},
+{"turno": 20, "familia": "F3", "cita": "g=(H[4][0]+H[5][0])/2-b; J=[[g,-1.16],[0.78*sign(g),1.05]]: el signo de la ganancia del canal 0 varia por escenario y se estima en linea"},
+{"turno": 23, "familia": "F2", "cita": "sat=abs(y[1])>1.12: canal 1 saturado; fuera de la zona lineal no informa"}
+], "notas": "Casi sin texto del modelo; afirmaciones inferidas del codigo. T8/T12 exploran la dependencia de y1 con |y1|<1.1 (implicito F2). F3 dudoso (puede ser F0 con ganancia de signo desconocido)."}

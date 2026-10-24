@@ -1,0 +1,4 @@
+{"afirmaciones": [
+{"turno": 4, "familia": "F0", "cita": "u[i] += 0.3*(t[i]-l[i]): canal i controlado por el actuador i con ganancia positiva fija"},
+{"turno": 6, "familia": "F0", "cita": "s=[-0.2,0.25]: signos de ganancia fijos por canal (actuador 0 con signo negativo, actuador 1 positivo)"}
+], "notas": "Sin texto explicativo. No verbaliza los saltos ni la dependencia de la lectura."}

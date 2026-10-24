@@ -1,0 +1,5 @@
+{"afirmaciones": [
+{"turno": 3, "familia": "F0", "cita": "u += k*(0.577*e0-0.267*e1, -0.477*e0-0.606*e1): controlador con matriz de ganancia fija inversa de la planta (modelo estatico lineal)"},
+{"turno": 5, "familia": "F4", "cita": "barrido de u0 de 0 a -3 y vuelta hasta +3 (rampa ascendente y descendente): explora salto distinto segun direccion (salto en -2.6 bajando, en 0.75 subiendo)"},
+{"turno": 6, "familia": "F3", "cita": "if y1>-0.95: e=[-0.33-y1,...] else: e=[1.5,...]: regimen distinto cuando la lectura 0 cae bajo -0.95 (salto discreto de la respuesta)"}
+], "notas": "Casi sin texto. F4 en T5 es inferido del diseno del barrido (ida y vuelta) y de los datos; el modelo no lo verbaliza. T6/T7 el rama y1<-0.95 empuja u hacia el otro regimen (conmutacion con banda)."}

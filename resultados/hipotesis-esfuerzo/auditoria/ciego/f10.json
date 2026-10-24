@@ -1,0 +1,6 @@
+{"afirmaciones":[
+{"turno":7,"familia":"F0","cita":"b=1.15*(-a)-0.93: combinacion lineal de acciones para mantener el canal 1 fijo"},
+{"turno":11,"familia":"F0","cita":"J=[[-1.15,-1],[a,-b]] a=b=1; inversa analitica: jacobiano constante"},
+{"turno":16,"familia":"F1","cita":"rows U[t-lag0,0], U[t-lag1,1] con lag 0..3: el canal 0 responde a la accion 2 pasos antes (retraso)"},
+{"turno":19,"familia":"F2","cita":"if abs(Y[t,1])<1.1: ajusta solo la zona no saturada del canal 1"}
+],"notas":"Canal 0 lineal con retardo de 2 pasos en u0 y 0 en u1; canal 1 saturado cerca de +-1.2."}

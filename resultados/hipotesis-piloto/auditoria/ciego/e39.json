@@ -1,0 +1,7 @@
+{"afirmaciones": [
+{"turno": 3, "familia": "F1", "cita": "regresion Y[t+1+d] sobre Y[t+d], U[t+1] (d=0..2): modelo autorregresivo (coef ~0.64 sobre salida previa)"},
+{"turno": 7, "familia": "F6", "cita": "ks=list(range(4,118,3)): ajusta solo en instantes cada 3 pasos, con media de U[k-3:k]; las lecturas se actualizan cada 3 pasos"},
+{"turno": 11, "familia": "F0", "cita": "J=[[-0.6,-0.62],[0.42,-0.55]]; solve(J,[-1.93,-1.64]): matriz de ganancia estatica lineal"},
+{"turno": 18, "familia": "F6", "cita": "if t%3==0: actualiza u con la lectura; si no mantiene: lectura muestreada cada 3 pasos"},
+{"turno": 18, "familia": "F2", "cita": "e2=l[1]+1.05 (antes 1.31): el objetivo -1.31 no es alcanzable, el canal 1 satura en ~±1.09"}
+], "notas": "Sin explicacion verbal. T17 barre rejilla 5x5 de entradas (explora respuesta estatica con saltos), sin afirmacion explicita. F2 implicito."}

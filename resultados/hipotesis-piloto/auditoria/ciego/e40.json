@@ -1,0 +1,5 @@
+{"afirmaciones": [
+{"turno": 6, "familia": "F0", "cita": "u1=1.5+a; u2=1.9+a+b: relacion estatica lineal con offset entre actuadores y canales (ganancias fijas)"},
+{"turno": 12, "familia": "F0", "cita": "A=[[-0.84,-1.33],[-0.83,0.85]]; solve(A,[-1.42,0.37]): matriz de ganancia lineal estimada de los barridos de 4 pasos"},
+{"turno": 14, "familia": "F2", "cita": "if y0<-0.92: e0=0.7 elif y0>0.92: e0=-1.5: el canal 0 satura en ±~1 y fuera del rango lineal no informa del error real"}
+], "notas": "Texto del modelo solo al final (6/6). Los saltos observados en y0/y1 no se verbalizan; F2 inferido del tratamiento de |y0|>0.92."}

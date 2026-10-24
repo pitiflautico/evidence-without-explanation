@@ -1,0 +1,3 @@
+{"afirmaciones":[
+{"turno":9,"familia":"F0","cita":"Binv=[[-5.8,4.5],[-4.1,-2.8]]: se asume matriz de ganancia estatica lineal invertible"}
+],"notas":"Casi sin afirmaciones explicitas sobre la maquina. Las lecturas muestran deriva y pasos lentos pero el modelo no los formula."}

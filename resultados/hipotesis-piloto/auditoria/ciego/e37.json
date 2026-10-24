@@ -1,0 +1,10 @@
+{"afirmaciones": [
+{"turno": 3, "familia": "F1", "cita": "controlador PI con integral I=I+e en ambos canales: asume planta con memoria/integracion que hay que compensar (implicito)"},
+{"turno": 6, "familia": "F2", "cita": "regresion de y sobre u, |u| y constante: prueba termino no lineal estatico (valor absoluto)"},
+{"turno": 6, "familia": "F1", "cita": "regresion con lag 0..3 de u y del incremento dy2: busca retardo/dinamica en la respuesta"},
+{"turno": 8, "familia": "F6", "cita": "ch=[t ... if abs(y0[t]-y0[t-1])>0.1] -> [2,5,8,11,...]; ks=range(5,150,3): el canal 0 solo cambia cada 3 pasos (lectura retenida)"},
+{"turno": 8, "familia": "F1", "cita": "y2[t] regresado sobre y[t-1], u[t], u[t-1]: ajuste autorregresivo (coef 0.89 sobre y2 previo)"},
+{"turno": 11, "familia": "F1", "cita": "escalones de 8 pasos en cada actuador con reposo: mide la respuesta dinamica gradual del canal 1 (rampa lenta)"},
+{"turno": 12, "familia": "F0", "cita": "u2 = ... +1.2*u1: acoplamiento lineal fijo del actuador 1 hacia el canal 2"},
+{"turno": 14, "familia": "F3", "cita": "detect divergence: error large and growing for a while -> flip sign: el signo de la ganancia de cada canal puede ser el contrario y hay que invertirlo"}
+], "notas": "El modelo casi no escribe texto. F2 en T6 es debil (probar |u|). F6: el canal 0 se actualiza cada 3 pasos."}

@@ -1,0 +1,162 @@
+{
+ "e01": {
+  "problema": "axe-6",
+  "brazo": "A"
+ },
+ "e02": {
+  "problema": "axe-8",
+  "brazo": "A"
+ },
+ "e03": {
+  "problema": "axe-10",
+  "brazo": "A_MAS"
+ },
+ "e04": {
+  "problema": "axe-3",
+  "brazo": "A_MAS"
+ },
+ "e05": {
+  "problema": "axe-6",
+  "brazo": "A_PISTA"
+ },
+ "e06": {
+  "problema": "axe-10",
+  "brazo": "A"
+ },
+ "e07": {
+  "problema": "axe-5",
+  "brazo": "A_PISTA"
+ },
+ "e08": {
+  "problema": "axe-4",
+  "brazo": "A"
+ },
+ "e09": {
+  "problema": "axe-12",
+  "brazo": "X"
+ },
+ "e10": {
+  "problema": "axe-1",
+  "brazo": "X"
+ },
+ "e11": {
+  "problema": "axe-8",
+  "brazo": "A_MAS"
+ },
+ "e12": {
+  "problema": "axe-2",
+  "brazo": "X"
+ },
+ "e13": {
+  "problema": "axe-5",
+  "brazo": "A"
+ },
+ "e14": {
+  "problema": "axe-2",
+  "brazo": "A"
+ },
+ "e15": {
+  "problema": "axe-4",
+  "brazo": "A_PISTA"
+ },
+ "e16": {
+  "problema": "axe-10",
+  "brazo": "X"
+ },
+ "e17": {
+  "problema": "axe-1",
+  "brazo": "A_MAS"
+ },
+ "e18": {
+  "problema": "axe-2",
+  "brazo": "A_PISTA"
+ },
+ "e19": {
+  "problema": "axe-1",
+  "brazo": "A_PISTA"
+ },
+ "e20": {
+  "problema": "axe-3",
+  "brazo": "A"
+ },
+ "e21": {
+  "problema": "axe-4",
+  "brazo": "A_MAS"
+ },
+ "e22": {
+  "problema": "axe-12",
+  "brazo": "A_MAS"
+ },
+ "e23": {
+  "problema": "axe-5",
+  "brazo": "A_MAS"
+ },
+ "e24": {
+  "problema": "axe-8",
+  "brazo": "A_PISTA"
+ },
+ "e25": {
+  "problema": "axe-2",
+  "brazo": "A_MAS"
+ },
+ "e26": {
+  "problema": "axe-4",
+  "brazo": "X"
+ },
+ "e27": {
+  "problema": "axe-9",
+  "brazo": "X"
+ },
+ "e28": {
+  "problema": "axe-3",
+  "brazo": "X"
+ },
+ "e29": {
+  "problema": "axe-6",
+  "brazo": "X"
+ },
+ "e30": {
+  "problema": "axe-9",
+  "brazo": "A"
+ },
+ "e31": {
+  "problema": "axe-1",
+  "brazo": "A"
+ },
+ "e32": {
+  "problema": "axe-10",
+  "brazo": "A_PISTA"
+ },
+ "e33": {
+  "problema": "axe-6",
+  "brazo": "A_MAS"
+ },
+ "e34": {
+  "problema": "axe-9",
+  "brazo": "A_MAS"
+ },
+ "e35": {
+  "problema": "axe-12",
+  "brazo": "A"
+ },
+ "e36": {
+  "problema": "axe-3",
+  "brazo": "A_PISTA"
+ },
+ "e37": {
+  "problema": "axe-8",
+  "brazo": "X"
+ },
+ "e38": {
+  "problema": "axe-5",
+  "brazo": "X"
+ },
+ "e39": {
+  "problema": "axe-9",
+  "brazo": "A_PISTA"
+ },
+ "e40": {
+  "problema": "axe-12",
+  "brazo": "A_PISTA"
+ }
+}

@@ -1,0 +1,302 @@
+ENUNCIADO:
+Problema 1 de 1.
+Máquina: 2 actuadores (de -3.0 a 3.0), 2 canales.
+Objetivo por canal: [-0.13, -1.31], tolerancia ±0.35.
+Escenarios de evaluación: 60 pasos; se cumple si la salida está dentro de la tolerancia en al menos el 90 % de los 30 pasos finales.
+Presupuesto de pasos con esta máquina: 400.
+Tienes un taller propio (una carpeta) donde puedes ejecutar Python. Su subcarpeta almacen/ empieza así en este problema.
+Contenido actual de almacen/: vacío.
+Lo que observas al actuar sobre la máquina (también desde código) queda en exploracion.jsonl del taller.
+
+
+=== TURNO 1 (modelo) ===
+[herramienta] actuar(8 pasos, reiniciar=False): [[0, 0], [0, 0], [1, 0], [1, 0], [0, 0], [0, 1], [0, 1], [0, 0]]
+[resultado] {"lecturas": [[0.002, 0.011], [-0.005, 0.025], [1.209, 0.799], [1.2, 0.783], [1.185, 0.755], [1.142, -0.476], [1.193, -0.47], [1.229, -0.478]], "pasos_restantes": 392}
+=== TURNO 2 (modelo) ===
+[herramienta] validar:
+def controlar(l, m):
+    e0=-0.13-l[0]; e1=-1.31-l[1]
+    u0=0.833*e0; u1=0.533*e0-0.8*e1
+    k=0.7
+    c=lambda x:max(-3,min(3,k*x))
+    return [c(u0),c(u1)]
+[resultado] {"validacion": 1, "cumplidos": 0, "de": 6, "escenarios": [{"escenario": 1, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [-0.63, 0.215], "lecturas": [0.983, -0.221]}, {"t": 10, "acciones": [-0.191, 0.325], "lecturas": [0.176, -0.545]}, {"t": 20, "acciones": [0.084, 0.45], "lecturas": [-0.258, -0.842]}, {"t": 30, "acciones": [0.023, 0.329], "lecturas": [-0.191, -0.748]}, {"t": 40, "acciones": [0.027, 0.361], "lecturas": [-0.191, -0.668]}, {"t": 50, "acciones": [0.023, 0.34], "lecturas": [-0.16, -0.697]}, {"t": 59, "acciones": [0.029, 0.338], "lecturas": [-0.152, -0.726]}]}, {"escenario": 2, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [-0.013, 1.33], "lecturas": [-0.105, 1.088]}, {"t": 10, "acciones": [0.02, 0.593], "lecturas": [-0.185, -0.269]}, {"t": 20, "acciones": [-0.49, 0.366], "lecturas": [1.164, -0.152]}, {"t": 30, "acciones": [-1.011, 0.033], "lecturas": [1.67, -0.082]}, {"t": 40, "acciones": [-1.117, -0.051], "lecturas": [1.746, -0.131]}, {"t": 50, "acciones": [-1.108, -0.023], "lecturas": [1.746, -0.068]}, {"t": 59, "acciones": [-1.102, -0.051], "lecturas": [1.77, -0.077]}]}, {"escenario": 3, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [-0.217, 1.191], "lecturas": [0.281, 1.083]}, {"t": 10, "acciones": [-0.537, 0.465], "lecturas": [0.767, 0.088]}, {"t": 20, "acciones": [-0.822, 0.306], "lecturas": [1.44, 0.198]}, {"t": 30, "acciones": [-0.872, 0.322], "lecturas": [1.379,  […]
+=== TURNO 3 (modelo) ===
+[herramienta] actuar(15 pasos, reiniciar=False): [[0, 0], [0, 0], [0, 0], [0, 0], [-1, 0], [0, 0], [0, 0], [0, 0], [0, -1], [0, 0], [0, 0], [0.5, 0.5], [0.5, 0.5], [0.5, 0.5], [0, 0]]
+[resultado] {"lecturas": [[1.775, 0.319], [1.79, 0.318], [1.839, 0.318], [1.839, 0.314], [1.774, 0.368], [1.77, 0.32], [1.813, 0.338], [1.783, 0.314], [1.816, 0.327], [1.763, 0.356], [1.791, 0.347], [1.823, 0.336], [1.178, 0.129], [1.189, 0.173], [1.197, 0.167]], "pasos_restantes": 377}
+=== TURNO 4 (modelo) ===
+[herramienta] actuar(19 pasos, reiniciar=True): [[0.3, 0], [0.3, 0], [0.3, 0], [0.3, 0], [0.3, 0], [0.3, 0], [0, 0], [0, 0], [0, 0], [0, 0], [-0.3, 0], [-0.3, 0], [-0.3, 0], [-0.3, 0], [-0.3, 0], [-0.3, 0], [0, 0], [0, 0], [0, 0]]
+[resultado] {"lecturas": [[0.002, 0.011], [-0.005, 0.025], [1.629, 0.491], [1.62, 0.475], [1.605, 0.447], [1.582, 0.456], [1.633, 0.462], [1.669, 0.454], [1.775, 0.319], [1.79, 0.318], [1.839, 0.318], [2.019, 0.182], [1.954, 0.236], [1.95, 0.188], [1.993, 0.206], [1.963, 0.182], [1.996, 0.195], [1.763, 0.356], [1.791, 0.347]], "pasos_restantes": 357}
+=== TURNO 5 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina,random,numpy as np
+random.seed(1)
+U=[[random.uniform(-2,2),random.uniform(-2,2)] for _ in range(120)]
+r=maquina.actuar(U,reiniciar=True)
+Y=np.array(r['lecturas']);U=np.array(U)
+np.save('Y.npy',Y);np.save('U.npy',U)
+# fit y[t] = a*y[t-1] + sum_k B_k u[t-k] + c
+for L in [1,2,3]:
+  X=[];T=[]
+  for t in range(4,len(Y)):
+    X.append(np.concatenate([Y[t-1]]+[U[t-k] for k in range(L+1)]+[[1]]));T.append(Y[t])
+  X=np.array(X);T=np.array(T)
+  W,res,_,_=np.linalg.lstsq(X,T,rcond=None)
+  print(L,np.sqrt(((X@W-T)**2).mean()));print(W.round(2))
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-piloto/talleres/axe-9/X/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 5, in <module>
+TypeError: list indices must be integers or slices, not str
+
+[pasos usados: 121; restantes: 236]
+=== TURNO 6 (modelo) ===
+[herramienta] ejecutar_python:
+import json,numpy as np
+L=[json.loads(l) for l in open('exploracion.jsonl')]
+print(len(L),L[-1])
+[resultado] 532302183466, 1.5992740014240807], [0.04046392371470553, -1.1636360297929196], [0.4225945601360661, 1.2681586735115475], [-1.9167275659628507, -1.9285419166888187], [-1.414153038402616, 0.8753418910471593], [-1.3590896294811814, 0.8184225114080101], [0.71270318110779, 0.17880865431561777], [-1.1176010079092937, 1.9023780712715337], [1.191243430824604, 0.06639806779757196], [-1.107216879013317, 0.5940256723970254], [-0.42040796056680163, 0.30338385115222666], [-0.715016762619499, 0.5237914450853878], [-1.7648595351740348, -0.8055762015079466], [1.8716132406035566, 1.502136976940637], [-0.7744535186670163, 1.4340576254262372], [-0.7585454905874638, 1.7571537285411298], [0.9753684746684845, -0.335310948939898], [-0.9905675908806586, -1.9660789501453246], [1.5148715928353864, -1.8483338776056777], [1.277656442451189, 1.848804500723272], [0.2811222809807208, -1.3139316192891255], [1.4711242577399735, 1.8951009446387665], [0.8160925693202854, 0.03549498431156195], [-0.48812466262556775, -0.6122764617495133], [-1.1769529708211812, 0.6966120569874565], [-0.2681995155987349, -1.2235254200592416], [-1.5823031086339387, 0.6638301131147304], [-0.8157093076673938, -0.0008003110527936563], [-0.6986173804960147, 1.4864860296942206], [1.5987130785391246, -1.927628065438113], [-1.1965879542369624, -0.6890371796149299], [1.9481988717121044, 1.1308015029175023], [-0.6436174085962652, -1.147880814476745], [0.6978202788950529, 1.3508042806158573], [1.728749887574509, -0.6246007408367209], [1.5295 […]
+=== TURNO 7 (modelo) ===
+[herramienta] ejecutar_python:
+import json,numpy as np
+d=json.loads(open('exploracion.jsonl').readlines()[-1])
+k=[k for k in d if k!='lecturas']; print(k)
+U=np.array(d[k[0]]);Y=np.array(d['lecturas'])
+X=[];T=[]
+for t in range(5,len(Y),3):
+  X.append(np.concatenate([Y[t-3],U[t],U[t-1],U[t-2],[1]]));T.append(Y[t])
+X=np.array(X);T=np.array(T)
+W=np.linalg.lstsq(X,T,rcond=None)[0];print(W.round(2).T, np.sqrt(((X@W-T)**2).mean(0)))
+X2=X[:,:3*2+2+1];
+[resultado] ['reiniciar', 'secuencia']
+
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-piloto/talleres/axe-9/X/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 7, in <module>
+IndexError: too many indices for array: array is 0-dimensional, but 1 were indexed
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 8 (modelo) ===
+[herramienta] ejecutar_python:
+import json,numpy as np
+d=json.loads(open('exploracion.jsonl').readlines()[-1])
+U=np.array(d['secuencia']);Y=np.array(d['lecturas'])
+for lag in [0,1,2,3,4,5]:
+  X=[];T=[]
+  for t in range(8,len(Y),3):
+    X.append(np.concatenate([Y[t-3],U[t-lag],U[t-lag-1],U[t-lag-2],[1]]));T.append(Y[t])
+  X=np.array(X);T=np.array(T)
+  W=np.linalg.lstsq(X,T,rcond=None)[0];print(lag,np.sqrt(((X@W-T)**2).mean(0)));print(W.round(2).T)
+[resultado] 0 [0.01642252 0.18418501]
+[[-0.   -0.   -0.6  -0.62  0.01 -0.01  0.   -0.    1.81]
+ [-0.06  0.07  0.3  -0.61  0.03 -0.06  0.04 -0.04  0.36]]
+1 [1.05856704 0.68995715]
+[[ 5.41 -1.08 -0.15 -0.04 -0.15  0.2   3.53  2.81 -7.57]
+ [ 3.32 -0.99 -0.11  0.04  0.1   0.12  2.14  1.44 -5.33]]
+2 [1.05283967 0.68455996]
+[[  3.71  -1.13  -0.11   0.26   2.55   1.78   0.09  -0.25  -4.47]
+ [  5.98  -1.22   0.17   0.19   3.82   3.04  -0.1   -0.13 -10.01]]
+3 [1.08419533 0.70864114]
+[[ 5.55 -0.88  3.69  3.06  0.09 -0.06 -0.11  0.14 -7.87]
+ [ 5.21 -0.74  3.22  2.78 -0.01 -0.01 -0.07 -0.03 -8.83]]
+4 [0.98909522 0.71645128]
+[[-0.13 -0.22  0.16 -0.08 -0.15  0.23 -0.38  0.29  2.29]
+ [ 0.2  -0.21 -0.01  0.02 -0.08 -0.02 -0.06 -0.03  0.05]]
+5 [0.96373659 0.71023966]
+[[-0.16 -0.23 -0.27  0.11 -0.38  0.19  0.16  0.25  2.27]
+ [ 0.19 -0.2  -0.09 -0.03 -0.06 -0.03  0.07 -0.08  0.08]]
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 9 (modelo) ===
+[herramienta] ejecutar_python:
+idx=list(range(2,len(Y),3))
+u=U[idx];y=Y[idx]
+A=np.c_[u,np.ones(len(u))]
+for s in [1.12,1.15,1.2]:
+  z=np.arctanh(np.clip(y[:,1]/s,-0.999,0.999))
+  w=np.linalg.lstsq(A,z,rcond=None)[0];print(s,w.round(3),np.abs(s*np.tanh(A@w)-y[:,1]).max())
+print(np.linalg.lstsq(A,y[:,0],rcond=None)[0])
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-piloto/talleres/axe-9/X/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 1, in <module>
+NameError: name 'Y' is not defined
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 10 (modelo) ===
+[herramienta] ejecutar_python:
+import json,numpy as np
+d=json.loads(open('exploracion.jsonl').readlines()[-1])
+U=np.array(d['secuencia']);Y=np.array(d['lecturas'])
+idx=list(range(2,len(Y),3))
+u=U[idx];y=Y[idx]
+A=np.c_[u,np.ones(len(u))]
+for s in [1.12,1.15,1.2]:
+  z=np.arctanh(np.clip(y[:,1]/s,-0.999,0.999))
+  w=np.linalg.lstsq(A,z,rcond=None)[0];print(s,w.round(3),np.abs(s*np.tanh(A@w)-y[:,1]).max())
+print(np.linalg.lstsq(A,y[:,0],rcond=None)[0])
+for a,b in zip(u,y): print(a.round(2),b)
+[resultado] 1.12 [ 0.593 -1.043  0.524] 0.22516375107158154
+1.15 [ 0.489 -0.89   0.421] 0.16666208372105729
+1.2 [ 0.408 -0.761  0.35 ] 0.18029746042190054
+[-0.60300934 -0.62367587  1.80012586]
+[-0.02 -0.2 ] [1.945 0.51 ]
+[ 1.34 -0.27] [1.125 1.074]
+[-1.08  1.78] [ 1.319 -1.091]
+[ 1.76 -0.48] [1.08  1.064]
+[-0.25 -0.02] [1.975 0.244]
+[-0.84 -1.91] [3.452 1.106]
+[1.97 1.44] [-0.287  0.024]
+[ 1.75 -0.31] [0.955 1.115]
+[1.53 1.38] [ 0.017 -0.127]
+[ 1.19 -0.34] [1.288 1.139]
+[-0.5  -0.24] [2.255 0.31 ]
+[-0.04 -1.88] [2.959 1.05 ]
+[-0.43 -1.32] [2.89  1.094]
+[ 1.44 -1.07] [1.591 1.061]
+[-0.92  0.19] [ 2.252 -0.198]
+[1.54 0.96] [0.278 0.264]
+[-1.78  1.48] [ 1.951 -1.079]
+[-0.57 -0.62] [2.54  0.608]
+[-1.89 -1.08] [3.642 0.328]
+[1.19 1.27] [ 0.278 -0.148]
+[-1.93 -1.94] [4.207 1.023]
+[-0.62 -1.72] [3.235 1.073]
+[ 0.85 -0.18] [1.393 0.873]
+[-0.32 -1.25] [2.753 1.114]
+[0.42 1.27] [ 0.752 -0.488]
+[-1.36  0.82] [ 2.089 -0.909]
+[1.19 0.07] [1.036 0.783]
+[-0.72  0.52] [ 1.899 -0.386]
+[-0.77  1.43] [ 1.374 -1.065]
+[-0.99 -1.97] [3.622 1.072]
+[ 0.28 -1.31] [2.464 1.094]
+[-0.49 -0.61] [2.48  0.611]
+[-1.58  0.66] [ 2.358 -0.848]
+[ 1.6  -1.93] [2.028 1.037]
+[-0.64 -1.15] [2.924 0.958]
+[1.53 0.75] [0.438 0.415]
+[-1.66 -1.32] [3.62  0.651]
+[ 1.36 -0.53] [1.33  1.101]
+[1.82 1.55] [-0.278 -0.123]
+[-1.71  1.46] [ 1.906 -1.091]
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 11 (modelo) ===
+[herramienta] validar:
+def controlar(l, m):
+    u=m.get('u',[0.0,0.0])
+    e0=-0.13-l[0]; e1=-1.31-l[1]
+    k=0.25
+    u=[u[0]+k*(-1.1*e0+1.14*e1), u[1]+k*(-0.55*e0-1.1*e1)]
+    u=[max(-3,min(3,x)) for x in u]
+    m['u']=u
+    return list(u)
+[resultado] {"validacion": 2, "cumplidos": 0, "de": 6, "escenarios": [{"escenario": 1, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [-0.017, 0.452], "lecturas": [0.983, -0.221]}, {"t": 10, "acciones": [-3.0, 0.685], "lecturas": [-3.287, -1.003]}, {"t": 20, "acciones": [-1.611, 1.92], "lecturas": [-0.251, -1.097]}, {"t": 30, "acciones": [-2.348, 2.492], "lecturas": [-0.131, -1.088]}, {"t": 40, "acciones": [-2.966, 3.0], "lecturas": [-0.148, -1.046]}, {"t": 50, "acciones": [-3.0, 3.0], "lecturas": [-0.021, -1.067]}, {"t": 59, "acciones": [-3.0, 3.0], "lecturas": [-0.019, -1.091]}]}, {"escenario": 2, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [-0.675, 0.66], "lecturas": [-0.105, 1.088]}, {"t": 10, "acciones": [-2.097, 2.722], "lecturas": [-0.125, -1.09]}, {"t": 20, "acciones": [-2.038, 3.0], "lecturas": [0.463, -1.091]}, {"t": 30, "acciones": [-1.553, 3.0], "lecturas": [0.189, -1.061]}, {"t": 40, "acciones": [-1.464, 3.0], "lecturas": [0.138, -1.106]}, {"t": 50, "acciones": [-1.481, 3.0], "lecturas": [0.096, -1.046]}, {"t": 59, "acciones": [-1.437, 3.0], "lecturas": [0.083, -1.083]}]}, {"escenario": 3, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [-0.574, 0.704], "lecturas": [0.281, 1.083]}, {"t": 10, "acciones": [-0.882, 2.869], "lecturas": [0.532, -1.116]}, {"t": 20, "acciones": [0.113, 3.0], "lecturas": [0.198, -1.085]}, {"t": 30, "acciones": [0.225, 3.0], "lecturas": [0.107, -1.04]}, {"t":  […]
+=== TURNO 12 (modelo) ===
+[herramienta] ejecutar_python:
+import json,os
+print(os.listdir('validaciones'))
+d=json.load(open('validaciones/2.json'));print(str(d)[:1500])
+[resultado] ['controlador_1.py', '1.json', '2.json', 'controlador_2.py']
+[{'escenario': 1, 'pasos': [{'t': 0, 'acciones': [-0.017, 0.452], 'lecturas': [0.983, -0.221]}, {'t': 1, 'acciones': [-0.022, 0.905], 'lecturas': [0.915, -0.192]}, {'t': 2, 'acciones': [-0.053, 1.356], 'lecturas': [-0.419, -1.082]}, {'t': 3, 'acciones': [-0.197, 1.379], 'lecturas': [-0.423, -1.079]}, {'t': 4, 'acciones': [-0.344, 1.402], 'lecturas': [-0.41, -1.103]}, {'t': 5, 'acciones': [-0.48, 1.421], 'lecturas': [-0.777, -1.037]}, {'t': 6, 'acciones': [-0.736, 1.407], 'lecturas': [-0.724, -1.112]}, {'t': 7, 'acciones': [-0.955, 1.379], 'lecturas': [-0.728, -1.065]}, {'t': 8, 'acciones': [-1.19, 1.365], 'lecturas': [-3.237, -1.002]}, {'t': 9, 'acciones': [-2.132, 1.022], 'lecturas': [-3.266, -0.969]}, {'t': 10, 'acciones': [-3.0, 0.685], 'lecturas': [-3.287, -1.003]}, {'t': 11, 'acciones': [-3.0, 0.335], 'lecturas': [2.005, -1.068]}, {'t': 12, 'acciones': [-2.482, 0.695], 'lecturas': [2.033, -1.088]}, {'t': 13, 'acciones': [-1.95, 1.054], 'lecturas': [2.031, -1.061]}, {'t': 14, 'acciones': [-1.427, 1.419], 'lecturas': [0.41, -1.076]}, {'t': 15, 'acciones': [-1.345, 1.558], 'lecturas': [0.414, -1.069]}, {'t': 16, 'acciones': [-1.264, 1.699], 'lecturas': [0.439, -1.051]}, {'t': 17, 'acciones': [-1.182, 1.848], 'lecturas': [-0.379, -1.1]}, {'t': 18, 'acciones': [-1.31, 1.872], 'lecturas': [-0.443, -1.054]}, {'t': 19, 'acciones': [-1.469, 1.899], 'lecturas': [-0.419, -1.091]}, {'t': 20, 'acciones': [-1.611, 1.92], 'le […]
+=== TURNO 13 (modelo) ===
+[herramienta] ejecutar_python:
+import json,numpy as np
+d=json.loads(open('exploracion.jsonl').readlines()[-1])
+U=np.array(d['secuencia']);Y=np.array(d['lecturas'])
+idx=list(range(2,len(Y),3));u=U[idx];y=Y[idx]
+m=np.abs(y[:,1])<0.95
+A=np.c_[u,np.ones(len(u))]
+w=np.linalg.lstsq(A[m],y[m,1],rcond=None)[0];print(m.sum(),w,np.abs(A[m]@w-y[m,1]).max())
+print(np.c_[A[~m]@w,y[~m,1]])
+[resultado] 20 [ 0.43254551 -0.79337481  0.33676978] 0.05017879904835537
+[[ 1.1310682   1.074     ]
+ [-1.54558718 -1.091     ]
+ [ 1.47357604  1.064     ]
+ [ 1.49160576  1.106     ]
+ [ 1.33908483  1.115     ]
+ [ 1.12325773  1.139     ]
+ [ 1.81183119  1.05      ]
+ [ 1.19882444  1.094     ]
+ [ 1.81007555  1.061     ]
+ [-1.60544468 -1.079     ]
+ [ 1.04110014  1.023     ]
+ [ 1.43373564  1.073     ]
+ [ 1.18995173  1.114     ]
+ [-1.13596182 -1.065     ]
+ [ 1.46814173  1.072     ]
+ [ 1.50080821  1.094     ]
+ [ 2.55761751  1.037     ]
+ [ 0.96907568  0.958     ]
+ [ 1.34554975  1.101     ]
+ [-1.56371832 -1.091     ]]
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 14 (modelo) ===
+[herramienta] validar:
+import numpy as np
+B=np.array([[-0.603,-0.624],[0.433,-0.793]]);Bi=np.linalg.inv(B)
+def controlar(l, m):
+    t=m.get('t',0); m['t']=t+1
+    u=np.array(m.get('u',[0.0,0.0]))
+    if t%3!=0: return list(u)
+    if t==0:
+        m['u']=[0.0,0.0]; return [0.0,0.0]
+    y=np.array(l); p=B@u
+    c0=y[0]-p[0]
+    c1=m.get('c1',None)
+    if abs(y[1])<1.0: c1=y[1]-p[1]
+    elif y[1]>0: c1=max(c1 if c1 is not None and m.get('ok') else -9,1.1-p[1])+0.4
+    else:
+        lb=-1.1-p[1]
+        if c1 is None or c1>lb: c1=lb-0.4
+    if abs(y[1])<1.0: m['ok']=True
+    m['c1']=c1
+    tg=np.array([-0.13,-1.25])
+    un=np.clip(Bi@(tg-np.array([c0,c1])),-3,3)
+    m['u']=list(un); return list(un)
+[resultado] {"validacion": 3, "cumplidos": 4, "de": 6, "escenarios": [{"escenario": 1, "cumplido": true, "fraccion_ventana": 1.0, "resumen": [{"t": 0, "acciones": [0.0, 0.0], "lecturas": [0.983, -0.221]}, {"t": 10, "acciones": [-0.332, 0.85], "lecturas": [-0.3, -1.086]}, {"t": 20, "acciones": [-3.0, -0.467], "lecturas": [2.065, -1.097]}, {"t": 30, "acciones": [-0.402, 0.637], "lecturas": [-0.143, -1.088]}, {"t": 40, "acciones": [-0.435, 0.619], "lecturas": [-0.143, -1.046]}, {"t": 50, "acciones": [-0.389, 0.644], "lecturas": [-0.124, -1.067]}, {"t": 59, "acciones": [-0.399, 0.638], "lecturas": [-0.116, -1.091]}]}, {"escenario": 2, "cumplido": true, "fraccion_ventana": 1.0, "resumen": [{"t": 0, "acciones": [0.0, 0.0], "lecturas": [-0.105, 1.088]}, {"t": 10, "acciones": [-0.861, 1.545], "lecturas": [-0.158, -1.09]}, {"t": 20, "acciones": [-0.094, 1.964], "lecturas": [-0.062, -1.091]}, {"t": 30, "acciones": [-0.078, 1.973], "lecturas": [-0.103, -1.061]}, {"t": 40, "acciones": [-0.02, 2.004], "lecturas": [-0.106, -1.106]}, {"t": 50, "acciones": [-0.061, 1.982], "lecturas": [-0.124, -1.046]}, {"t": 59, "acciones": [-0.042, 1.992], "lecturas": [-0.131, -1.083]}]}, {"escenario": 3, "cumplido": false, "fraccion_ventana": 0.0, "resumen": [{"t": 0, "acciones": [0.0, 0.0], "lecturas": [0.281, 1.083]}, {"t": 10, "acciones": [2.039, 2.828], "lecturas": [0.692, -1.116]}, {"t": 20, "acciones": [3.0, 3.0], "lecturas": [2.064, -1.085]}, {"t": 30, "acciones": [3.0, 3.0], "lecturas": [2.045, -1.04]}, {"t": […]
+=== TURNO 15 (modelo) ===
+[herramienta] entregar:
+import numpy as np
+B=np.array([[-0.603,-0.624],[0.433,-0.793]]);Bi=np.linalg.inv(B)
+def controlar(l, m):
+    t=m.get('t',0); m['t']=t+1
+    u=np.array(m.get('u',[0.0,0.0]))
+    if t%3!=0: return list(u)
+    if t==0:
+        m['u']=[0.0,0.0]; return [0.0,0.0]
+    y=np.array(l); p=B@u
+    c0=y[0]-p[0]
+    c1=m.get('c1',None)
+    if abs(y[1])<1.0:
+        c1=y[1]-p[1]; m['ok']=True
+    elif y[1]>0:
+        lb=1.1-p[1]
+        if c1 is None or c1<lb: c1=lb+0.4
+    else:
+        ub=-1.1-p[1]
+        if c1 is None: c1=ub-0.4
+        elif c1>ub: c1=ub-(0.0 if m.get('ok') else 0.3)
+        c1=max(c1,ub-1.0)
+    m['c1']=c1
+    tg=np.array([-0.13,-1.25])
+    un=Bi@(tg-np.array([c0,c1]))
+    if np.abs(un).max()>3:
+        best=None
+        for a in np.linspace(-3,3,121):
+            u1=np.clip((tg[0]-c0-B[0,0]*a)/B[0,1],-3,3)
+            v=np.array([a,u1]); r=B@v+np.array([c0,c1])-tg
+            s=10*r[0]**2+r[1]**2
+            if best is None or s<best[0]: best=(s,v)
+        un=best[1]
+    un=np.clip(un,-3,3)
+    m['u']=[float(x) for x in un]; return list(m['u'])
+[resultado] Entregado.

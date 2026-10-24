@@ -1,0 +1,7 @@
+{"afirmaciones":[
+{"turno":7,"familia":"F1","cita":"regresion de dy sobre y previo (-0.09*y): respuesta de primer orden / autorregresiva"},
+{"turno":9,"familia":"F6","cita":"cambios del canal 0 solo en indices multiplo de 3 (idx%3==0): muestreo cada 3 pasos con retencion"},
+{"turno":12,"familia":"F2","cita":"yh=clip(xs,-L,L) con L=1.06: el canal 0 se satura en +-1.06"},
+{"turno":14,"familia":"F5","cita":"estados d0,d1 (derivas/sesgos) estimados en el filtro de Kalman: offset constante o variable"},
+{"turno":14,"familia":"F0","cita":"ganancias estaticas B (B00..B11) y constantes C0,C1 del modelo"}
+],"notas":"Canal 0: primer orden con a=0.83, saturado en 1.06, leido por muestreo y retencion cada 3 pasos con fase desconocida. Canal 1: primer orden a=0.91."}

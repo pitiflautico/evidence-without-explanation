@@ -1,0 +1,210 @@
+ENUNCIADO:
+Problema 1 de 1.
+Máquina: 2 actuadores (de -3.0 a 3.0), 2 canales.
+Objetivo por canal: [0.33, 0.7], tolerancia ±0.35.
+Escenarios de evaluación: 60 pasos; se cumple si la salida está dentro de la tolerancia en al menos el 90 % de los 30 pasos finales.
+Presupuesto de pasos con esta máquina: 400.
+Tienes un taller propio (una carpeta) donde puedes ejecutar Python. Su subcarpeta almacen/ empieza así en este problema.
+Contenido actual de almacen/: vacío.
+Lo que observas al actuar sobre la máquina (también desde código) queda en exploracion.jsonl del taller.
+
+
+=== TURNO 1 (modelo) ===
+[herramienta] leer({})
+[resultado] {"lecturas": [-0.911, -2.717], "pasos_restantes": 400}
+=== TURNO 2 (modelo) ===
+Probemos respuestas.
+[herramienta] actuar(8 pasos, reiniciar=False): [[0, 0], [0, 0], [1, 0], [1, 0], [0, 0], [0, 1], [0, 1], [0, 0]]
+[resultado] {"lecturas": [[-0.915, -2.618], [-0.921, -2.49], [-0.931, -2.315], [-0.945, -2.152], [-0.899, -2.121], [-0.952, -2.285], [-0.949, -2.438], [-0.956, -2.329]], "pasos_restantes": 392}
+=== TURNO 3 (modelo) ===
+[herramienta] actuar(10 pasos, reiniciar=False): [[3, 0], [3, 0], [3, 0], [3, 0], [0, 3], [0, 3], [0, 3], [0, 3], [0, 0], [0, 0]]
+[resultado] {"lecturas": [[-0.923, -1.946], [-0.941, -1.609], [-0.911, -1.303], [-0.912, -1.029], [-0.94, -1.698], [-0.947, -2.206], [-0.928, -2.713], [-0.937, -3.136], [-0.928, -2.996], [-0.911, -2.82]], "pasos_restantes": 382}
+=== TURNO 4 (modelo) ===
+[herramienta] actuar(11 pasos, reiniciar=False): [[3, 3], [3, 3], [3, 3], [3, 3], [-3, -3], [-3, -3], [-3, -3], [-3, -3], [3, -3], [3, -3], [3, -3]]
+[resultado] {"lecturas": [[-0.93, -2.911], [-0.905, -2.963], [-0.927, -3.003], [-0.893, -3.016], [-0.958, -2.708], [-0.919, -2.437], [-0.551, -2.208], [0.122, -1.994], [0.228, -1.102], [0.305, 2.618], [0.399, 3.263]], "pasos_restantes": 371}
+=== TURNO 5 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina,numpy as np,json
+np.random.seed(0)
+U=np.random.uniform(-3,3,(150,2))
+r=maquina.actuar(U.tolist())
+Y=np.array(r['lecturas'] if 'lecturas' in r else r)
+np.save('U.npy',U);np.save('Y.npy',Y)
+print(Y[::10])
+[resultado] [[ 0.118  2.754]
+ [-0.953  0.592]
+ [-0.942 -2.981]
+ [ 0.794 -0.741]
+ [ 0.873  2.966]
+ [ 0.68   2.506]
+ [-0.933  1.403]
+ [-0.561  1.685]
+ [-0.824 -2.602]
+ [ 0.063 -1.598]
+ [-0.036 -2.286]
+ [-0.631 -2.458]
+ [ 0.037 -1.579]
+ [ 0.055 -0.844]
+ [-0.926 -3.75 ]]
+
+[pasos usados: 150; restantes: 221]
+=== TURNO 6 (modelo) ===
+[herramienta] ejecutar_python:
+U=np.load('U.npy');Y=np.load('Y.npy')
+def feats(y,u):
+    a,b=y;c,d=u
+    return [1,a,b,c,d,a*a,b*b,a*b,c*c,d*d,c*d,a*c,a*d,b*c,b*d,np.sin(a),np.sin(b),np.tanh(c),np.tanh(d)]
+X=np.array([feats(Y[t],U[t+1]) for t in range(149)]);T=Y[1:]
+for k in range(2):
+    w,*_=np.linalg.lstsq(X,T[:,k],rcond=None);print(k,np.std(T[:,k]-X@w),np.round(w,3))
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-piloto/talleres/axe-4/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 1, in <module>
+NameError: name 'np' is not defined
+
+[pasos usados: 0; restantes: 221]
+=== TURNO 7 (modelo) ===
+[herramienta] ejecutar_python:
+import numpy as np
+U=np.load('U.npy');Y=np.load('Y.npy')
+def feats(y,u):
+    a,b=y;c,d=u
+    return [1,a,b,c,d,a*a,b*b,a*b,c*c,d*d,c*d,a*c,a*d,b*c,b*d,np.sin(a),np.sin(b),np.tanh(c),np.tanh(d)]
+X=np.array([feats(Y[t],U[t+1]) for t in range(149)]);T=Y[1:]
+for k in range(2):
+    w,*_=np.linalg.lstsq(X,T[:,k],rcond=None);print(k,np.std(T[:,k]),np.std(T[:,k]-X@w),np.round(w,3))
+[resultado] 0 0.5590140175895661 0.07415270432802419 [-0.06   0.477  0.013 -0.053 -0.12   0.025 -0.007  0.013 -0.     0.003
+  0.002 -0.038 -0.052 -0.    -0.     0.388 -0.038 -0.03  -0.013]
+1 2.025502790260594 0.3662813693280755 [-1.670e-01  3.882e+00  8.270e-01  1.620e-01 -2.400e-01  2.780e-01
+  3.200e-02 -1.330e-01 -7.000e-03 -2.000e-03 -9.000e-03 -1.600e-02
+  2.500e-02  7.000e-03 -9.000e-03 -3.958e+00  2.100e-01 -9.200e-02
+  6.700e-02]
+
+[pasos usados: 0; restantes: 221]
+=== TURNO 8 (modelo) ===
+[herramienta] ejecutar_python:
+W=[]
+for k in range(2):
+    w,*_=np.linalg.lstsq(X,T[:,k],rcond=None);W.append(w)
+W=np.array(W)
+src='''import numpy as np
+W=np.array(%s)
+def feats(y,u):
+    a,b=y;c,d=u
+    return [1,a,b,c,d,a*a,b*b,a*b,c*c,d*d,c*d,a*c,a*d,b*c,b*d,np.sin(a),np.sin(b),np.tanh(c),np.tanh(d)]
+G=np.linspace(-3,3,13)
+TG=np.array([0.33,0.7])
+def controlar(lecturas,memoria):
+    best=None
+    for c in G:
+        for d in G:
+            p=W@np.array(feats(lecturas,(c,d)))
+            p2=W@np.array(feats(p,(c,d)))
+            e=np.sum(((p-TG)/[1,3])**2)+np.sum(((p2-TG)/[1,3])**2)
+            if best is None or e<best[0]: best=(e,[float(c),float(d)])
+    return best[1]
+'''%W.tolist()
+open('ctl.py','w').write(src)
+import maquina
+exec(src)
+y=maquina.leer()['lecturas'];out=[]
+for i in range(30):
+    y=maquina.actuar([controlar(y,{})])['lecturas'][-1];out.append(y)
+print(out)
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-piloto/talleres/axe-4/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 3, in <module>
+NameError: name 'np' is not defined
+
+[pasos usados: 0; restantes: 221]
+=== TURNO 9 (modelo) ===
+Cada ejecución es un proceso nuevo; repito todo junto.
+[herramienta] ejecutar_python:
+import numpy as np,maquina
+U=np.load('U.npy');Y=np.load('Y.npy')
+def feats(y,u):
+    a,b=y;c,d=u
+    return [1,a,b,c,d,a*a,b*b,a*b,c*c,d*d,c*d,a*c,a*d,b*c,b*d,np.sin(a),np.sin(b),np.tanh(c),np.tanh(d)]
+X=np.array([feats(Y[t],U[t+1]) for t in range(149)]);T=Y[1:]
+W=np.array([np.linalg.lstsq(X,T[:,k],rcond=None)[0] for k in range(2)])
+src='''import numpy as np
+W=np.array(%s)
+def feats(y,u):
+    a,b=y;c,d=u
+    return [1,a,b,c,d,a*a,b*b,a*b,c*c,d*d,c*d,a*c,a*d,b*c,b*d,np.sin(a),np.sin(b),np.tanh(c),np.tanh(d)]
+G=np.linspace(-3,3,13)
+TG=np.array([0.33,0.7])
+def controlar(lecturas,memoria):
+    best=None
+    for c in G:
+        for d in G:
+            p=W@np.array(feats(lecturas,(c,d)))
+            p2=W@np.array(feats(p,(c,d)))
+            e=np.sum(((p-TG)/[1,3])**2)+np.sum(((p2-TG)/[1,3])**2)
+            if best is None or e<best[0]: best=(e,[float(c),float(d)])
+    return best[1]
+'''%W.tolist()
+open('ctl.py','w').write(src)
+g={};exec(src,g)
+y=maquina.leer()['lecturas'];out=[]
+for i in range(30):
+    y=maquina.actuar([g['controlar'](y,{})])['lecturas'][-1];out.append(y)
+print(out)
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-piloto/talleres/axe-4/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 29, in <module>
+TypeError: list indices must be integers or slices, not str
+
+[pasos usados: 1; restantes: 220]
+=== TURNO 10 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina
+g={};exec(open('ctl.py').read(),g)
+print(maquina.leer())
+y=maquina.leer()['lecturas'];out=[]
+for i in range(30):
+    r=maquina.actuar([g['controlar'](y,{})]);y=r[-1] if isinstance(r,list) else r['lecturas'][-1];out.append(y)
+print(out)
+[resultado] {'lecturas': [-0.39, -1.606], 'pasos_restantes': 220}
+[[-0.153, -0.87], [0.071, 2.693], [0.231, 2.108], [0.307, 1.493], [0.386, 1.204], [0.354, 1.027], [0.327, 0.909], [0.321, 0.922], [0.307, 0.962], [0.325, 1.006], [0.343, 1.033], [0.338, 0.88], [0.369, 0.949], [0.324, 0.985], [0.337, 1.0], [0.357, 1.03], [0.317, 0.924], [0.338, 0.935], [0.34, 0.953], [0.325, 0.957], [0.317, 1.056], [0.366, 0.995], [0.361, 0.849], [0.367, 0.896], [0.375, 0.958], [0.326, 0.82], [0.303, 0.871], [0.302, 0.874], [0.342, 0.966], [0.334, 1.023]]
+
+[pasos usados: 30; restantes: 190]
+=== TURNO 11 (modelo) ===
+[herramienta] ejecutar_python:
+s=open('ctl.py').read()
+s=s.replace('''def controlar(lecturas,memoria):
+    best=None''','''def controlar(lecturas,memoria):
+    b=memoria.get('b',np.zeros(2))
+    if 'p' in memoria:
+        b=0.7*b+0.3*(np.array(lecturas)-memoria['p'])
+    memoria['b']=b
+    best=None''')
+s=s.replace("p=W@np.array(feats(lecturas,(c,d)))","p=W@np.array(feats(lecturas,(c,d)))+b")
+s=s.replace("p2=W@np.array(feats(p,(c,d)))","p2=W@np.array(feats(p,(c,d)))+b")
+s=s.replace("best=(e,[float(c),float(d)])","best=(e,[float(c),float(d)],p)")
+s=s.replace("    return best[1]","    memoria['p']=best[2]-b+b\n    return best[1]")
+open('ctl.py','w').write(s)
+[resultado] 
+[pasos usados: 0; restantes: 190]
+=== TURNO 12 (modelo) ===
+[herramienta] ejecutar_python:
+s=open('ctl.py').read().replace("best[2]-b+b","best[2]-b");open('ctl.py','w').write(s)
+[herramienta] validar({"ruta": "ctl.py"})
+[resultado] 
+[pasos usados: 0; restantes: 190]
+[resultado] {"validacion": 1, "cumplidos": 6, "de": 6, "escenarios": [{"escenario": 1, "cumplido": true, "fraccion_ventana": 1.0, "resumen": [{"t": 0, "acciones": [3.0, -3.0], "lecturas": [-0.189, -2.031]}, {"t": 10, "acciones": [-0.5, 0.0], "lecturas": [0.313, 0.59]}, {"t": 20, "acciones": [-0.5, 0.5], "lecturas": [0.38, 0.686]}, {"t": 30, "acciones": [0.0, 0.5], "lecturas": [0.315, 0.707]}, {"t": 40, "acciones": [-0.5, 0.5], "lecturas": [0.356, 0.686]}, {"t": 50, "acciones": [-0.5, 0.5], "lecturas": [0.336, 0.672]}, {"t": 59, "acciones": [-0.5, 0.5], "lecturas": [0.344, 0.667]}]}, {"escenario": 2, "cumplido": true, "fraccion_ventana": 1.0, "resumen": [{"t": 0, "acciones": [1.0, 0.0], "lecturas": [0.578, 0.781]}, {"t": 10, "acciones": [0.0, 0.0], "lecturas": [0.314, 0.817]}, {"t": 20, "acciones": [-1.0, 0.5], "lecturas": [0.331, 0.652]}, {"t": 30, "acciones": [-1.0, 0.5], "lecturas": [0.351, 0.613]}, {"t": 40, "acciones": [-1.0, 0.5], "lecturas": [0.337, 0.624]}, {"t": 50, "acciones": [-0.5, 0.0], "lecturas": [0.306, 0.782]}, {"t": 59, "acciones": [-1.0, 0.5], "lecturas": [0.333, 0.643]}]}, {"escenario": 3, "cumplido": true, "fraccion_ventana": 1.0, "resumen": [{"t": 0, "acciones": [-3.0, -3.0], "lecturas": [0.135, 0.732]}, {"t": 10, "acciones": [0.0, 0.5], "lecturas": [0.31, 0.715]}, {"t": 20, "acciones": [-1.0, 0.0], "lecturas": [0.355, 0.728]}, {"t": 30, "acciones": [-1.0, 0.0], "lecturas": [0.359, 0.692]}, {"t": 40, "acciones": [-1.0, 0.0], "lecturas": [0.321, 0.73]}, {"t": 50, "acc […]
+=== TURNO 13 (modelo) ===
+6/6 cumple. Entrego.
+[herramienta] entregar({"ruta": "ctl.py"})
+[resultado] Entregado.
+=== TEXTO FINAL ===
+6/6 cumple. Entrego.

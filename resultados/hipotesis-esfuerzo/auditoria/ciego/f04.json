@@ -1,0 +1,5 @@
+{"afirmaciones":[
+{"turno":4,"familia":"F0","cita":"J=[[-0.9,-1.3],[-0.8,0.83]] jacobiano constante, controlador u += g*Ji e"},
+{"turno":11,"familia":"F2","cita":"SAT=0.9: si y0<-SAT o y0>SAT el canal 0 esta saturado, el error no es informativo"},
+{"turno":13,"familia":"F0","cita":"pred = 0.6-0.88*a0-1.33*a1: modelo estatico lineal del canal 0 para contrastar"}
+],"notas":"Pocas afirmaciones explicitas. El canal 0 muestra saltos entre valores fijos (tope ~+-0.97) y el modelo solo lo trata como saturacion."}

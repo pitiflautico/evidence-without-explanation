@@ -1,0 +1,24 @@
+Episodios: 40; problemas con los 4 brazos: 10; gasto 8.64 $
+
+brazo | cumplidos | puntuación media | dólares | $ por cumplido | CPU código (s) | sin entrega | usa contraste | contextos abiertos
+A | 1 de 10 | 0.442 | 2.05 | 2.05 | 4.0 | 1 | 0 episodios (0 llamadas) | 0
+A_PISTA | 2 de 10 | 0.525 | 2.20 | 1.10 | 4.7 | 1 | 0 episodios (0 llamadas) | 0
+A_MAS | 1 de 10 | 0.342 | 2.15 | 2.15 | 10.9 | 1 | 1 episodios (1 llamadas) | 0
+X | 2 de 10 | 0.592 | 2.23 | 1.11 | 5.4 | 0 | 0 episodios (0 llamadas) | 0
+
+problema | A | A_PISTA | A_MAS | X
+axe-1 | 0.000 | 0.583 | 0.250 | 0.833
+axe-2 | 0.750 | 0.083 | 0.250 | 0.667
+axe-3 | 0.000 | 0.417 | 0.000 | 0.083
+axe-4 | 1.000 | 1.000 | 0.917 | 1.000
+axe-5 | 0.667 | 0.000 | 0.167 | 0.000
+axe-6 | 0.417 | 1.000 | 0.417 | 1.000
+axe-8 | 0.500 | 0.583 | 0.500 | 0.500
+axe-9 | 0.333 | 0.167 | 0.083 | 0.417
+axe-10 | 0.750 | 0.667 | 0.833 | 0.583
+axe-12 | 0.000 | 0.750 | 0.000 | 0.833
+
+Emparejado frente a A (problemas en que el brazo puntúa más / menos / igual):
+A_PISTA − A: más 5, menos 4, igual 1; diferencia media +0.083
+A_MAS − A: más 2, menos 4, igual 4; diferencia media -0.100
+X − A: más 5, menos 3, igual 2; diferencia media +0.150

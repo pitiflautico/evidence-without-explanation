@@ -1,0 +1,126 @@
+[
+ {
+  "semilla": "axp-1",
+  "tipos": [
+   "aliasing",
+   "retardo",
+   "saturacion"
+  ],
+  "ideal": 1.0,
+  "ingenuo": 0.0,
+  "generico": 0.0,
+  "estrato": "dificil"
+ },
+ {
+  "semilla": "axp-4",
+  "tipos": [
+   "aliasing",
+   "histeresis",
+   "retardo"
+  ],
+  "ideal": 1.0,
+  "ingenuo": 0.0,
+  "generico": 0.16666666666666666,
+  "estrato": "dificil"
+ },
+ {
+  "semilla": "axp-5",
+  "tipos": [
+   "aliasing",
+   "histeresis",
+   "modo",
+   "saturacion"
+  ],
+  "ideal": 1.0,
+  "ingenuo": 0.0,
+  "generico": 0.0,
+  "estrato": "dificil"
+ },
+ {
+  "semilla": "axp-7",
+  "tipos": [
+   "aliasing",
+   "histeresis",
+   "modo",
+   "retardo"
+  ],
+  "ideal": 1.0,
+  "ingenuo": 0.0,
+  "generico": 0.0,
+  "estrato": "dificil"
+ },
+ {
+  "semilla": "axp-8",
+  "tipos": [
+   "aliasing",
+   "modo"
+  ],
+  "ideal": 1.0,
+  "ingenuo": 0.0,
+  "generico": 0.08333333333333333,
+  "estrato": "dificil"
+ },
+ {
+  "semilla": "axp-9",
+  "tipos": [
+   "aliasing",
+   "histeresis",
+   "modo",
+   "retardo"
+  ],
+  "ideal": 1.0,
+  "ingenuo": 0.0,
+  "generico": 0.16666666666666666,
+  "estrato": "dificil"
+ },
+ {
+  "semilla": "axp-10",
+  "tipos": [
+   "aliasing",
+   "histeresis",
+   "modo",
+   "saturacion"
+  ],
+  "ideal": 1.0,
+  "ingenuo": 0.0,
+  "generico": 0.0,
+  "estrato": "dificil"
+ },
+ {
+  "semilla": "axp-11",
+  "tipos": [
+   "aliasing",
+   "histeresis",
+   "modo",
+   "saturacion"
+  ],
+  "ideal": 1.0,
+  "ingenuo": 0.0,
+  "generico": 0.0,
+  "estrato": "dificil"
+ },
+ {
+  "semilla": "axp-12",
+  "tipos": [
+   "acumulador",
+   "aliasing",
+   "saturacion"
+  ],
+  "ideal": 1.0,
+  "ingenuo": 0.0,
+  "generico": 0.75,
+  "estrato": "dificil"
+ },
+ {
+  "semilla": "axp-13",
+  "tipos": [
+   "aliasing",
+   "histeresis",
+   "saturacion"
+  ],
+  "ideal": 1.0,
+  "ingenuo": 0.0,
+  "generico": 0.0,
+  "estrato": "dificil"
+ }
+]

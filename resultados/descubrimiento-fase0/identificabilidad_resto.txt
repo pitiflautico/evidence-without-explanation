@@ -1,0 +1,33 @@
+Identificabilidad de las causas de las validaciones fallidas (ramas RETRO, T_HISTORIAL, T_SIN_CODIGO, T_TODO, T_CODIGO_TEXTO).
+rama | problema | validación | causa M | RMS verdad reajustada | umbral | mejor alternativa (RMS) | veredicto
+  RETRO | 200-3 | 1 | modo | 0.019 | 0.040 | saturacion,histeresis (0.481) | identificable (provisional) | 137 s
+  RETRO | 200-3 | 1 | saturacion | 0.019 | 0.040 | modo,acumulador (0.137) | identificable (provisional) | 136 s
+  RETRO | 200-3 | 2 | modo | 0.019 | 0.040 | saturacion,deriva (0.431) | identificable (provisional) | 136 s
+  RETRO | 200-5 | 1 | acumulador | 0.018 | 0.040 | modo,saturacion,aliasing (0.221) | identificable (provisional) | 115 s
+  RETRO | 200-5 | 1 | saturacion | 0.018 | 0.040 | acumulador,modo (0.099) | identificable (provisional) | 112 s
+  RETRO | 200-11 | 1 | saturacion | 0.019 | 0.040 | modo (0.101) | identificable (provisional) | 148 s
+  RETRO | 200-11 | 2 | saturacion | 0.019 | 0.040 | (ninguno) (0.047) | identificable (provisional) | 150 s
+  T_TODO | 200-17 | 1 | acumulador | 0.020 | 0.040 | saturacion,aliasing (0.320) | identificable (provisional) | 135 s
+  T_TODO | 200-17 | 1 | saturacion | 0.020 | 0.040 | acumulador,histeresis (0.216) | identificable (provisional) | 131 s
+  T_HISTORIAL | 200-17 | 1 | saturacion | 0.021 | 0.040 | acumulador (0.041) | identificable (provisional) | 131 s
+  T_HISTORIAL | 200-17 | 2 | saturacion | 0.021 | 0.040 | acumulador (0.031) | NO identificable | 132 s
+  T_SIN_CODIGO | 200-17 | 1 | saturacion | 0.020 | 0.040 | acumulador (0.029) | NO identificable | 131 s
+  T_TODO | 200-18 | 1 | acumulador | 0.019 | 0.040 | deriva (0.395) | identificable (provisional) | 152 s
+  T_HISTORIAL | 200-24 | 2 | saturacion | 0.020 | 0.040 | modo,acumulador (0.079) | identificable (provisional) | 134 s
+  T_TODO | 200-28 | 1 | acumulador | 0.020 | 0.040 | aliasing,retardo (0.244) | identificable (provisional) | 131 s
+  T_TODO | 200-28 | 1 | aliasing | 0.020 | 0.040 | acumulador (0.084) | identificable (provisional) | 131 s
+  T_TODO | 200-28 | 2 | acumulador | 0.020 | 0.040 | aliasing,retardo (0.190) | identificable (provisional) | 131 s
+  T_CODIGO_TEXTO | 200-28 | 1 | aliasing | 0.020 | 0.040 | acumulador (0.099) | identificable (provisional) | 131 s
+  T_CODIGO_TEXTO | 200-28 | 2 | acumulador | 0.020 | 0.040 | aliasing,retardo (0.213) | identificable (provisional) | 131 s
+  T_CODIGO_TEXTO | 200-28 | 2 | aliasing | 0.020 | 0.040 | acumulador,saturacion (0.154) | identificable (provisional) | 131 s
+  T_SIN_CODIGO | 200-28 | 2 | acumulador | 0.020 | 0.040 | aliasing,retardo (0.204) | identificable (provisional) | 133 s
+  T_SIN_CODIGO | 200-28 | 2 | aliasing | 0.020 | 0.040 | acumulador,saturacion (0.074) | identificable (provisional) | 132 s
+  T_TODO | 200-29 | 2 | deriva | 0.020 | 0.040 | histeresis (0.207) | identificable (provisional) | 134 s
+  T_TODO | 200-29 | 3 | deriva | 0.020 | 0.040 | histeresis (0.221) | identificable (provisional) | 135 s
+  T_HISTORIAL | 200-29 | 1 | deriva | 0.020 | 0.040 | histeresis,acumulador (0.241) | identificable (provisional) | 135 s
+  T_HISTORIAL | 200-29 | 2 | deriva | 0.020 | 0.040 | histeresis (0.208) | identificable (provisional) | 141 s
+  T_CODIGO_TEXTO | 200-29 | 1 | deriva | 0.020 | 0.040 | histeresis (0.271) | identificable (provisional) | 134 s
+  T_CODIGO_TEXTO | 200-29 | 2 | deriva | 0.020 | 0.040 | histeresis (0.322) | identificable (provisional) | 134 s
+  T_SIN_CODIGO | 200-29 | 1 | deriva | 0.020 | 0.040 | histeresis,saturacion (0.206) | identificable (provisional) | 134 s
+
+Identificables (provisional): 27; no identificables (concluyente): 2.

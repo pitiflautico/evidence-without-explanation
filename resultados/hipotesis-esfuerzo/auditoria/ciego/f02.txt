@@ -1,0 +1,477 @@
+ENUNCIADO:
+Problema 1 de 1.
+Máquina: 2 actuadores (de -3.0 a 3.0), 2 canales.
+Objetivo por canal: [-0.35, -1.35], tolerancia ±0.35.
+Escenarios de evaluación: 60 pasos; se cumple si la salida está dentro de la tolerancia en al menos el 90 % de los 30 pasos finales.
+Presupuesto de pasos con esta máquina: 400.
+Tienes un taller propio (una carpeta) donde puedes ejecutar Python. Su subcarpeta almacen/ empieza así en este problema.
+Contenido actual de almacen/: vacío.
+Lo que observas al actuar sobre la máquina (también desde código) queda en exploracion.jsonl del taller.
+
+
+=== TURNO 1 (modelo) ===
+[herramienta] leer({})
+[resultado] {"lecturas": [0.688, -0.725], "pasos_restantes": 400}
+=== TURNO 2 (modelo) ===
+[herramienta] actuar(5 pasos, reiniciar=False): [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+[resultado] {"lecturas": [[0.662, -0.584], [0.702, -0.528], [0.278, -0.407], [0.286, -0.34], [0.268, -0.275]], "pasos_restantes": 395}
+=== TURNO 3 (modelo) ===
+[herramienta] actuar(37 pasos, reiniciar=False): [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [1, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 1], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [0, 0]]
+[resultado] {"lecturas": [[0.006, -0.192], [0.021, -0.134], [0.027, -0.071], [-0.085, -0.044], [-0.113, 0.009], [-0.104, 0.016], [0.118, -0.033], [0.109, -0.069], [0.092, -0.099], [0.319, -0.101], [0.323, -0.11], [0.333, -0.117], [0.449, -0.129], [0.456, -0.056], [0.425, -0.075], [0.138, -0.005], [0.145, 0.08], [0.12, 0.079], [-0.049, 0.155], [-0.051, 0.161], [-0.042, 0.229], [0.009, 0.328], [-0.055, 0.489], [-0.009, 0.626], [0.173, 0.705], [0.199, 0.835], [0.184, 0.917], [0.262, 0.994], [0.263, 1.096], [0.293, 1.029], [0.136, 1.039], [0.106, 0.924], [0.124, 0.917], [-0.027, 0.88], [-0.037, 0.812], [-0.051, 0.827], [-0.125, 0.786]], "pasos_restantes": 358}
+=== TURNO 4 (modelo) ===
+[herramienta] ejecutar_python:
+
+import maquina, numpy as np, json
+rng=np.random.default_rng(0)
+seq=[]
+for k in range(25):
+    a=[float(rng.choice([-2,-1,0,1,2])),float(rng.choice([-2,-1,0,1,2]))]
+    n=int(rng.integers(3,8))
+    seq+= [a]*n
+seq=seq[:150]
+r=maquina.actuar(seq)
+print(len(seq), r['pasos_restantes'] if isinstance(r,dict) else '')
+print(open('exploracion.jsonl').read()[:500])
+
+[resultado] 122 
+{"reiniciar": false, "secuencia": [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]], "lecturas": [[0.662, -0.584], [0.702, -0.528], [0.278, -0.407], [0.286, -0.34], [0.268, -0.275]]}
+{"reiniciar": false, "secuencia": [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [1.0, 0.0], [1.0, 0.0], [1.0, 0.0], [1.0, 0.0], [1.0, 0.0], [1.0, 0.0], [1.0, 0.0], [1.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 1.0], [0.0, 1
+
+[pasos usados: 122; restantes: 236]
+=== TURNO 5 (modelo) ===
+[herramienta] ejecutar_python:
+
+U=[];Y=[]
+y0=[0.688,-0.725]
+for l in open('exploracion.jsonl'):
+    d=json.loads(l); U+=d['secuencia']; Y+=d['lecturas']
+U=np.array(U);Y=np.array(Y)
+Yp=np.vstack([[y0],Y[:-1]])  # previous reading
+np.set_printoptions(precision=3,suppress=True,linewidth=150)
+print(np.hstack([U,Y])[42:])
+
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-8/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 5, in <module>
+NameError: name 'json' is not defined. Did you forget to import 'json'?
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 6 (modelo) ===
+[herramienta] ejecutar_python:
+
+import json, numpy as np
+U=[];Y=[]
+for l in open('exploracion.jsonl'):
+    d=json.loads(l); U+=d['secuencia']; Y+=d['lecturas']
+U=np.array(U);Y=np.array(Y)
+np.save('U.npy',U);np.save('Y.npy',Y)
+np.set_printoptions(precision=3,suppress=True,linewidth=150)
+print(np.hstack([U,Y])[42:])
+
+[resultado] [[ 2.     1.    -0.119  0.751]
+ [ 2.     1.    -0.135  0.684]
+ [ 2.     1.     0.895  0.683]
+ [ 2.     1.     0.89   0.638]
+ [ 2.     1.     0.87   0.594]
+ [-1.    -1.     0.758  0.521]
+ [-1.    -1.     0.768  0.481]
+ [-1.    -1.     0.773  0.401]
+ [-2.    -2.    -0.626  0.303]
+ [-2.    -2.    -0.637  0.257]
+ [-2.    -2.    -0.662  0.181]
+ [ 2.     1.    -0.873  0.158]
+ [ 2.     1.    -0.918  0.154]
+ [ 2.     1.    -0.905  0.183]
+ [ 2.     1.     0.448  0.224]
+ [ 2.     1.     0.459  0.189]
+ [ 2.     1.     0.435  0.206]
+ [ 2.     1.     1.011  0.21 ]
+ [ 0.     1.     1.04   0.379]
+ [ 0.     1.     1.037  0.536]
+ [ 0.     1.     0.87   0.647]
+ [ 0.     1.     0.846  0.74 ]
+ [ 0.     1.     0.87   0.842]
+ [ 0.     1.     0.715  0.983]
+ [ 0.     1.     0.691  1.02 ]
+ [ 1.     1.     0.65   0.999]
+ [ 1.     1.     0.832  0.994]
+ [ 1.     1.     0.878  1.053]
+ [ 1.     1.     0.844  1.052]
+ [ 1.     1.     1.029  1.005]
+ [ 0.     2.     1.034  1.218]
+ [ 0.     2.     1.069  1.406]
+ [ 0.     2.     1.059  1.576]
+ [ 0.     2.     1.066  1.739]
+ [ 2.     1.     1.089  1.657]
+ [ 2.     1.     1.049  1.451]
+ [ 2.     1.     1.05   1.383]
+ [-1.     2.     1.052  1.645]
+ [-1.     2.     1.065  1.834]
+ [-1.     2.     1.062  2.024]
+ [-1.     2.     1.085  2.235]
+ [-1.     2.     0.745  2.358]
+ [-2.     1.     0.758  2.537]
+ [-2.     1.     0.761  2.584]
+ [-2.     1.    -0.173  2.658]
+ [-2.     1.    -0.168  2.732]
+ [-2.     1.    -0.135  2.787]
+ [-2.     1.    -0.703  2.868]
+ [ 2.    -2. […]
+=== TURNO 7 (modelo) ===
+[herramienta] ejecutar_python:
+
+import numpy as np
+U=np.load('U.npy');Y=np.load('Y.npy')
+y0=np.array([0.688,-0.725])
+Yf=np.vstack([y0,Y])
+dy=Yf[1:,1]-Yf[:-1,1]
+for lag in range(0,3):
+    # u at step t affects y at t+lag
+    n=len(U)
+    rows=[];tg=[]
+    for t in range(lag,n):
+        rows.append([Yf[t,1],Yf[t,0],U[t-lag,0],U[t-lag,1],1]); tg.append(Yf[t+1,1]-Yf[t,1])
+    A=np.array(rows);b=np.array(tg)
+    c,res,_,_=np.linalg.lstsq(A,b,rcond=None)
+    print(lag,c,np.sqrt(np.mean((A@c-b)**2)))
+
+[resultado] 0 [-0.0905001  -0.00234966 -0.07370885  0.12477088  0.04626729] 0.028085152197516134
+1 [-0.11561632  0.02433555 -0.05654734  0.10879306  0.06398924] 0.08733012987267258
+2 [-0.12221136  0.03961938 -0.04160355  0.09080288  0.07123479] 0.11279766936059976
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 8 (modelo) ===
+[herramienta] ejecutar_python:
+
+d=np.abs(np.diff(Yf[:,0]))
+idx=np.where(d>0.08)[0]+1
+print(idx)
+print(idx%3)
+
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-8/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 2, in <module>
+NameError: name 'np' is not defined
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 9 (modelo) ===
+[herramienta] ejecutar_python:
+
+import numpy as np
+U=np.load('U.npy');Y=np.load('Y.npy')
+Yf=np.vstack([[0.688,-0.725],Y])
+d=np.abs(np.diff(Yf[:,0]))
+idx=np.where(d>0.08)[0]+1
+print(idx)
+print(idx%3)
+
+[resultado] [  3   6   9  12  15  18  21  24  30  36  39  45  48  51  54  57  60  63
+  66  69  72  84  87  90  93  96  99 102 114 117 123 126 129 132 150 153
+ 156 159]
+[0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+ 0]
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 10 (modelo) ===
+[herramienta] ejecutar_python:
+
+z=Yf[0::3,0]; K=len(z)
+for sh in range(-2,6):
+    rows=[];tg=[]
+    for k in range(2,K-1):
+        # inputs applied for steps i in [3k-sh, 3k+3-sh)
+        lo=3*k-sh; hi=lo+3
+        if lo<0 or hi>len(U): continue
+        if abs(z[k+1])>1.0 or abs(z[k])>1.0: continue
+        rows.append([z[k],U[lo:hi,0].mean(),U[lo:hi,1].mean(),Yf[3*k,1],1]); tg.append(z[k+1])
+    A=np.array(rows);b=np.array(tg)
+    c=np.linalg.lstsq(A,b,rcond=None)[0]
+    print(sh,len(b),c,np.sqrt(np.mean((A@c-b)**2)))
+
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-8/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 2, in <module>
+NameError: name 'Yf' is not defined
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 11 (modelo) ===
+[herramienta] ejecutar_python:
+
+open('base.py','w').write('''
+import numpy as np, json
+U=[];Y=[]
+for l in open('exploracion.jsonl'):
+    d=json.loads(l); U+=d['secuencia']; Y+=d['lecturas']
+U=np.array(U);Y=np.array(Y)
+Yf=np.vstack([[0.688,-0.725],Y])
+np.set_printoptions(precision=3,suppress=True,linewidth=150)
+''')
+exec(open('base.py').read())
+z=Yf[0::3,0]; K=len(z)
+for sh in range(-2,6):
+    rows=[];tg=[]
+    for k in range(2,K-1):
+        lo=3*k-sh; hi=lo+3
+        if lo<0 or hi>len(U): continue
+        if abs(z[k+1])>1.0 or abs(z[k])>1.0: continue
+        rows.append([z[k],U[lo:hi,0].mean(),U[lo:hi,1].mean(),Yf[3*k,1],1]); tg.append(z[k+1])
+    A=np.array(rows);b=np.array(tg)
+    c=np.linalg.lstsq(A,b,rcond=None)[0]
+    print(sh,len(b),c,np.sqrt(np.mean((A@c-b)**2)))
+
+[resultado] -2 33 [ 0.78   0.24   0.105 -0.113 -0.021] 0.27545186464679494
+-1 33 [ 0.731  0.351  0.215 -0.058 -0.078] 0.15573311259084305
+0 33 [ 0.535  0.379  0.303 -0.002 -0.114] 0.04786195087261847
+1 33 [ 0.333  0.279  0.253 -0.016 -0.073] 0.22611551064174865
+2 33 [ 0.147  0.32   0.309 -0.019 -0.072] 0.2989606633439269
+3 33 [ 0.366  0.087  0.102 -0.094  0.02 ] 0.3915255851097483
+4 33 [ 0.957 -0.268 -0.19  -0.179  0.132] 0.3568944689871267
+5 33 [ 1.064 -0.398 -0.261 -0.228  0.215] 0.31513822114008117
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 12 (modelo) ===
+[herramienta] ejecutar_python:
+
+exec(open('base.py').read())
+from scipy.optimize import least_squares
+def sim(p,U,x0,Yf=None):
+    a,b,c,d,e,L=p[:6]
+    x=x0; xs=[x]
+    for t in range(len(U)):
+        x=a*x+b*U[t,0]+c*U[t,1]+d+e*(Yf[t,1] if Yf is not None else 0)
+        xs.append(x)
+    return np.array(xs)
+def res(p,mode):
+    xs=sim(p,U,p[6],Yf if mode else None)
+    if mode==0: p=p.copy(); 
+    yh=np.clip(xs,-p[5],p[5])
+    yh=np.tanh(xs/p[5])*p[5] if mode==2 else yh
+    return (yh[0::3]-Yf[0::3,0])
+for mode in [0,1]:
+    r=least_squares(res,[0.8,0.1,0.1,0,0,1.08,0.7],args=(mode,))
+    print(mode,r.x,np.sqrt(np.mean(r.fun**2)))
+
+[resultado] 0 [ 0.83   0.154  0.119 -0.047  7.612  1.06   0.684] 0.01936862491214879
+1 [ 0.83   0.153  0.118 -0.046 -0.001  1.06   0.679] 0.019176786792455238
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 13 (modelo) ===
+[herramienta] ejecutar_python({})
+[resultado] Error: herramientas.<locals>.<lambda>() missing 1 required positional argument: 'codigo'
+=== TURNO 14 (modelo) ===
+[herramienta] ejecutar_python:
+
+import os
+os.makedirs('almacen',exist_ok=True)
+code=r'''
+import numpy as np
+A0,B00,B01,C0,L0=0.83,0.154,0.119,-0.047,1.06
+A1,B10,B11,C1=0.9095,-0.0737,0.1248,0.0463
+T=np.array([-0.35,-1.35])
+LAM=0.55
+def _F(): 
+    F=np.eye(5); F[0,0]=A0; F[1,1]=A1; F[0,3]=1; F[1,4]=1; return F
+def _init(r):
+    f=[]
+    for p in range(3):
+        s=np.array([r[0],r[1],r[0],0.,0.])
+        P=np.diag([0.3,0.01,0.002,0.02,0.02])
+        f.append({'s':s,'P':P,'J':0.0,'p':p})
+    return f
+def _step(fl,u,t1,r):
+    F=_F(); s=fl['s']; P=fl['P']
+    s=F@s+np.array([B00*u[0]+B01*u[1]+C0, B10*u[0]+B11*u[1]+C1,0,0,0]) 
+    s[2]=fl['s'][2]
+    P=F@P@F.T
+    if t1%3==fl['p']:
+        G=np.eye(5); G[2,:]=0; G[2,0]=1
+        s[2]=s[0]; P=G@P@G.T
+    Q=np.diag([4e-4,4e-4,1e-6,3e-4,3e-4]); P=P+Q
+    # measurements
+    H=[];z=[];R=[]
+    H.append([0,1,0,0,0]); z.append(r[1]); R.append(8e-4)
+    if abs(r[0])<L0-0.08:
+        H.append([0,0,1,0,0]); z.append(r[0]); R.append(5e-4)
+    H=np.array(H,float); z=np.array(z); R=np.diag(R)
+    S=H@P@H.T+R; K=P@H.T@np.linalg.inv(S); v=z-H@s
+    s=s+K@v; P=(np.eye(5)-K@H)@P
+    if len(z)>1:
+        fl['J']=0.9*fl['J']+v[1]**2/S[1,1]
+    fl['s']=s; fl['P']=P
+def controlar(lecturas, memoria):
+    r=np.array(lecturas,float)
+    if 'f' not in memoria:
+        memoria['f']=_init(r); memoria['t']=0; memoria['u']=None
+    else:
+        t1=memoria['t']+1; memoria['t']=t1
+        for fl in memoria['f']: _step(fl,memoria['u'],t1,r)
+    fl=min(memoria['f'],key=lambda f:f['J'])
+    s=fl['s']; d0,d1=s[3],s[4]
+    B=np.array([[B00,B01],[B10,B11]])
+    A=np.diag([A0,A1])
+    xs=np.array([T[0],T[1]])
+    uss=np.linalg.solve(B,(np.eye(2)-A)@xs-np.array([C0+d0,C1+d1]))
+    e=np.array([s[0],s[1]])-xs
+    u=uss+np.linalg.solve(B,(LAM*np.eye(2)-A)@e)
+    u=np.clip(u,-3,3)
+    memoria['u']=u
+    return [float(u[0]),float(u[1])]
+'''
+open('almacen/ctrl.py','w').write(code)
+open('ctrl_entrega.py','w').write(code)
+
+[resultado] 
+[pasos usados: 0; restantes: 236]
+=== TURNO 15 (modelo) ===
+[herramienta] ejecutar_python:
+
+import numpy as np, importlib, sys
+sys.path.insert(0,'almacen'); import ctrl; importlib.reload(ctrl)
+def run(seed,phase,dd0,dd1,x0,y10,gain=1.0):
+    rng=np.random.default_rng(seed)
+    x=x0;y1=y10;h=np.clip(x,-1.06,1.06); mem={}
+    out=[]
+    for t in range(60):
+        r=[h+rng.normal(0,0.02),y1+rng.normal(0,0.01)]
+        out.append(r)
+        u=ctrl.controlar(r,mem)
+        x=0.83*x+gain*(0.154*u[0]+0.119*u[1])-0.047+dd0+rng.normal(0,0.01)
+        y1=0.9095*y1+gain*(-0.0737*u[0]+0.1248*u[1])+0.0463+dd1+rng.normal(0,0.01)
+        if (t+1)%3==phase: h=np.clip(x,-1.06,1.06)
+    out=np.array(out)
+    ok=np.mean(np.all(np.abs(out[30:]-ctrl.T)<0.35,axis=1))
+    return ok,out
+rng=np.random.default_rng(1)
+res=[]
+for i in range(40):
+    ok,o=run(i,rng.integers(3),rng.normal(0,0.05),rng.normal(0,0.05),rng.uniform(-2,2),rng.uniform(-3,3),gain=rng.uniform(0.7,1.3))
+    res.append(ok)
+print(np.round(res,2))
+ok,o=run(0,1,0.05,-0.05,1.5,2.8); print(o[::3])
+
+[resultado] [1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.
+ 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1. 1.]
+[[ 1.0625146   2.79867895]
+ [ 1.01349938  0.48796339]
+ [ 0.86983863 -0.91001501]
+ [-0.10886893 -1.28287766]
+ [-0.24764575 -1.30805357]
+ [-0.32431653 -1.38346804]
+ [-0.3491104  -1.32767314]
+ [-0.36430212 -1.3491167 ]
+ [-0.34991567 -1.34876435]
+ [-0.40562358 -1.3471493 ]
+ [-0.3427019  -1.33669977]
+ [-0.33769866 -1.32519229]
+ [-0.36098571 -1.35553858]
+ [-0.38555353 -1.37329111]
+ [-0.28261446 -1.34831066]
+ [-0.36126062 -1.35988069]
+ [-0.32711596 -1.35080835]
+ [-0.35553076 -1.33964352]
+ [-0.32557022 -1.35617081]
+ [-0.33929714 -1.37007549]]
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 16 (modelo) ===
+Funciona en simulación. Ahora lo pruebo en la máquina real (desde el estado actual).
+[herramienta] ejecutar_python:
+
+import numpy as np, importlib, sys
+sys.path.insert(0,'almacen'); import ctrl; importlib.reload(ctrl)
+import maquina
+r=maquina.leer()['lecturas']; mem={}; log=[]
+for t in range(60):
+    u=ctrl.controlar(r,mem)
+    out=maquina.actuar([u])
+    r=out['lecturas'][-1] if isinstance(out,dict) else out
+    log.append((list(np.round(u,2)),r))
+for i,l in enumerate(log):
+    if i%3==0 or i>50: print(i,l, mem['f'][0]['J'],)
+print([round(f['J'],2) for f in mem['f']], np.round(min(mem['f'],key=lambda f:f['J'])['s'],3))
+
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-8/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 7, in <module>
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-8/A/almacen/ctrl.py", line 42, in controlar
+    for fl in memoria['f']: _step(fl,memoria['u'],t1,r)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-8/A/almacen/ctrl.py", line 27, in _step
+    H.append([0,1,0,0,0]); z.append(r[1]); R.append(8e-4)
+                                    ~^^^
+IndexError: index 1 is out of bounds for axis 0 with size 1
+
+[pasos usados: 1; restantes: 235]
+=== TURNO 17 (modelo) ===
+[herramienta] ejecutar_python:
+
+import maquina
+print(maquina.leer())
+print(open('exploracion.jsonl').readlines()[-1])
+
+[resultado] {'lecturas': [-0.195, 0.21], 'pasos_restantes': 235}
+{"reiniciar": false, "secuencia": [[3.0, -3.0]], "lecturas": [[-0.175, 0.17]]}
+
+
+[pasos usados: 0; restantes: 235]
+=== TURNO 18 (modelo) ===
+[herramienta] ejecutar_python:
+
+import numpy as np, importlib, sys
+sys.path.insert(0,'almacen'); import ctrl
+import maquina
+r=maquina.leer()['lecturas']; mem={}; log=[]
+for t in range(60):
+    u=ctrl.controlar(r,mem)
+    maquina.actuar([u])
+    r=maquina.leer()['lecturas']
+    log.append((list(np.round(u,2)),r))
+for i,l in enumerate(log):
+    if i%3==0 or i>50: print(i,l)
+print([round(f['J'],2) for f in mem['f']], np.round(min(mem['f'],key=lambda f:f['J'])['s'],3))
+
+[resultado] 0 ([np.float64(2.73), np.float64(-3.0)], [-0.138, -0.391])
+3 ([np.float64(1.12), np.float64(-1.56)], [-0.272, -1.239])
+6 ([np.float64(0.8), np.float64(-1.04)], [-0.329, -1.328])
+9 ([np.float64(0.58), np.float64(-0.86)], [-0.345, -1.331])
+12 ([np.float64(0.58), np.float64(-1.04)], [-0.368, -1.355])
+15 ([np.float64(0.69), np.float64(-1.0)], [-0.332, -1.37])
+18 ([np.float64(0.77), np.float64(-1.04)], [-0.369, -1.37])
+21 ([np.float64(0.68), np.float64(-0.92)], [-0.356, -1.37])
+24 ([np.float64(0.74), np.float64(-0.99)], [-0.348, -1.355])
+27 ([np.float64(0.67), np.float64(-0.86)], [-0.379, -1.352])
+30 ([np.float64(0.55), np.float64(-0.92)], [-0.323, -1.317])
+33 ([np.float64(0.66), np.float64(-0.92)], [-0.334, -1.316])
+36 ([np.float64(0.73), np.float64(-0.99)], [-0.328, -1.368])
+39 ([np.float64(0.59), np.float64(-0.98)], [-0.327, -1.349])
+42 ([np.float64(0.56), np.float64(-0.99)], [-0.361, -1.345])
+45 ([np.float64(0.69), np.float64(-0.79)], [-0.373, -1.311])
+48 ([np.float64(0.76), np.float64(-0.97)], [-0.332, -1.354])
+51 ([np.float64(0.76), np.float64(-0.97)], [-0.352, -1.366])
+52 ([np.float64(0.67), np.float64(-0.91)], [-0.364, -1.371])
+53 ([np.float64(0.64), np.float64(-0.87)], [-0.326, -1.337])
+54 ([np.float64(0.63), np.float64(-1.0)], [-0.306, -1.358])
+55 ([np.float64(0.58), np.float64(-0.97)], [-0.318, -1.329])
+56 ([np.float64(0.65), np.float64(-1.04)], [-0.376, -1.355])
+57 ([np.float64(0.71), np.float64(-0.92)], [-0.356, -1.365])
+58 ([np.float64(0.64), np.float64(-0.9)], [-0.3 […]
+=== TURNO 19 (modelo) ===
+[herramienta] validar({"ruta": "ctrl_entrega.py"})
+[resultado] {"validacion": 1, "cumplidos": 6, "de": 6, "escenarios": [{"escenario": 1, "cumplido": true, "fraccion_ventana": 1.0, "resumen": [{"t": 0, "acciones": [-1.168, -2.005], "lecturas": [1.066, -1.387]}, {"t": 10, "acciones": [0.683, -0.278], "lecturas": [-0.377, -1.326]}, {"t": 20, "acciones": [0.688, -0.39], "lecturas": [-0.493, -1.355]}, {"t": 30, "acciones": [1.469, 0.017], "lecturas": [-0.366, -1.344]}, {"t": 40, "acciones": [1.399, 0.05], "lecturas": [-0.398, -1.317]}, {"t": 50, "acciones": [1.441, 0.041], "lecturas": [-0.31, -1.361]}, {"t": 59, "acciones": [1.461, 0.008], "lecturas": [-0.331, -1.361]}]}, {"escenario": 2, "cumplido": true, "fraccion_ventana": 1.0, "resumen": [{"t": 0, "acciones": [2.912, -3.0], "lecturas": [1.087, 0.536]}, {"t": 10, "acciones": [-0.108, -0.923], "lecturas": [-0.263, -1.351]}, {"t": 20, "acciones": [-0.718, -0.941], "lecturas": [-0.191, -1.382]}, {"t": 30, "acciones": [-0.743, -1.056], "lecturas": [-0.305, -1.36]}, {"t": 40, "acciones": [-0.715, -1.065], "lecturas": [-0.374, -1.319]}, {"t": 50, "acciones": [-0.684, -1.142], "lecturas": [-0.365, -1.332]}, {"t": 59, "acciones": [-0.771, -1.194], "lecturas": [-0.388, -1.379]}]}, {"escenario": 3, "cumplido": true, "fraccion_ventana": 1.0, "resumen": [{"t": 0, "acciones": [3.0, -3.0], "lecturas": [0.255, 1.171]}, {"t": 10, "acciones": [0.088, -1.598], "lecturas": [-0.29, -1.348]}, {"t": 20, "acciones": [0.063, -1.438], "lecturas": [-0.372, -1.341]}, {"t": 30, "acciones": [-0.29, -0.811], "lecturas […]
+=== TURNO 20 (modelo) ===
+[herramienta] entregar({"ruta": "ctrl_entrega.py"})
+[resultado] Entregado.
+=== TEXTO FINAL ===
+Funciona en simulación. Ahora lo pruebo en la máquina real (desde el estado actual).

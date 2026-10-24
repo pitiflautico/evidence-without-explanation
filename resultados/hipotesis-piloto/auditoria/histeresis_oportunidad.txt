@@ -1,0 +1,10 @@
+problema | tipos | capacidad (pasos) | sin reinicio (pasos) | oportunidad práctica
+axe-1 | histeresis,modo,retardo,saturacion | 1.000 (138) | 0.000 (135) | sí
+axe-2 | acumulador,aliasing,histeresis,modo | 0.833 (138) | 0.417 (135) | no
+axe-3 | aliasing,histeresis,modo,retardo,saturacion | 0.083 (138) | 0.000 (135) | no
+axe-4 | acumulador,histeresis,saturacion | 0.583 (138) | 0.583 (135) | no
+axe-5 | aliasing,histeresis,modo,saturacion | 0.000 (138) | 0.000 (135) | no
+axe-6 | aliasing,histeresis,modo,saturacion | 0.000 (138) | 0.000 (135) | no
+axe-9 | aliasing,histeresis,modo,saturacion | 0.083 (138) | 0.000 (135) | no
+axe-10 | histeresis,retardo | 0.083 (138) | 0.333 (135) | no
+axe-12 | aliasing,histeresis,saturacion | 0.167 (138) | 0.083 (135) | no

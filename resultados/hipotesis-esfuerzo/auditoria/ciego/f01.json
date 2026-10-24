@@ -1,0 +1,8 @@
+{"afirmaciones":[
+{"turno":11,"familia":"F1","cita":"pair y[k] with u[k-3]: la lectura refleja la accion de 3 pasos antes (retraso)"},
+{"turno":11,"familia":"F0","cita":"regresion lineal de lectura sobre acciones con termino constante (ganancias fijas)"},
+{"turno":12,"familia":"F3","cita":"low = r<-1: indicador de modo bajo con salto discreto en el canal 0 (ajuste con variable binaria)"},
+{"turno":13,"familia":"F3","cita":"low=(T0-x1)<-1.2; coeficiente de salto -2.32 cuando esta en modo bajo; JUMP=2.32"},
+{"turno":15,"familia":"F4","cita":"mode=1 si y0<thr (-0.85) y vuelve a 0 si y0>thr; TGT_LOW: aim when in low mode (forces exit)"},
+{"turno":15,"familia":"F5","cita":"dist(k) perturbaciones escalon en la simulacion y estimador de offset d adaptativo"}
+],"notas":"Retraso de 3 pasos y modos con salto de 2.32 en canal 0. F4 inferido de conmutacion por umbral con memoria de modo en la simulacion."}

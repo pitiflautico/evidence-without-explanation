@@ -1,0 +1,8 @@
+{"afirmaciones": [
+{"turno": 5, "familia": "F0", "cita": "u += [0.15*e0, -0.4*e1]: controlador integral con signos de ganancia fijos por canal (modelo de signo fijo)"},
+{"turno": 7, "familia": "F6", "cita": "idx=[i ... if abs(Y[i]-Y[i-1]).max()>0.15]: analiza solo los pasos donde la lectura cambia (la lectura se mantiene y se actualiza cada ~3 pasos)"},
+{"turno": 10, "familia": "F1", "cita": "regresion de dY sobre U[i-k] (k=0..3) y sobre suma de las 3 ultimas entradas: busca retardo/acumulacion en el efecto de u"},
+{"turno": 12, "familia": "F6", "cita": "if prev is None or abs(l-prev).max()>0.02: actualiza u; si no, mantiene: solo actua cuando la lectura ha cambiado (lectura retenida)"},
+{"turno": 13, "familia": "F3", "cita": "m['s']*=-1 tras saturar u0 sin acercarse: la ganancia de u0 sobre el canal 0 cambia de signo (signo desconocido/cambiante)"},
+{"turno": 13, "familia": "F6", "cita": "m['k']>=3: refresca la accion cada 3 pasos aunque la lectura no cambie (periodo de muestreo 3)"}
+], "notas": "Sin texto explicativo. Los saltos de y1 a ±1.1 (saturacion) no se verbalizan. F6 es la lectura retenida de a 3 pasos."}

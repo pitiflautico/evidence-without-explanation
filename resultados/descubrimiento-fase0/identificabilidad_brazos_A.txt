@@ -1,0 +1,18 @@
+Identificabilidad de las causas de las validaciones fallidas (ramas RETRO_SIN_ALMACEN, T0).
+rama | problema | validación | causa M | RMS verdad reajustada | umbral | mejor alternativa (RMS) | veredicto
+  RETRO_SIN_ALMACEN | 200-3 | 1 | modo | 0.019 | 0.040 | saturacion,histeresis (0.482) | identificable (provisional) | 134 s
+  RETRO_SIN_ALMACEN | 200-3 | 1 | saturacion | 0.019 | 0.040 | modo,acumulador (0.138) | identificable (provisional) | 132 s
+  RETRO_SIN_ALMACEN | 200-3 | 2 | modo | 0.019 | 0.040 | saturacion,acumulador (0.306) | identificable (provisional) | 133 s
+  RETRO_SIN_ALMACEN | 200-3 | 3 | modo | 0.020 | 0.040 | saturacion,deriva (0.289) | identificable (provisional) | 133 s
+  RETRO_SIN_ALMACEN | 200-5 | 1 | modo | 0.018 | 0.040 | acumulador,saturacion,histeresis (0.085) | identificable (provisional) | 112 s
+  RETRO_SIN_ALMACEN | 200-5 | 1 | saturacion | 0.018 | 0.040 | acumulador,modo (0.057) | identificable (provisional) | 111 s
+  RETRO_SIN_ALMACEN | 200-11 | 2 | saturacion | 0.019 | 0.040 | histeresis (0.028) | NO identificable | 149 s
+  RETRO_SIN_ALMACEN | 200-14 | 2 | deriva | 0.020 | 0.040 | modo,saturacion (0.110) | identificable (provisional) | 115 s
+  RETRO_SIN_ALMACEN | 200-14 | 2 | modo | 0.020 | 0.040 | deriva,saturacion,histeresis (0.168) | identificable (provisional) | 112 s
+  RETRO_SIN_ALMACEN | 200-14 | 2 | saturacion | 0.020 | 0.040 | deriva,modo (0.109) | identificable (provisional) | 111 s
+  T0 | 200-17 | 1 | saturacion | 0.021 | 0.040 | acumulador (0.043) | identificable (provisional) | 130 s
+  T0 | 200-20 | 2 | retardo | 0.021 | 0.040 | saturacion,acumulador (0.269) | identificable (provisional) | 135 s
+  T0 | 200-29 | 1 | deriva | 0.020 | 0.040 | histeresis,acumulador (0.416) | identificable (provisional) | 132 s
+  T0 | 200-29 | 2 | deriva | 0.020 | 0.040 | histeresis,acumulador (0.281) | identificable (provisional) | 132 s
+
+Identificables (provisional): 13; no identificables (concluyente): 1.

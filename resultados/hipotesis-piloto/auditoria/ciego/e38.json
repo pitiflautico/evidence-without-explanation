@@ -1,0 +1,9 @@
+{"afirmaciones": [
+{"turno": 3, "familia": "F1", "cita": "regresion Y[t+1] sobre Y[t], U[t-d] (d=0..2): modelo autorregresivo con memoria (coef ~0.67 y ~0.92 sobre la salida previa)"},
+{"turno": 7, "familia": "F6", "cita": "idx=[3,7,11,...]: las lecturas solo cambian cada 4 pasos (idx cada 4); lectura retenida entre actualizaciones"},
+{"turno": 9, "familia": "F6", "cita": "idx=list(range(7,80,4)): regresa solo en los instantes de actualizacion, con U[i..i-3] (ventana de 4 entradas)"},
+{"turno": 10, "familia": "F2", "cita": "Z=arctanh(clip(T[:,1],-.97,.97)): el canal 1 se modela como tanh de una funcion lineal (saturacion en ±~0.97)"},
+{"turno": 12, "familia": "F0", "cita": "u1=-(0.96+1.25*u2)/1.02: relacion estatica lineal entre actuadores y canal 0 (-1.02*u1 -1.25*u2 -0.36 del ajuste)"},
+{"turno": 19, "familia": "F6", "cita": "new = prev is None or any(abs(y-prev)>1e-9): solo actualiza el modelo (RLS) cuando la lectura cambia, es decir, lectura retenida"},
+{"turno": 19, "familia": "F0", "cita": "RLS y = [u,1]@th con forgetting 0.9: modelo lineal en u con offset c, parametros re-estimados"}
+], "notas": "Sin texto explicativo. En T14-T15 el controlador integrador de u2 con signo invertido sugiere que el canal 1 es no lineal acotado (±0.96) sin que lo diga."}

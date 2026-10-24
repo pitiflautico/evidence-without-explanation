@@ -1,0 +1,47 @@
+brazo | familias distintas por episodio (sin F0) | salidas de familia / validaciones fallidas | familias verdaderas planteadas / presentes
+A | 1.80 | 10 / 21 | 14 / 37
+A_PISTA | 2.20 | 8 / 22 | 17 / 37
+A_MAS | 1.70 | 5 / 18 | 13 / 37
+X | 2.20 | 12 / 24 | 16 / 37
+
+brazo | problema | familias en orden de aparición | puntuación
+A | axe-1 | F1,F0,F2,F3 | 0.000
+A | axe-10 | F0,F3 | 0.750
+A | axe-12 | F0 | 0.000
+A | axe-2 | F1,F0 | 0.750
+A | axe-3 | F0,F1,F2 | 0.000
+A | axe-4 | F1,F2,F5 | 1.000
+A | axe-5 | F0,F6 | 0.667
+A | axe-6 | F0 | 0.417
+A | axe-8 | F0,F1,F2,F5 | 0.500
+A | axe-9 | F0,F6,F2,F5,F3 | 0.333
+A_PISTA | axe-1 | F0,F2,F1 | 0.583
+A_PISTA | axe-10 | F0,F4,F3 | 0.667
+A_PISTA | axe-12 | F0,F2 | 0.750
+A_PISTA | axe-2 | F0,F1,F2,F6 | 0.083
+A_PISTA | axe-3 | F1,F0,F2,F5,F6 | 0.417
+A_PISTA | axe-4 | F0 | 1.000
+A_PISTA | axe-5 | F6,F1,F0,F4 | 0.000
+A_PISTA | axe-6 | F0 | 1.000
+A_PISTA | axe-8 | F3,F1,F6,F2,F0 | 0.583
+A_PISTA | axe-9 | F1,F6,F0,F2 | 0.167
+A_MAS | axe-1 | F0,F2 | 0.250
+A_MAS | axe-10 | F0,F5 | 0.833
+A_MAS | axe-12 | F1,F0 | 0.000
+A_MAS | axe-2 | F0,F6 | 0.250
+A_MAS | axe-3 | F3,F1,F0,F2 | 0.000
+A_MAS | axe-4 | F1,F2,F0 | 0.917
+A_MAS | axe-5 | F1,F0,F6,F2 | 0.167
+A_MAS | axe-6 | F0 | 0.417
+A_MAS | axe-8 | F0,F1,F3 | 0.500
+A_MAS | axe-9 | F0,F6,F1,F3 | 0.083
+X | axe-1 | F0,F1,F2,F5 | 0.833
+X | axe-10 | F0,F1,F5 | 0.583
+X | axe-12 | F1,F0,F2 | 0.833
+X | axe-2 | F0,F6,F1 | 0.667
+X | axe-3 | F0,F2,F6 | 0.083
+X | axe-4 | F0 | 1.000
+X | axe-5 | F1,F6,F2,F0 | 0.000
+X | axe-6 | F0 | 1.000
+X | axe-8 | F1,F2,F6,F0,F3 | 0.500
+X | axe-9 | F0,F1,F6,F2,F5 | 0.417

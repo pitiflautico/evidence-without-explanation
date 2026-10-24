@@ -1,0 +1,7 @@
+{"afirmaciones":[
+{"turno":7,"familia":"F0","cita":"fit y1[t] = c + a u1[t-3] + b u2[t-3]: modelo lineal estatico"},
+{"turno":7,"familia":"F1","cita":"retardos d1,d2 en 1..4 y u[t-3]: la lectura refleja acciones retrasadas"},
+{"turno":7,"familia":"F2","cita":"s=arctanh(clip(Y[:,1])), |y|<0.9: canal 1 saturado cerca de +-1"},
+{"turno":10,"familia":"F6","cita":"blocks=range(3,80,4); yb = media de Y[t:t+4,0]: canal 0 constante en bloques de 4 pasos (muestreo)"},
+{"turno":13,"familia":"F2","cita":"m_tanh / m_clip: canal 1 = clip(0.533-1.344*u0[t-3]+1.665*u1[t-2], -0.97, 0.97)"}
+],"notas":"Canal 0: lineal con retardo y retencion en bloques de 4; canal 1: lineal saturado en +-1 con retardos distintos por entrada."}

@@ -1,0 +1,119 @@
+Evidencia disponible en las validaciones (D_M > 0.1) y causas del fallo del propio controlador.
+
+rama | problema | validación | cumplidos | mecanismos visibles (D_M) | causas del fallo | ¿causas visibles?
+  RETRO | 200-3 | 1 | 0/6 | modo 5.68, saturacion 0.40 | modo, saturacion | modo: sí, saturacion: sí
+  RETRO | 200-3 | 2 | 0/6 | modo 5.11, saturacion 0.89 | modo | modo: sí
+  RETRO | 200-3 | 3 | 4/6 | modo 5.14, saturacion 0.20 | — | —
+  RETRO_SIN_ALMACEN | 200-3 | 1 | 0/6 | modo 5.70, saturacion 0.40 | modo, saturacion | modo: sí, saturacion: sí
+  RETRO_SIN_ALMACEN | 200-3 | 2 | 1/6 | modo 4.41, saturacion 0.49 | modo | modo: sí
+  RETRO_SIN_ALMACEN | 200-3 | 3 | 0/6 | modo 5.87, saturacion 3.31 | modo | modo: sí
+  RETRO | 200-4 | 1 | 0/6 | deriva 0.48, modo 5.28, saturacion 2.41 | — | —
+  RETRO | 200-5 | 1 | 1/6 | acumulador 0.58, modo 2.47, saturacion 1.69 | acumulador, saturacion | acumulador: sí, saturacion: sí
+  RETRO | 200-5 | 2 | 3/6 | acumulador 0.52, modo 1.03, saturacion 0.46 | — | —
+  RETRO | 200-5 | 3 | 1/6 | acumulador 0.70, modo 1.96, saturacion 1.01 | — | —
+  RETRO_SIN_ALMACEN | 200-5 | 1 | 3/6 | acumulador 0.60, modo 2.59, saturacion 3.34 | modo, saturacion | modo: sí, saturacion: sí
+  RETRO_SIN_ALMACEN | 200-5 | 2 | 4/6 | acumulador 0.49, modo 2.27, saturacion 3.80 | — | —
+  RETRO | 200-6 | 1 | 6/6 | deriva 0.70 | — | —
+  RETRO_SIN_ALMACEN | 200-6 | 1 | 6/6 | deriva 0.70 | — | —
+  RETRO | 200-11 | 1 | 0/6 | saturacion 3.83 | saturacion | saturacion: sí
+  RETRO | 200-11 | 2 | 3/6 | saturacion 0.48 | saturacion | saturacion: sí
+  RETRO | 200-11 | 3 | 6/6 | saturacion 0.75 | — | —
+  RETRO_SIN_ALMACEN | 200-11 | 1 | 0/6 | saturacion 2.02 | — | —
+  RETRO_SIN_ALMACEN | 200-11 | 2 | 3/6 | saturacion 0.77 | saturacion | saturacion: sí
+  RETRO_SIN_ALMACEN | 200-11 | 3 | 6/6 | saturacion 0.18 | — | —
+  RETRO | 200-12 | 1 | 6/6 | deriva 0.57 | — | —
+  RETRO_SIN_ALMACEN | 200-12 | 1 | 6/6 | deriva 0.57 | — | —
+  RETRO | 200-14 | 1 | 3/6 | deriva 0.68, modo 1.51, saturacion 2.32 | — | —
+  RETRO | 200-14 | 2 | 4/6 | deriva 0.68, modo 1.57, saturacion 0.25 | — | —
+  RETRO | 200-14 | 3 | 6/6 | deriva 0.68, modo 1.54, saturacion 0.13 | — | —
+  RETRO_SIN_ALMACEN | 200-14 | 1 | 3/6 | deriva 0.68, modo 1.52, saturacion 2.24 | — | —
+  RETRO_SIN_ALMACEN | 200-14 | 2 | 0/6 | deriva 0.59, modo 1.35, saturacion 1.18 | deriva, modo, saturacion | deriva: sí, modo: sí, saturacion: sí
+  RETRO | 200-15 | 1 | 5/6 | saturacion 0.01 | — | —
+  RETRO_SIN_ALMACEN | 200-15 | 1 | 5/6 | saturacion 0.02 | — | —
+  T0 | 200-16 | 1 | 6/6 | acumulador 0.84 | — | —
+  T_TODO | 200-16 | 1 | 6/6 | acumulador 0.69 | — | —
+  T_TODO | 200-16 | 2 | 6/6 | acumulador 0.74 | — | —
+  T_HISTORIAL | 200-16 | 1 | 6/6 | acumulador 0.87 | — | —
+  T_CODIGO_TEXTO | 200-16 | 1 | 6/6 | acumulador 0.93 | — | —
+  T_SIN_CODIGO | 200-16 | 1 | 6/6 | acumulador 0.85 | — | —
+  T0 | 200-17 | 1 | 0/6 | acumulador 0.77, saturacion 2.20 | saturacion | saturacion: sí
+  T0 | 200-17 | 2 | 0/6 | acumulador 0.79, saturacion 2.83 | — | —
+  T0 | 200-17 | 3 | 6/6 | acumulador 0.75, saturacion 0.40 | — | —
+  T_TODO | 200-17 | 1 | 2/6 | acumulador 0.81, saturacion 3.19 | acumulador, saturacion | acumulador: sí, saturacion: sí
+  T_TODO | 200-17 | 2 | 5/6 | acumulador 0.67, saturacion 0.36 | — | —
+  T_TODO | 200-17 | 3 | 5/6 | acumulador 0.67, saturacion 0.15 | — | —
+  T_HISTORIAL | 200-17 | 1 | 1/6 | acumulador 0.87, saturacion 1.71 | saturacion | saturacion: sí
+  T_HISTORIAL | 200-17 | 2 | 1/6 | acumulador 0.84, saturacion 1.41 | saturacion | saturacion: sí
+  T_HISTORIAL | 200-17 | 3 | 6/6 | acumulador 0.87, saturacion 0.78 | — | —
+  T_CODIGO_TEXTO | 200-17 | 1 | 1/6 | acumulador 0.95, saturacion 1.96 | — | —
+  T_CODIGO_TEXTO | 200-17 | 2 | 1/6 | acumulador 0.96, saturacion 0.45 | — | —
+  T_CODIGO_TEXTO | 200-17 | 3 | 5/6 | acumulador 0.99, saturacion 0.35 | — | —
+  T_SIN_CODIGO | 200-17 | 1 | 4/6 | acumulador 0.81, saturacion 0.37 | saturacion | saturacion: sí
+  T0 | 200-18 | 1 | 6/6 | acumulador 0.80 | — | —
+  T_TODO | 200-18 | 1 | 0/6 | acumulador 0.99 | acumulador | acumulador: sí
+  T_TODO | 200-18 | 2 | 6/6 | acumulador 0.72 | — | —
+  T_HISTORIAL | 200-18 | 1 | 6/6 | acumulador 0.86 | — | —
+  T_CODIGO_TEXTO | 200-18 | 1 | 6/6 | acumulador 0.74 | — | —
+  T_SIN_CODIGO | 200-18 | 1 | 6/6 | acumulador 0.83 | — | —
+  T0 | 200-20 | 1 | 5/6 | retardo 0.40, saturacion 0.10 | — | —
+  T0 | 200-20 | 2 | 0/6 | retardo 0.76, saturacion 0.16 | retardo | retardo: sí
+  T0 | 200-20 | 3 | 6/6 | retardo 0.31, saturacion 0.06 | — | —
+  T_TODO | 200-20 | 1 | 6/6 | retardo 0.27, saturacion 0.05 | — | —
+  T_HISTORIAL | 200-20 | 1 | 6/6 | retardo 0.26, saturacion 0.24 | — | —
+  T_CODIGO_TEXTO | 200-20 | 1 | 6/6 | retardo 0.29, saturacion 0.04 | — | —
+  T_SIN_CODIGO | 200-20 | 1 | 5/6 | retardo 0.39, saturacion 0.23 | — | —
+  T_SIN_CODIGO | 200-20 | 2 | 6/6 | retardo 0.39, saturacion 0.11 | — | —
+  T0 | 200-24 | 1 | 4/6 | modo 0.73, saturacion 4.50 | — | —
+  T0 | 200-24 | 2 | 5/6 | modo 0.67, saturacion 3.85 | — | —
+  T_TODO | 200-24 | 1 | 6/6 | modo 0.70, saturacion 0.10 | — | —
+  T_HISTORIAL | 200-24 | 1 | 4/6 | modo 0.72, saturacion 4.50 | — | —
+  T_HISTORIAL | 200-24 | 2 | 4/6 | modo 0.72, saturacion 4.93 | saturacion | saturacion: sí
+  T_HISTORIAL | 200-24 | 3 | 4/6 | modo 0.72, saturacion 0.36 | — | —
+  T_CODIGO_TEXTO | 200-24 | 1 | 4/6 | modo 0.73, saturacion 4.57 | — | —
+  T_CODIGO_TEXTO | 200-24 | 2 | 4/6 | modo 0.73, saturacion 4.21 | — | —
+  T_CODIGO_TEXTO | 200-24 | 3 | 4/6 | modo 0.72, saturacion 3.75 | — | —
+  T_SIN_CODIGO | 200-24 | 1 | 6/6 | modo 0.72, saturacion 0.13 | — | —
+  T0 | 200-27 | 1 | 6/6 | saturacion 0.15 | — | —
+  T_TODO | 200-27 | 1 | 6/6 | saturacion 0.05 | — | —
+  T_HISTORIAL | 200-27 | 1 | 6/6 | saturacion 0.15 | — | —
+  T_CODIGO_TEXTO | 200-27 | 1 | 6/6 | saturacion 0.05 | — | —
+  T_SIN_CODIGO | 200-27 | 1 | 5/6 | saturacion 0.79 | — | —
+  T0 | 200-28 | 1 | 6/6 | acumulador 0.89, aliasing 0.19 | — | —
+  T_TODO | 200-28 | 1 | 3/6 | acumulador 0.76, aliasing 0.15 | acumulador, aliasing | acumulador: sí, aliasing: sí
+  T_TODO | 200-28 | 2 | 4/6 | acumulador 0.59, aliasing 0.12 | acumulador | acumulador: sí
+  T_TODO | 200-28 | 3 | 6/6 | acumulador 0.73, aliasing 0.15 | — | —
+  T_HISTORIAL | 200-28 | 1 | 0/6 | acumulador 2.21, aliasing 0.35 | — | —
+  T_HISTORIAL | 200-28 | 2 | 6/6 | acumulador 0.83, aliasing 0.17 | — | —
+  T_CODIGO_TEXTO | 200-28 | 1 | 0/6 | acumulador 0.81, aliasing 0.18 | aliasing | aliasing: sí
+  T_CODIGO_TEXTO | 200-28 | 2 | 0/6 | acumulador 1.59, aliasing 0.30 | acumulador, aliasing | acumulador: sí, aliasing: sí
+  T_SIN_CODIGO | 200-28 | 1 | 0/6 | acumulador 1.08, aliasing 0.23 | — | —
+  T_SIN_CODIGO | 200-28 | 2 | 3/6 | acumulador 0.64, aliasing 0.13 | acumulador, aliasing | acumulador: sí, aliasing: sí
+  T_SIN_CODIGO | 200-28 | 3 | 5/6 | acumulador 0.65, aliasing 0.13 | — | —
+  T0 | 200-29 | 1 | 0/6 | deriva 2.09, histeresis 1.03 | deriva | deriva: sí
+  T0 | 200-29 | 2 | 0/6 | deriva 2.24, histeresis 1.03 | deriva | deriva: sí
+  T0 | 200-29 | 3 | 5/6 | deriva 2.50, histeresis 1.03 | — | —
+  T_TODO | 200-29 | 1 | 1/6 | deriva 2.35, histeresis 1.03 | — | —
+  T_TODO | 200-29 | 2 | 1/6 | deriva 2.38, histeresis 1.03 | deriva | deriva: sí
+  T_TODO | 200-29 | 3 | 4/6 | deriva 2.48, histeresis 1.03 | deriva | deriva: sí
+  T_HISTORIAL | 200-29 | 1 | 1/6 | deriva 2.22, histeresis 1.03 | deriva | deriva: sí
+  T_HISTORIAL | 200-29 | 2 | 2/6 | deriva 2.28, histeresis 1.03 | deriva | deriva: sí
+  T_CODIGO_TEXTO | 200-29 | 1 | 1/6 | deriva 2.28, histeresis 1.03 | deriva | deriva: sí
+  T_CODIGO_TEXTO | 200-29 | 2 | 2/6 | deriva 2.28, histeresis 1.03 | deriva | deriva: sí
+  T_CODIGO_TEXTO | 200-29 | 3 | 2/6 | deriva 2.02, histeresis 1.03 | — | —
+  T_SIN_CODIGO | 200-29 | 1 | 1/6 | deriva 2.32, histeresis 1.03 | deriva | deriva: sí
+  T_SIN_CODIGO | 200-29 | 2 | 6/6 | deriva 2.20, histeresis 1.03 | — | —
+
+Validaciones analizadas: 101; la máquina verdadera reproduce exactamente lo registrado en 101.
+
+Mecanismos de cada máquina hechos visibles por las validaciones (validaciones en que lo fueron / en que existían):
+  retardo: 8/8
+  acumulador: 41/41
+  histeresis: 13/13
+  modo: 27/27
+  aliasing: 11/11
+  saturacion: 53/61
+  deriva: 23/23
+
+Causas de validaciones fallidas (mecanismo × validación), según fueran visibles en esa misma validación:
+  brazos tipo A (RETRO_SIN_ALMACEN, T0): visibles 14, no visibles 0; de ellas en episodios que acabaron fallando: visibles 9, no visibles 0
+  resto de brazos: visibles 29, no visibles 0; de ellas en episodios que acabaron fallando: visibles 14, no visibles 0

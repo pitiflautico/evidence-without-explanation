@@ -1,0 +1,388 @@
+ENUNCIADO:
+Problema 1 de 1.
+Máquina: 2 actuadores (de -3.0 a 3.0), 2 canales.
+Objetivo por canal: [1.48, -0.73], tolerancia ±0.35.
+Escenarios de evaluación: 60 pasos; se cumple si la salida está dentro de la tolerancia en al menos el 90 % de los 30 pasos finales.
+Presupuesto de pasos con esta máquina: 400.
+Tienes un taller propio (una carpeta) donde puedes ejecutar Python. Su subcarpeta almacen/ empieza así en este problema.
+Contenido actual de almacen/: vacío.
+Lo que observas al actuar sobre la máquina (también desde código) queda en exploracion.jsonl del taller.
+
+
+=== TURNO 1 (modelo) ===
+[herramienta] leer({})
+[resultado] {"lecturas": [0.309, -1.009], "pasos_restantes": 400}
+=== TURNO 2 (modelo) ===
+[herramienta] actuar(15 pasos, reiniciar=False): [[0, 0], [0, 0], [0, 0], [1, 0], [1, 0], [1, 0], [0, 0], [0, 0], [0, 0], [0, 1], [0, 1], [0, 1], [0, 0], [0, 0], [0, 0]]
+[resultado] {"lecturas": [[0.316, -1.0], [0.29, -1.016], [0.304, -1.002], [-0.134, -0.98], [-0.089, -0.971], [-0.131, -0.991], [-0.144, -0.978], [0.571, -1.0], [0.596, -0.992], [0.586, -0.999], [0.547, -0.949], [1.284, 0.969], [1.233, 0.973], [1.288, 0.974], [1.256, 0.856]], "pasos_restantes": 385}
+=== TURNO 3 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina
+r=maquina.actuar([[0,0]]*5+[[-1,0]]*4+[[0,0]]*4+[[0,-1]]*4+[[0,0]]*4)
+for i,x in enumerate(r if isinstance(r,list) else r['lecturas']): print(i,x)
+[resultado] 0 [-0.187, 0.851]
+1 [-0.161, 0.841]
+2 [-0.143, 0.846]
+3 [-0.114, 0.856]
+4 [-0.136, 0.858]
+5 [-0.135, 0.876]
+6 [-0.116, 0.872]
+7 [-0.162, 0.86]
+8 [-0.835, 1.007]
+9 [-0.843, 0.998]
+10 [-0.821, 0.958]
+11 [-0.861, 1.021]
+12 [-0.155, 0.865]
+13 [-0.129, 0.843]
+14 [-0.136, 0.852]
+15 [-0.161, -0.514]
+16 [-1.535, -0.536]
+17 [-1.544, -0.532]
+18 [-1.525, -0.485]
+19 [-1.553, 0.876]
+20 [-0.172, 0.856]
+
+[pasos usados: 21; restantes: 364]
+=== TURNO 4 (modelo) ===
+[herramienta] ejecutar_python:
+import numpy as np, json
+rng=np.random.default_rng(0)
+seq=[]
+for k in range(25):
+    a=[float(rng.choice([-1.5,0,1.5])),float(rng.choice([-1.5,0,1.5]))]
+    seq+= [a]*4
+r=maquina.actuar(seq)
+Y=np.array(r if isinstance(r,list) else r['lecturas'])
+np.save('Y1.npy',Y); np.save('U1.npy',np.array(seq))
+for i in range(len(seq)): print(i,seq[i],Y[i])
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-3/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 7, in <module>
+NameError: name 'maquina' is not defined
+
+[pasos usados: 0; restantes: 364]
+=== TURNO 5 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina
+import numpy as np, json
+rng=np.random.default_rng(0)
+seq=[]
+for k in range(25):
+    a=[float(rng.choice([-1.5,0,1.5])),float(rng.choice([-1.5,0,1.5]))]
+    seq+= [a]*4
+r=maquina.actuar(seq)
+Y=np.array(r if isinstance(r,list) else r['lecturas'])
+np.save('Y1.npy',Y); np.save('U1.npy',np.array(seq))
+for i in range(len(seq)): print(i,seq[i],Y[i])
+[resultado] 0 [1.5, 0.0] [-0.159  0.879]
+1 [1.5, 0.0] [-0.109  0.85 ]
+2 [1.5, 0.0] [-0.111  0.872]
+3 [1.5, 0.0] [ 0.904 -0.952]
+4 [0.0, -1.5] [ 0.901 -0.908]
+5 [0.0, -1.5] [ 0.923 -0.873]
+6 [0.0, -1.5] [ 0.938 -0.972]
+7 [0.0, -1.5] [-2.251 -0.983]
+8 [-1.5, -1.5] [-2.277 -0.987]
+9 [-1.5, -1.5] [-2.226 -0.998]
+10 [-1.5, -1.5] [-2.238 -0.979]
+11 [-1.5, -1.5] [-3.28  -0.968]
+12 [-1.5, -1.5] [-3.286 -1.014]
+13 [-1.5, -1.5] [-3.312 -0.987]
+14 [-1.5, -1.5] [-3.241 -1.017]
+15 [-1.5, -1.5] [-3.299 -1.014]
+16 [-1.5, 1.5] [-3.284 -1.015]
+17 [-1.5, 1.5] [-3.315 -0.988]
+18 [-1.5, 1.5] [-3.285  1.004]
+19 [-1.5, 1.5] [0.909 0.991]
+20 [0.0, 1.5] [0.884 0.976]
+21 [0.0, 1.5] [0.908 0.979]
+22 [0.0, 1.5] [0.879 0.988]
+23 [0.0, 1.5] [1.972 0.953]
+24 [0.0, 0.0] [1.986 0.987]
+25 [0.0, 0.0] [1.944 0.974]
+26 [0.0, 0.0] [1.978 0.859]
+27 [0.0, 0.0] [-0.111  0.882]
+28 [1.5, 1.5] [-0.159  0.875]
+29 [1.5, 1.5] [-0.113  0.827]
+30 [1.5, 1.5] [-0.147  0.993]
+31 [1.5, 1.5] [3.01  0.972]
+32 [0.0, 0.0] [2.992 0.967]
+33 [0.0, 0.0] [3.026 0.999]
+34 [0.0, 0.0] [ 3.019 -0.93 ]
+35 [0.0, 0.0] [-0.12   0.833]
+36 [0.0, 1.5] [-0.133  0.883]
+37 [0.0, 1.5] [-0.148  0.865]
+38 [0.0, 1.5] [-0.14   0.983]
+39 [0.0, 1.5] [1.969 1.016]
+40 [-1.5, 1.5] [1.95  0.996]
+41 [-1.5, 1.5] [1.951 1.008]
+42 [-1.5, 1.5] [1.951 1.007]
+43 [-1.5, 1.5] [0.915 0.955]
+44 [1.5, -1.5] [0.898 1.   ]
+45 [1.5, -1.5] [0.898 0.999]
+46 [1.5, -1.5] [0.919 0.557]
+47 [1.5, -1.5] [-1.16  -1.003]
+48 [0.0, 1.5] [-1.217 -1.021]
+49 [0.0, 1.5] [-1.197 -1.035]
+50 [0.0, 1.5] [- […]
+=== TURNO 6 (modelo) ===
+[herramienta] ejecutar_python:
+import numpy as np
+Y=np.load('Y1.npy');U=np.load('U1.npy')
+for t in range(5,100):
+    print(t, U[t-2], U[t-3], U[t-4],U[t-5], Y[t,0].round(2), Y[t,1].round(2))
+[resultado]  [0. 0.] [0. 0.] [0. 0.] -0.11 0.83
+30 [1.5 1.5] [0. 0.] [0. 0.] [0. 0.] -0.15 0.99
+31 [1.5 1.5] [1.5 1.5] [0. 0.] [0. 0.] 3.01 0.97
+32 [1.5 1.5] [1.5 1.5] [1.5 1.5] [0. 0.] 2.99 0.97
+33 [1.5 1.5] [1.5 1.5] [1.5 1.5] [1.5 1.5] 3.03 1.0
+34 [0. 0.] [1.5 1.5] [1.5 1.5] [1.5 1.5] 3.02 -0.93
+35 [0. 0.] [0. 0.] [1.5 1.5] [1.5 1.5] -0.12 0.83
+36 [0. 0.] [0. 0.] [0. 0.] [1.5 1.5] -0.13 0.88
+37 [0. 0.] [0. 0.] [0. 0.] [0. 0.] -0.15 0.86
+38 [0.  1.5] [0. 0.] [0. 0.] [0. 0.] -0.14 0.98
+39 [0.  1.5] [0.  1.5] [0. 0.] [0. 0.] 1.97 1.02
+40 [0.  1.5] [0.  1.5] [0.  1.5] [0. 0.] 1.95 1.0
+41 [0.  1.5] [0.  1.5] [0.  1.5] [0.  1.5] 1.95 1.01
+42 [-1.5  1.5] [0.  1.5] [0.  1.5] [0.  1.5] 1.95 1.01
+43 [-1.5  1.5] [-1.5  1.5] [0.  1.5] [0.  1.5] 0.92 0.96
+44 [-1.5  1.5] [-1.5  1.5] [-1.5  1.5] [0.  1.5] 0.9 1.0
+45 [-1.5  1.5] [-1.5  1.5] [-1.5  1.5] [-1.5  1.5] 0.9 1.0
+46 [ 1.5 -1.5] [-1.5  1.5] [-1.5  1.5] [-1.5  1.5] 0.92 0.56
+47 [ 1.5 -1.5] [ 1.5 -1.5] [-1.5  1.5] [-1.5  1.5] -1.16 -1.0
+48 [ 1.5 -1.5] [ 1.5 -1.5] [ 1.5 -1.5] [-1.5  1.5] -1.22 -1.02
+49 [ 1.5 -1.5] [ 1.5 -1.5] [ 1.5 -1.5] [ 1.5 -1.5] -1.2 -1.03
+50 [0.  1.5] [ 1.5 -1.5] [ 1.5 -1.5] [ 1.5 -1.5] -1.2 1.01
+51 [0.  1.5] [0.  1.5] [ 1.5 -1.5] [ 1.5 -1.5] 1.96 0.99
+52 [0.  1.5] [0.  1.5] [0.  1.5] [ 1.5 -1.5] 1.96 0.96
+53 [0.  1.5] [0.  1.5] [0.  1.5] [0.  1.5] 1.95 0.98
+54 [ 0.  -1.5] [0.  1.5] [0.  1.5] [0.  1.5] 1.98 -1.0
+55 [ 0.  -1.5] [ 0.  -1.5] [0.  1.5] [0.  1.5] -2.26 -1.01
+56 [ 0.  -1.5] [ 0.  -1.5] [ 0.  -1.5] [0.  1.5] -2.27 […]
+=== TURNO 7 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina, numpy as np
+rng=np.random.default_rng(1)
+seq=rng.uniform(-3,3,(80,2)).round(3).tolist()
+r=maquina.actuar(seq)
+Y=np.array(r if isinstance(r,list) else r['lecturas'])
+np.save('Y2.npy',Y); np.save('U2.npy',np.array(seq))
+U=np.array(seq)
+# fit y1[t] = c + a u1[t-3] + b u2[t-3]
+t=np.arange(3,80)
+A=np.c_[np.ones(len(t)),U[t-3]]
+c,res,_,_=np.linalg.lstsq(A,Y[t,0],rcond=None); print(c, np.std(Y[t,0]-A@c))
+for d1 in range(1,5):
+  for d2 in range(1,5):
+    tt=np.arange(5,80)
+    s=np.arctanh(np.clip(Y[tt,1],-0.995,0.995))
+    m=np.abs(Y[tt,1])<0.9
+    A=np.c_[np.ones(len(tt)),U[tt-d1,0],U[tt-d2,1]][m]
+    cc=np.linalg.lstsq(A,s[m],rcond=None)[0]; print(d1,d2,m.sum(),cc,np.std(s[m]-A@cc))
+[resultado] [-0.2259768  -0.14737359  0.33791783] 2.167097419427428
+1 1 14 [-0.03756523  0.0032653   0.07182299] 0.6973907407576913
+1 2 14 [0.08573458 0.06654499 0.11956287] 0.6881075735991499
+1 3 14 [ 0.18226972  0.04870316 -0.195954  ] 0.6536541974043576
+1 4 14 [-0.01839873  0.00989127  0.01798236] 0.7068039210921775
+2 1 14 [-0.04211149 -0.0509204   0.08532519] 0.6921104131170607
+2 2 14 [ 0.06809824 -0.04221815  0.09581744] 0.6905454625044406
+2 3 14 [ 0.18467163 -0.05737449 -0.19722595] 0.6505001802161577
+2 4 14 [-0.01640195 -0.02877283  0.01582719] 0.7052276948603508
+3 1 14 [-0.03816277 -0.00696892  0.07055976] 0.6973055010772173
+3 2 14 [ 1.14771426 -1.53620172  1.81022821] 0.121627428759905
+3 3 14 [ 0.17249334 -0.04410747 -0.19336007] 0.6533320097866427
+3 4 14 [-0.02231122 -0.02108242  0.01875024] 0.7059800687016907
+4 1 14 [-0.04839258  0.04451297  0.07569621] 0.6961333248255219
+4 2 14 [0.05583688 0.05854888 0.09684123] 0.6921996414881022
+4 3 14 [ 0.17699306  0.14650652 -0.22193302] 0.6448615830365096
+4 4 14 [-0.02152911  0.01806576  0.01698667] 0.7067717723325538
+
+[pasos usados: 80; restantes: 184]
+=== TURNO 8 (modelo) ===
+[herramienta] ejecutar_python:
+for i in range(3,80): print(i, U[i-3].round(2), U[i-2].round(2), Y[i].round(2), round(-0.13+0.7*U[i-3,0]+1.4*U[i-3,1],2))
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-3/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 1, in <module>
+NameError: name 'U' is not defined
+
+[pasos usados: 0; restantes: 184]
+=== TURNO 9 (modelo) ===
+[herramienta] ejecutar_python:
+import numpy as np
+Y=np.load('Y2.npy');U=np.load('U2.npy')
+for i in range(3,80): print(i, U[i-3].round(2), U[i-2].round(2), Y[i].round(2), round(-0.13+0.7*U[i-3,0]+1.4*U[i-3,1],2))
+[resultado] 3 [0.07 2.7 ] [-2.13  2.69] [3.68 0.99] 3.7
+4 [-2.13  2.69] [-1.13 -0.46] [3.65 0.99] 2.14
+5 [-1.13 -0.46] [ 1.97 -0.55] [3.68 0.99] -1.56
+6 [ 1.97 -0.55] [ 0.3  -2.84] [ 3.68 -0.97] 0.48
+7 [ 0.3  -2.84] [1.52 0.23] [ 0.42 -1.  ] -3.89
+8 [1.52 0.23] [-1.02  1.73] [0.42 1.02] 1.26
+9 [-1.02  1.73] [-1.18 -0.28] [0.42 1.  ] 1.58
+10 [-1.18 -0.28] [-2.2  -0.58] [0.37 0.96] -1.35
+11 [-2.2  -0.58] [-1.78 -1.43] [-3.68  0.95] -2.48
+12 [-1.78 -1.43] [ 1.5  -1.32] [-3.65  0.97] -3.37
+13 [ 1.5  -1.32] [-0.09  2.88] [-3.7   0.97] -0.92
+14 [-0.09  2.88] [2.77 1.35] [-3.63  0.95] 3.85
+15 [2.77 1.35] [ 0.25 -1.34] [-0.09 -0.99] 3.7
+16 [ 0.25 -1.34] [-2.04  2.82] [-0.08  0.95] -1.83
+17 [-2.04  2.82] [ 0.1  -2.31] [-0.1   0.04] 2.39
+18 [ 0.1  -2.31] [0.74 1.66] [-0.04  1.01] -3.29
+19 [0.74 1.66] [0.68 2.5 ] [3.89 0.98] 2.71
+20 [0.68 2.5 ] [-2.76  0.17] [3.91 0.28] 3.85
+21 [-2.76  0.17] [-0.24 -2.63] [3.89 0.47] -1.82
+22 [-0.24 -2.63] [0.85 2.12] [3.88 0.96] -3.98
+23 [0.85 2.12] [ 0.56 -1.44] [-1.59 -1.01] 3.43
+24 [ 0.56 -1.44] [2.04 0.06] [-1.58 -0.98] -1.75
+25 [2.04 0.06] [0.06 1.52] [-1.55 -0.99] 1.38
+26 [0.06 1.52] [-2.11  1.92] [-1.54  1.01] 2.04
+27 [-2.11  1.92] [1.1  1.72] [0.8  1.03] 1.08
+28 [1.1  1.72] [-1.85  1.81] [0.77 1.01] 3.05
+29 [-1.85  1.81] [-1.85 -2.51] [ 0.78 -0.41] 1.11
+30 [-1.85 -2.51] [2.13 2.17] [0.81 0.99] -4.94
+31 [2.13 2.17] [ 2.26 -0.17] [ 1.11 -0.97] 4.4
+32 [ 2.26 -0.17] [-1.36 -2.96] [ 1.11 -0.99] 1.21
+33 [-1.36 -2.96] [0.87 1.32] [1.12 0.99] -5.22
+34 [0.87 1.32]  […]
+=== TURNO 10 (modelo) ===
+[herramienta] ejecutar_python:
+blocks=[(t) for t in range(3,80,4)]
+yb=np.array([Y[t:t+4,0].mean() for t in blocks[:-1]])
+print(np.array([Y[t:t+4,0].std() for t in blocks[:-1]]).max())
+for lag in range(0,8):
+    rows=[];ys=[]
+    for j,t in enumerate(blocks[:-1]):
+        if t-lag-3<0: continue
+        w=U[t-lag-3:t-lag+1] if False else None
+    # try single sample lag
+    idx=[t-lag for t in blocks[:-1] if t-lag>=0]
+    yy=[yb[j] for j,t in enumerate(blocks[:-1]) if t-lag>=0]
+    A=np.c_[np.ones(len(idx)),U[idx]]
+    c=np.linalg.lstsq(A,yy,rcond=None)[0]; print('single',lag,c.round(3),np.std(yy-A@c).round(3))
+for lag in range(0,8):
+    idx=[t-lag for t in blocks[:-1] if t-lag-3>=0]
+    yy=[yb[j] for j,t in enumerate(blocks[:-1]) if t-lag-3>=0]
+    M=np.array([U[i-3:i+1].mean(0) for i in idx])
+    A=np.c_[np.ones(len(idx)),M]
+    c=np.linalg.lstsq(A,yy,rcond=None)[0]; print('mean4',lag,c.round(3),np.std(yy-A@c).round(3))
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-3/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 2, in <module>
+NameError: name 'np' is not defined
+
+[pasos usados: 0; restantes: 184]
+=== TURNO 11 (modelo) ===
+[herramienta] ejecutar_python:
+import numpy as np
+Y=np.load('Y2.npy');U=np.load('U2.npy')
+blocks=list(range(3,79,4))
+yb=np.array([Y[t:t+4,0].mean() for t in blocks])
+print(np.array([Y[t:t+4,0].std() for t in blocks]).max())
+for lag in range(0,8):
+    idx=[t-lag for t in blocks if t-lag>=0]
+    yy=np.array([yb[j] for j,t in enumerate(blocks) if t-lag>=0])
+    A=np.c_[np.ones(len(idx)),U[idx]]
+    c=np.linalg.lstsq(A,yy,rcond=None)[0]; print('single',lag,c.round(3),np.std(yy-A@c).round(3))
+for lag in range(0,8):
+    idx=[t-lag for t in blocks if t-lag-3>=0]
+    yy=np.array([yb[j] for j,t in enumerate(blocks) if t-lag-3>=0])
+    M=np.array([U[i-3:i+1].mean(0) for i in idx])
+    A=np.c_[np.ones(len(idx)),M]
+    c=np.linalg.lstsq(A,yy,rcond=None)[0]; print('mean4',lag,c.round(3),np.std(yy-A@c).round(3))
+[resultado] 0.026413774815425353
+single 0 [-0.534  0.285 -0.551] 2.099
+single 1 [-0.223 -0.464  0.23 ] 2.062
+single 2 [-0.017  0.138  1.273] 1.041
+single 3 [-0.619  0.342  0.456] 2.079
+single 4 [-0.468 -0.02   0.058] 2.124
+single 5 [-0.466 -0.586  0.032] 1.838
+single 6 [-0.485  0.144  0.167] 2.109
+single 7 [-0.916  0.     0.853] 1.583
+mean4 0 [-0.178 -0.141  1.423] 1.909
+mean4 1 [-0.359  0.134  1.402] 1.698
+mean4 2 [-0.286 -0.461  1.419] 1.722
+mean4 3 [-0.366 -0.524  0.574] 2.046
+mean4 4 [-0.358 -0.496  0.912] 1.894
+mean4 5 [-0.249 -0.997  0.546] 1.906
+mean4 6 [-0.381 -0.255  0.883] 2.036
+mean4 7 [-0.404 -0.408  0.76 ] 2.065
+
+[pasos usados: 0; restantes: 184]
+=== TURNO 12 (modelo) ===
+[herramienta] ejecutar_python:
+import numpy as np
+Y=np.load('Y2.npy');U=np.load('U2.npy')
+blocks=list(range(11,79,4))
+yb=lambda t: Y[t:t+4,0].mean()
+yy=np.array([yb(t) for t in blocks])
+A=np.c_[np.ones(len(blocks)),[np.r_[U[t-8:t+1].ravel()] for t in blocks]]
+c=np.linalg.lstsq(A,yy,rcond=None)[0]; print(c.round(2).reshape(-1) , np.std(yy-A@c))
+A=np.c_[np.ones(len(blocks)),[yb(t-4) for t in blocks],[np.r_[U[t-4:t+1].ravel()] for t in blocks]]
+c=np.linalg.lstsq(A,yy,rcond=None)[0]; print(c.round(2), np.std(yy-A@c))
+[resultado] [-0.03 -0.05 -0.04  0.04  0.04 -0.16 -0.01 -0.04 -0.03 -0.05 -0.01  0.67
+ -0.09 -0.02  1.39 -0.07 -0.07 -0.03  0.03] 2.3014686270737715e-15
+[-0.14  0.   -0.   -0.    0.7  -0.   -0.    1.4  -0.   -0.    0.   -0.  ] 0.004468095553770174
+
+[pasos usados: 0; restantes: 184]
+=== TURNO 13 (modelo) ===
+[herramienta] ejecutar_python:
+import numpy as np
+from scipy.optimize import least_squares
+Y1=np.load('Y1.npy');U1=np.load('U1.npy');Y2=np.load('Y2.npy');U2=np.load('U2.npy')
+# concatenate with continuity (data1 then data2 contiguous)
+Y=np.r_[Y1,Y2];U=np.r_[U1,U2]
+t=np.arange(4,len(U))
+X=np.c_[U[t-3,0],U[t-2,1]]; y=Y[t,1]
+def m_tanh(p,X): return p[3]*np.tanh(p[0]+p[1]*X[:,0]+p[2]*X[:,1])
+def m_clip(p,X): return np.clip(p[0]+p[1]*X[:,0]+p[2]*X[:,1],-p[3],p[3])
+for f in [m_tanh,m_clip]:
+    r=least_squares(lambda p:f(p,X)-y,[1,-1.5,1.8,1.0])
+    e=f(r.x,X)-y
+    print(f.__name__,r.x.round(3),np.std(e).round(4), np.abs(e).max().round(3))
+    m=np.abs(y)<0.9
+    print(' inner', np.std(e[m]).round(3), m.sum())
+[resultado] m_tanh [ 0.628 -1.675  2.077  0.99 ] 0.3471 1.561
+ inner 0.135 37
+m_clip [ 0.533 -1.344  1.665  0.971] 0.3468 1.552
+ inner 0.116 37
+
+[pasos usados: 0; restantes: 184]
+=== TURNO 14 (modelo) ===
+[herramienta] ejecutar_python:
+import numpy as np
+Y1=np.load('Y1.npy');U1=np.load('U1.npy');Y2=np.load('Y2.npy');U2=np.load('U2.npy')
+Y=np.r_[Y1,Y2];U=np.r_[U1,U2]
+t=np.arange(4,len(U))
+s=0.533-1.344*U[t-3,0]+1.665*U[t-2,1]
+p=np.clip(s,-.97,.97)
+for i,tt in enumerate(t):
+    if abs(p[i]-Y[tt,1])>0.2: print(tt, U[tt-4:tt].round(2).tolist(), Y[tt-1:tt+1,1].round(2), s[i].round(2), Y[tt,0].round(2))
+[resultado] -1.5]] [-0.98 -0.97] 0.05 -3.28
+12 [[-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5]] [-0.97 -1.01] 0.05 -3.29
+13 [[-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5]] [-1.01 -0.99] 0.05 -3.31
+14 [[-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5]] [-0.99 -1.02] 0.05 -3.24
+15 [[-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5]] [-1.02 -1.01] 0.05 -3.3
+16 [[-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5]] [-1.01 -1.01] 0.05 -3.28
+17 [[-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5], [-1.5, 1.5]] [-1.01 -0.99] 0.05 -3.32
+26 [[0.0, 1.5], [0.0, 1.5], [0.0, 0.0], [0.0, 0.0]] [0.97 0.86] 0.53 1.98
+27 [[0.0, 1.5], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]] [0.86 0.88] 0.53 -0.11
+28 [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]] [0.88 0.88] 0.53 -0.16
+29 [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [1.5, 1.5]] [0.88 0.83] 0.53 -0.11
+35 [[1.5, 1.5], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]] [-0.93  0.83] 0.53 -0.12
+36 [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]] [0.83 0.88] 0.53 -0.13
+37 [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 1.5]] [0.88 0.86] 0.53 -0.15
+46 [[-1.5, 1.5], [-1.5, 1.5], [1.5, -1.5], [1.5, -1.5]] [1.   0.56] 0.05 0.92
+74 [[-1.5, 0.0], [-1.5, 0.0], [-1.5, -1.5], [-1.5, -1.5]] [1.   0.51] 0.05 -1.2
+75 [[-1.5, 0.0], [-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5]] [0.51 0.52] 0.05 -3.25
+76 [[-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5]] [0.52 0.51] 0.05 -3.31
+77 [[-1.5, -1.5], [-1.5, -1.5], [-1.5, -1.5], [0.0, 0.0]] [0.51 0.56] 0.05 -3.27
+79 [[-1.5, -1.5], [0.0, 0.0],  […]

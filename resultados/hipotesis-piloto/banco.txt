@@ -1,0 +1,24 @@
+Banco equilibrado (notas/diseno-a-aplus-x.md §11), generado y comprobado el 24/10 antes de la primera llamada.
+Orden: ejecutor.hipotesis_correr congelar --semilla axe --n 10 --con-aliasing 7 (primera vuelta; la regla de reserva no hizo falta).
+d = max(ingenuo, generico).
+
+problema | aliasing | tipos | ideal | ingenuo | generico | d
+axe-2 | sí | acumulador,aliasing,histeresis,modo | 1.000 | 0.000 | 0.167 | 0.167
+axe-3 | sí | aliasing,histeresis,modo,retardo,saturacion | 1.000 | 0.000 | 0.000 | 0.000
+axe-5 | sí | aliasing,histeresis,modo,saturacion | 1.000 | 0.000 | 0.000 | 0.000
+axe-6 | sí | aliasing,histeresis,modo,saturacion | 1.000 | 0.000 | 0.000 | 0.000
+axe-8 | sí | acumulador,aliasing,modo,saturacion | 1.000 | 0.000 | 0.583 | 0.583
+axe-9 | sí | aliasing,histeresis,modo,saturacion | 1.000 | 0.000 | 0.000 | 0.000
+axe-12 | sí | aliasing,histeresis,saturacion | 1.000 | 0.000 | 0.000 | 0.000
+axe-1 | no | histeresis,modo,retardo,saturacion | 1.000 | 0.000 | 0.000 | 0.000
+axe-4 | no | acumulador,histeresis,saturacion | 1.000 | 0.000 | 0.167 | 0.167
+axe-10 | no | histeresis,retardo | 1.000 | 0.000 | 0.000 | 0.000
+con aliasing: 7 problemas; d media 0.107 (máx. 0.583); ideal medio 1.000; no lineales por problema 3.57; con lineal acompañante 3
+sin aliasing: 3 problemas; d media 0.056 (máx. 0.167); ideal medio 1.000; no lineales por problema 2.00; con lineal acompañante 3
+diferencia de d media (sin − con): -0.052; criterio (≤ 0.15 y ningún problema sin aliasing con d > 0.5): se cumple
+bancos/maquinas/hipotesis_equilibrado.json: 10 problemas; sha256 1a498e33c55185645a3f9f0eb5937db34ab43a1ecd180a6c48fb388d0ea81545
+
+Diferencias registradas que el criterio no cubre:
+- Mecanismos: con aliasing 3,57 no lineales por problema (2,57 sin contar el aliasing); sin aliasing 2,00. El grupo sin aliasing tiene menos mecanismos.
+- Efecto suelo: 7 de 10 problemas tienen d = 0, así que d no ordena la dificultad por debajo de lo que resuelven los métodos convencionales. Que d sea comparable no prueba que la dificultad para el modelo lo sea.
+- axe-8 (con aliasing) tiene d = 0,583: es el más fácil para los métodos convencionales de todo el banco.

@@ -1,0 +1,1 @@
+{"afirmaciones": [{"turno": 6, "familia": "F1", "cita": "regresión lineal de y[t] con y[t-1], acciones retrasadas dly=0..3 y término constante"}, {"turno": 10, "familia": "F0", "cita": "reparto suma/diferencia u1=(w+v)/2, u2=(w-v)/2 con ganancias fijas por canal"}], "notas": ""}

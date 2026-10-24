@@ -1,0 +1,3 @@
+{"afirmaciones":[
+{"turno":6,"familia":"F0","cita":"J=[[-0.6,-0.62],[0.43,-0.8]]: jacobiano constante, u += k*Ji*e"}
+],"notas":"Sin hipotesis explicitas adicionales; el modelo no explica la saturacion en 3.0 ni los saltos."}

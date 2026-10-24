@@ -1,0 +1,455 @@
+ENUNCIADO:
+Problema 1 de 1.
+Máquina: 2 actuadores (de -3.0 a 3.0), 2 canales.
+Objetivo por canal: [-1.06, 0.44], tolerancia ±0.35.
+Escenarios de evaluación: 60 pasos; se cumple si la salida está dentro de la tolerancia en al menos el 90 % de los 30 pasos finales.
+Presupuesto de pasos con esta máquina: 400.
+Tienes un taller propio (una carpeta) donde puedes ejecutar Python. Su subcarpeta almacen/ empieza así en este problema.
+Contenido actual de almacen/: vacío.
+Lo que observas al actuar sobre la máquina (también desde código) queda en exploracion.jsonl del taller.
+
+
+=== TURNO 1 (modelo) ===
+[herramienta] leer({})
+[resultado] {"lecturas": [1.321, 1.624], "pasos_restantes": 400}
+=== TURNO 2 (modelo) ===
+[herramienta] actuar(15 pasos, reiniciar=False): [[0, 0], [0, 0], [0, 0], [0, 0], [0, 0], [1, 0], [1, 0], [1, 0], [0, 0], [0, 0], [0, 1], [0, 1], [0, 1], [0, 0], [0, 0]]
+[resultado] {"lecturas": [[1.365, 0.347], [1.354, 0.388], [1.325, 0.337], [0.276, 0.373], [0.264, 0.357], [0.261, 0.861], [0.308, 0.886], [0.214, 0.866], [0.209, 0.359], [0.208, 0.388], [0.214, 0.911], [-0.509, 0.946], [-0.583, 0.934], [-0.557, 0.339], [-0.532, 0.372]], "pasos_restantes": 385}
+=== TURNO 3 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina,json
+seq=[[0,0]]*4+[[0,2]]*4+[[0,0]]*4+[[0,-1]]*4+[[0,0]]*4+[[2,0]]*3+[[-2,0]]*3+[[0,0]]*3
+r=maquina.actuar(seq)
+for a,l in zip(seq,r['lecturas']): print(a,l)
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-2/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 4, in <module>
+TypeError: list indices must be integers or slices, not str
+
+[pasos usados: 29; restantes: 356]
+=== TURNO 4 (modelo) ===
+[herramienta] ejecutar_python:
+import json
+L=[json.loads(x) for x in open('exploracion.jsonl')]
+print(len(L)); print(L[-1]); 
+for x in L[-30:]: print(x)
+[resultado] 2
+{'reiniciar': False, 'secuencia': [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 2.0], [0.0, 2.0], [0.0, 2.0], [0.0, 2.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, -1.0], [0.0, -1.0], [0.0, -1.0], [0.0, -1.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [2.0, 0.0], [2.0, 0.0], [2.0, 0.0], [-2.0, 0.0], [-2.0, 0.0], [-2.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0]], 'lecturas': [[-0.703, 0.349], [-0.707, 0.324], [-0.703, 0.345], [-0.72, 0.37], [-1.01, 1.548], [-1.021, 1.506], [-1.016, 1.492], [-1.006, 1.545], [-1.494, 0.344], [-1.456, 0.354], [-1.488, 0.358], [-1.475, 0.359], [-0.938, -2.216], [-0.924, -2.201], [-0.933, -2.166], [-0.916, -2.158], [-0.479, -1.602], [-0.515, -1.588], [-0.46, -1.637], [-0.477, -1.608], [-0.272, -0.574], [-0.222, -0.565], [-0.221, -0.606], [-0.285, -2.638], [-0.675, -2.624], [-0.658, -2.629], [-0.671, -1.633], [-0.669, -1.584], [-0.907, -1.637]]}
+{'reiniciar': False, 'secuencia': [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [1.0, 0.0], [1.0, 0.0], [1.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 1.0], [0.0, 1.0], [0.0, 1.0], [0.0, 0.0], [0.0, 0.0]], 'lecturas': [[1.365, 0.347], [1.354, 0.388], [1.325, 0.337], [0.276, 0.373], [0.264, 0.357], [0.261, 0.861], [0.308, 0.886], [0.214, 0.866], [0.209, 0.359], [0.208, 0.388], [0.214, 0.911], [-0.509, 0.946], [-0.583, 0.934], [-0.557, 0.339], [-0.532, 0.372]]}
+{'reiniciar': False, 'secuencia': [[0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 0.0], [0.0, 2.0], [0.0, 2.0], [0.0,  […]
+=== TURNO 5 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina,json,random
+random.seed(1)
+seq=[]
+while len(seq)<120:
+    a=[round(random.uniform(-2.5,2.5),2),round(random.uniform(-2.5,2.5),2)]
+    seq+= [a]*random.choice([1,2,3])
+seq=seq[:120]
+r=maquina.actuar(seq)
+print(type(r)); 
+lec=r['lecturas'] if isinstance(r,dict) else r
+json.dump({'u':seq,'y':lec},open('rand1.json','w'))
+for a,l in zip(seq,lec): print(a,l)
+[resultado] <class 'list'>
+[-1.83, 1.74] [-0.891, -1.543]
+[-1.22, -0.02] [-0.918, -2.23]
+[-1.22, -0.02] [-0.903, -2.238]
+[-0.14, -0.6] [-1.42, -2.038]
+[-2.03, -2.36] [-1.371, -4.001]
+[-2.03, -2.36] [-1.429, -4.013]
+[-0.34, 1.31] [-1.388, -1.005]
+[0.98, -1.17] [-0.919, -1.781]
+[0.46, -1.99] [-0.923, -2.523]
+[0.46, -1.99] [-0.891, -2.522]
+[-2.35, -2.37] [-0.893, -4.168]
+[-2.35, -2.37] [-0.402, -4.18]
+[-2.35, -2.37] [-0.403, -4.178]
+[-2.45, 1.91] [-0.423, -1.719]
+[-2.45, 1.91] [-0.42, -1.73]
+[-2.45, 1.91] [-2.409, -1.772]
+[-1.42, -0.39] [-2.45, -2.576]
+[0.14, 1.32] [-2.392, -0.8]
+[0.14, 1.32] [-2.44, -0.785]
+[0.26, -0.77] [-1.739, -1.953]
+[0.26, -0.77] [-1.718, -1.893]
+[0.26, -0.77] [-1.724, -1.925]
+[-1.41, -0.2] [-1.713, -2.434]
+[-1.41, -0.2] [-1.382, -2.458]
+[2.13, -0.42] [-1.37, -0.806]
+[2.13, -0.42] [-1.433, -0.761]
+[2.13, -0.42] [-1.408, -0.782]
+[2.11, -2.0] [0.59, -1.667]
+[2.11, -2.0] [0.589, -1.717]
+[2.11, -2.0] [0.583, -1.688]
+[2.46, 1.8] [0.602, 2.659]
+[1.22, 1.98] [0.803, 2.109]
+[1.22, 1.98] [0.814, 2.13]
+[1.22, 1.98] [0.816, 2.136]
+[0.0, 2.34] [0.8, 1.711]
+[0.0, 2.34] [-0.734, 1.702]
+[0.0, 2.34] [-0.737, 1.695]
+[1.65, 0.85] [-0.715, 1.699]
+[1.65, 0.85] [-0.71, 1.661]
+[-1.08, 2.37] [-1.242, 1.196]
+[-1.08, 2.37] [-1.2, 1.187]
+[1.73, 0.03] [-1.208, 1.238]
+[1.73, 0.03] [-1.227, 1.268]
+[1.73, 0.03] [-0.49, 1.262]
+[1.77, -0.1] [-0.503, 1.219]
+[1.77, -0.1] [-0.472, 1.229]
+[1.77, -0.1] [-0.526, 1.207]
+[1.49, -0.43] [0.403, 0.869]
+[-0.66, 1.91] [0.414, 1.123]
+[-0.66, 1.91] [0.434, 1.112]
+ […]
+=== TURNO 6 (modelo) ===
+[herramienta] ejecutar_python:
+import json,numpy as np
+d=json.load(open('rand1.json'));u=np.array(d['u']);y=np.array(d['y'])
+X=np.c_[u,np.ones(len(u))]
+c2,res,_,_=np.linalg.lstsq(X,y[:,1],rcond=None);print('ch2',c2)
+r2=y[:,1]-X@c2;print(np.round(r2,2))
+idx=np.arange(3,120,4)
+for lag in [0,1,2,3]:
+    c1,_,_,_=np.linalg.lstsq(X[idx-lag],y[idx,0],rcond=None)
+    r=y[idx,0]-X[idx-lag]@c1;print(lag,c1,np.std(r))
+[resultado] ch2 [ 0.64294554  0.85336442 -1.12275808]
+[-0.73 -0.31 -0.31 -0.31  0.44  0.43 -0.78 -0.29  0.    0.    0.49  0.48
+  0.48 -0.65 -0.66 -0.7  -0.21 -0.89 -0.88 -0.34 -0.28 -0.31 -0.23 -0.26
+ -0.69 -0.65 -0.67 -0.19 -0.24 -0.22  0.66  0.76  0.78  0.78  0.84  0.83
+  0.82  1.04  1.    0.99  0.98  1.22  1.25  1.25  1.29  1.3   1.28  1.4
+  1.04  1.03  1.01 -0.08 -0.07 -0.08 -0.85 -0.86 -0.89 -0.51 -0.54 -0.53
+  0.42  0.43  0.43 -0.89 -0.9  -0.88  0.02  0.04  0.04  0.39 -1.01 -0.2
+ -0.22 -0.18 -0.93 -0.93 -0.95  0.85  1.02  1.09  1.07 -0.    0.03 -0.01
+ -0.89 -0.9  -0.79 -0.66 -0.62  0.24  0.24  0.24 -0.72 -0.7  -1.01 -0.94
+ -0.97 -0.35  0.83  0.89  1.17  0.49 -0.35 -0.37 -0.35 -0.39  0.07  0.12
+ -0.05 -0.04 -0.32 -0.32 -0.29 -0.35 -0.16  0.04  0.    0.03 -0.08 -0.12]
+0 [ 0.29300156 -0.1622311  -0.68681699] 0.6088387881154507
+1 [ 0.3143665  -0.2525813  -0.58643431] 0.5607360676696588
+2 [ 0.24802692 -0.26630048 -0.66186628] 0.5488873966362514
+3 [ 0.31669321 -0.05787115 -0.52431373] 0.6000271177756652
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 7 (modelo) ===
+[herramienta] ejecutar_python:
+def fit(X,yv):
+    c,_,_,_=np.linalg.lstsq(X,yv,rcond=None);r=yv-X@c;return c,np.std(r),r
+a1,a2=u[:,0],u[:,1]
+X=np.c_[a1,np.maximum(a1,0),a2,np.maximum(a2,0),np.ones(120)]
+c,s,r=fit(X,y[:,1]);print(c,s);print(np.round(r,2))
+[resultado] 
+[stderr]
+Traceback (most recent call last):
+  File "<repo>/resultados/hipotesis-esfuerzo/talleres/axe-2/A/.sistema/ejecutar.py", line 40, in <module>
+    exec(compile(sys.stdin.read(), '<ejecucion>', 'exec'), {'__name__': '__main__'})
+  File "<ejecucion>", line 3, in <module>
+NameError: name 'u' is not defined
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 8 (modelo) ===
+Cada ejecución es independiente; recargo.
+[herramienta] ejecutar_python:
+import json,numpy as np
+d=json.load(open('rand1.json'));u=np.array(d['u']);y=np.array(d['y'])
+def fit(X,yv):
+    c,_,_,_=np.linalg.lstsq(X,yv,rcond=None);r=yv-X@c;return c,np.std(r),r
+a1,a2=u[:,0],u[:,1]
+X=np.c_[a1,np.maximum(a1,0),a2,np.maximum(a2,0),np.ones(120)]
+c,s,r=fit(X,y[:,1]);print(c,s);print(np.round(r,2))
+X=np.c_[a1,a2,np.tanh(a1),np.tanh(a2),a1**2,a2**2,a1*a2,np.ones(120)]
+c,s,r=fit(X,y[:,1]);print(c,s);print(np.round(r,2))
+[resultado] [ 0.56509153  0.25633549  0.64709252  0.42872727 -1.56624939] 0.6622441582849631
+[-0.81  0.04  0.03 -0.    0.24  0.23 -0.66 -0.26 -0.05 -0.05  0.26  0.25
+  0.25 -0.82 -0.83 -0.88  0.05 -0.77 -0.75 -0.1  -0.04 -0.07  0.06  0.03
+ -0.72 -0.67 -0.69 -0.54 -0.59 -0.56  0.27  0.54  0.56  0.57  0.76  0.75
+  0.74  1.    0.96  0.82  0.81  1.35  1.38  1.37  1.4   1.41  1.38  1.49
+  1.01  1.    0.97 -0.28 -0.26 -0.27 -0.72 -0.73 -0.76 -0.51 -0.53 -0.52
+  0.21  0.22  0.22 -0.88 -0.89 -0.88  0.09  0.1   0.1   0.22 -1.    0.05
+  0.03  0.06 -1.   -1.   -1.01  0.74  1.02  1.09  1.08  0.05  0.08  0.05
+ -1.06 -1.07 -0.75 -0.7  -0.66  0.13  0.14  0.14 -0.51 -0.49 -0.99 -0.92
+ -0.96 -0.12  0.68  0.73  0.94  0.27 -0.36 -0.38 -0.2  -0.23  0.09  0.14
+  0.03  0.03 -0.22 -0.23 -0.19 -0.    0.05  0.13  0.1   0.12  0.06  0.01]
+[ 0.9082336   1.29245871 -0.31423998 -0.75602266  0.04366596  0.12315439
+  0.10884419 -1.52324653] 0.611904290522192
+[-0.37  0.08  0.07 -0.12 -0.02 -0.03 -0.48 -0.11  0.16  0.17 -0.04 -0.05
+ -0.05 -0.23 -0.24 -0.28  0.01 -0.65 -0.63 -0.13 -0.07 -0.11  0.08  0.05
+ -0.79 -0.75 -0.77 -0.13 -0.18 -0.15 -0.5   0.15  0.17  0.17  0.28  0.27
+  0.26  1.08  1.04  0.67  0.66  1.33  1.36  1.36  1.37  1.38  1.35  1.52
+  0.99  0.98  0.95  0.12  0.13  0.13 -0.63 -0.64 -0.67 -0.47 -0.5  -0.49
+ -0.07 -0.06 -0.06 -0.8  -0.81 -0.79 -0.01  0.01  0.01  0.02 -1.11 -0.09
+ -0.11 -0.07 -1.08 -1.08 -1.09  0.29  1.05  1.12  1.1   0.08  0.12  0.08
+ -0.99 -0.99 -0.71 -0.79 -0.75  0.08  0.09  0.09 -0.27 -0.24 […]
+=== TURNO 9 (modelo) ===
+[herramienta] ejecutar_python:
+import json,numpy as np
+d=json.load(open('rand1.json'));u=np.array(d['u']);y=np.array(d['y'])
+off=y[:,1]-0.5*u[:,0]-0.58*u[:,1]
+for i in range(120): print(i,u[i],y[i],round(off[i],2))
+[resultado] -1.73] -1.61
+15 [-2.45  1.91] [-2.409 -1.772] -1.65
+16 [-1.42 -0.39] [-2.45  -2.576] -1.64
+17 [0.14 1.32] [-2.392 -0.8  ] -1.64
+18 [0.14 1.32] [-2.44  -0.785] -1.62
+19 [ 0.26 -0.77] [-1.739 -1.953] -1.64
+20 [ 0.26 -0.77] [-1.718 -1.893] -1.58
+21 [ 0.26 -0.77] [-1.724 -1.925] -1.61
+22 [-1.41 -0.2 ] [-1.713 -2.434] -1.61
+23 [-1.41 -0.2 ] [-1.382 -2.458] -1.64
+24 [ 2.13 -0.42] [-1.37  -0.806] -1.63
+25 [ 2.13 -0.42] [-1.433 -0.761] -1.58
+26 [ 2.13 -0.42] [-1.408 -0.782] -1.6
+27 [ 2.11 -2.  ] [ 0.59  -1.667] -1.56
+28 [ 2.11 -2.  ] [ 0.589 -1.717] -1.61
+29 [ 2.11 -2.  ] [ 0.583 -1.688] -1.58
+30 [2.46 1.8 ] [0.602 2.659] 0.38
+31 [1.22 1.98] [0.803 2.109] 0.35
+32 [1.22 1.98] [0.814 2.13 ] 0.37
+33 [1.22 1.98] [0.816 2.136] 0.38
+34 [0.   2.34] [0.8   1.711] 0.35
+35 [0.   2.34] [-0.734  1.702] 0.34
+36 [0.   2.34] [-0.737  1.695] 0.34
+37 [1.65 0.85] [-0.715  1.699] 0.38
+38 [1.65 0.85] [-0.71   1.661] 0.34
+39 [-1.08  2.37] [-1.242  1.196] 0.36
+40 [-1.08  2.37] [-1.2    1.187] 0.35
+41 [1.73 0.03] [-1.208  1.238] 0.36
+42 [1.73 0.03] [-1.227  1.268] 0.39
+43 [1.73 0.03] [-0.49   1.262] 0.38
+44 [ 1.77 -0.1 ] [-0.503  1.219] 0.39
+45 [ 1.77 -0.1 ] [-0.472  1.229] 0.4
+46 [ 1.77 -0.1 ] [-0.526  1.207] 0.38
+47 [ 1.49 -0.43] [0.403 0.869] 0.37
+48 [-0.66  1.91] [0.414 1.123] 0.35
+49 [-0.66  1.91] [0.434 1.112] 0.33
+50 [-0.66  1.91] [0.456 1.09 ] 0.31
+51 [ 1.19 -2.07] [-0.494 -2.206] -1.6
+52 [ 1.19 -2.07] [-0.523 -2.192] -1.59
+53 [ 1.19 -2.07] [-0.489 -2.2  ] -1.59
+54 [0.04 1.39] [-0.519 -0.756] -1.58 […]
+=== TURNO 10 (modelo) ===
+[herramienta] ejecutar_python:
+import json,numpy as np
+d=json.load(open('rand1.json'));u=np.array(d['u']);y=np.array(d['y'])
+off=y[:,1]-0.5*u[:,0]-0.58*u[:,1]; mode=(off>-0.6).astype(float)
+idx=np.arange(7,120,4)
+def fit(X,yv):
+    c,_,_,_=np.linalg.lstsq(X,yv,rcond=None);r=yv-X@c;return c,np.std(r),r
+Y=y[idx,0];P=y[idx-4,0];dY=Y-P
+for lag in range(0,5):
+    U=u[idx-lag];M=mode[idx-lag]
+    for name,X in [('lvl',np.c_[U,M,np.ones(len(idx))]),('lvl+prev',np.c_[U,M,P,np.ones(len(idx))]),('dlt',np.c_[U,M,np.ones(len(idx))])]:
+        tgt=dY if name=='dlt' else Y
+        c,s,r=fit(X,tgt);print(lag,name,np.round(c,3),round(s,3))
+Um=np.array([u[i-3:i+1].mean(0) for i in idx])
+c,s,r=fit(np.c_[Um,np.ones(len(idx))],Y);print('mean',c,s)
+c,s,r=fit(np.c_[Um,P,np.ones(len(idx))],Y);print('mean+P',c,s)
+[resultado] 0 lvl [ 0.27  -0.204  0.231 -0.719] 0.596
+0 lvl+prev [ 0.246 -0.298  0.302  0.503 -0.446] 0.472
+0 dlt [ 0.221 -0.391  0.373 -0.176] 0.593
+1 lvl [ 0.302 -0.252  0.003 -0.57 ] 0.564
+1 lvl+prev [ 0.357 -0.29  -0.229  0.542 -0.181] 0.402
+1 dlt [ 0.403 -0.323 -0.424  0.147] 0.523
+2 lvl [ 0.251 -0.248 -0.129 -0.612] 0.55
+2 lvl+prev [ 0.271 -0.246 -0.256  0.414 -0.333] 0.451
+2 dlt [ 0.3   -0.243 -0.436  0.06 ] 0.633
+3 lvl [ 0.311 -0.098  0.287 -0.587] 0.601
+3 lvl+prev [ 0.287 -0.084  0.249  0.226 -0.444] 0.577
+3 dlt [ 0.203 -0.034  0.118  0.043] 0.817
+4 lvl [ 0.296 -0.073  0.009 -0.64 ] 0.643
+4 lvl+prev [ 0.274 -0.056 -0.013  0.082 -0.578] 0.641
+4 dlt [ 0.021  0.128 -0.258  0.123] 0.851
+mean [ 0.55509311 -0.40900206 -0.62873657] 0.34807758864893695
+mean+P [ 0.54645876 -0.45866001  0.42843873 -0.37516741] 0.12739586508196227
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 11 (modelo) ===
+[herramienta] ejecutar_python:
+import json,numpy as np
+from scipy.optimize import least_squares
+d=json.load(open('rand1.json'));u=np.array(d['u']);y=np.array(d['y'])
+off=y[:,1]-0.5*u[:,0]-0.58*u[:,1]; mode=(off>-0.6).astype(float)
+ticks=list(range(3,120,4))
+def res(p,shift,usemode=False):
+    a,b1,b2,c=p[:4]; bm=p[4] if usemode else 0
+    out=[]
+    for k in range(len(ticks)-1):
+        t0,t1=ticks[k],ticks[k+1]
+        x=y[t0,0]
+        for t in range(t0+1-shift,t1+1-shift):
+            x=a*x+b1*u[t,0]+b2*u[t,1]+c+bm*mode[t]
+        out.append(x-y[t1,0])
+    return np.array(out)
+for sh in [0,1,2]:
+    for um in [False,True]:
+        p0=[0.8,0.1,-0.1,0]+([0] if um else [])
+        r=least_squares(res,p0,args=(sh,um));print(sh,um,np.round(r.x,3),np.std(r.fun).round(3))
+[resultado] 0 False [ 0.829  0.178 -0.152 -0.119] 0.018
+0 True [ 0.829  0.178 -0.152 -0.119 -0.002] 0.018
+1 False [ 0.699  0.206 -0.166 -0.185] 0.288
+1 True [ 0.699  0.203 -0.172 -0.193  0.031] 0.287
+2 False [ 0.636  0.19  -0.121 -0.219] 0.467
+2 True [ 0.636  0.188 -0.124 -0.224  0.019] 0.467
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 12 (modelo) ===
+[herramienta] ejecutar_python:
+import json,numpy as np
+d=json.load(open('rand1.json'));u=np.array(d['u']);y=np.array(d['y'])
+off=y[:,1]-0.5*u[:,0]-0.58*u[:,1]; mode=(off>-0.6).astype(float)
+X=np.c_[u,mode,np.ones(120)]
+c,_,_,_=np.linalg.lstsq(X,y[:,1],rcond=None);r=y[:,1]-X@c;print(c,r.std())
+a,b1,b2,cc=0.829,0.178,-0.152,-0.119
+A=np.array([[b1/(1-a),b2/(1-a)],[c[0],c[1]]])
+rhs=np.array([-1.06-cc/(1-a),0.44-c[2]-c[3]])
+print(np.linalg.solve(A,rhs))
+[resultado] [ 0.50955658  0.58077344  1.95968552 -1.60678126] 0.01929992024675166
+[-0.12675092  0.26117327]
+
+[pasos usados: 0; restantes: 236]
+=== TURNO 13 (modelo) ===
+[herramienta] ejecutar_python:
+import maquina,json
+seq=[[2,2],[0,0],[0,0]]+[[-0.2*k,0] for k in range(1,9)]+[[2,2],[0,0]]+[[0,-0.15*k] for k in range(1,9)]
+r=maquina.actuar(seq)
+for a,l in zip(seq,r): print(a,l, round(l[1]-0.51*a[0]-0.58*a[1],2), round(0.51*a[0]+0.58*a[1],2))
+json.dump({'u':seq,'y':r},open('thr.json','w'))
+[resultado] [2, 2] [-0.159, 2.533] 0.35 2.18
+[0, 0] [-0.179, 0.338] 0.34 0.0
+[0, 0] [-0.171, 0.329] 0.33 0.0
+[-0.2, 0] [-0.442, 0.259] 0.36 -0.1
+[-0.4, 0] [-0.459, 0.148] 0.35 -0.2
+[-0.6000000000000001, 0] [-0.47, 0.038] 0.34 -0.31
+[-0.8, 0] [-0.452, -0.062] 0.35 -0.41
+[-1.0, 0] [-1.009, -2.103] -1.59 -0.51
+[-1.2000000000000002, 0] [-0.952, -2.227] -1.61 -0.61
+[-1.4000000000000001, 0] [-1.012, -2.325] -1.61 -0.71
+[-1.6, 0] [-0.965, -2.418] -1.6 -0.82
+[2, 2] [-1.314, 2.507] 0.33 2.18
+[0, 0] [-1.34, 0.32] 0.32 0.0
+[0, -0.15] [-1.311, 0.257] 0.34 -0.09
+[0, -0.3] [-1.296, 0.195] 0.37 -0.17
+[0, -0.44999999999999996] [-0.856, 0.095] 0.36 -0.26
+[0, -0.6] [-0.864, 0.049] 0.4 -0.35
+[0, -0.75] [-0.882, -2.034] -1.6 -0.43
+[0, -0.8999999999999999] [-0.869, -2.089] -1.57 -0.52
+[0, -1.05] [-0.362, -2.237] -1.63 -0.61
+[0, -1.2] [-0.362, -2.323] -1.63 -0.7
+
+[pasos usados: 21; restantes: 215]
+=== TURNO 14 (modelo) ===
+[herramienta] ejecutar_python:
+code = r'''
+A=0.829; B1=0.178; B2=-0.152; C=-0.119
+K1=0.51; K2=0.58
+T1=-1.06; T2=0.44
+ADES=0.55
+
+def _clip(v,lo=-3.0,hi=3.0):
+    return max(lo,min(hi,v))
+
+def controlar(lecturas, memoria):
+    y1,y2=float(lecturas[0]),float(lecturas[1])
+    if 'x' not in memoria:
+        memoria['x']=y1; memoria['d1']=0.0; memoria['prev1']=y1; memoria['since']=0
+        memoria['u']=None; memoria['o2']=None; memoria['k']=0
+    m=memoria
+    m['k']+=1
+    u=m['u']
+    if u is not None:
+        # propagate model with the last applied action
+        m['x']=A*m['x']+B1*u[0]+B2*u[1]+C+m['d1']
+        o2=y2-(K1*u[0]+K2*u[1])
+        m['o2']=o2
+    # ch1 measurement handling (sample-and-hold every ~4 steps)
+    m['since']+=1
+    tick=False
+    if abs(y1-m['prev1'])>1e-4:
+        tick=True
+    elif m['since']>=4:
+        tick=True
+    if tick and u is not None:
+        e=y1-m['x']
+        m['d1']+=0.12*e
+        m['d1']=max(-1.0,min(1.0,m['d1']))
+        m['x']=y1
+        m['since']=0
+    elif tick:
+        m['x']=y1; m['since']=0
+    m['prev1']=y1
+    o2=m['o2']
+    if o2 is None:
+        # first step: unknown action history; assume ch2 offset from mode guess
+        o2=y2  # unknown, just use reading (action history unknown)
+        lowmode = y2 < -0.5
+    else:
+        lowmode = o2 < -0.6
+    x=m['x']
+    if lowmode:
+        a=[2.5,2.5]
+    else:
+        xd=T1+ADES*(x-T1)
+        r1=xd-A*x-C-m['d1']
+        r2=T2-o2
+        det=B1*K2-B2*K1
+        a1=( r1*K2-B2*r2)/det
+        a2=(B1*r2-K1*r1)/det
+        # keep ch2 achievable: if clipped, prioritize ch2 safety
+        if abs(a1)>3 or abs(a2)>3:
+            s=3.0/max(abs(a1),abs(a2))
+            # fall back: steady-state solution (no acceleration) scaled
+            r1s=T1*(1-A)-C-m['d1']
+            b1=( r1s*K2-B2*r2)/det; b2=(B1*r2-K1*r1s)/det
+            # blend between aggressive and steady
+            lo,hi=0.0,1.0
+            for _ in range(20):
+                mid=(lo+hi)/2
+                c1=b1+mid*(a1-b1); c2=b2+mid*(a2-b2)
+                if abs(c1)<=3 and abs(c2)<=3: lo=mid
+                else: hi=mid
+            a1=b1+lo*(a1-b1); a2=b2+lo*(a2-b2)
+        a=[_clip(a1),_clip(a2)]
+    m['u']=a
+    return a
+'''
+import os
+os.makedirs('almacen',exist_ok=True)
+open('ctrl.py','w').write(code)
+# simulator
+import numpy as np, random
+exec(code)
+def sim(seed,x0,mode0,phase,d1=0.0,d2=0.0,gain=1.0,noise=0.01,N=60):
+    rng=np.random.default_rng(seed)
+    x=x0;mode=mode0;mem={};hold=x0;ok=0
+    u=[0,0]
+    y2=0.51*u[0]+0.58*u[1]+(0.35 if mode else -1.6)
+    ys=[]
+    for t in range(N):
+        a=controlar([hold+rng.normal(0,noise)*0,y2+rng.normal(0,noise)],mem)
+        x=A*x+gain*(B1*a[0]+B2*a[1])+C+(d1 if t>20 else 0)
+        raw=gain*(K1*a[0]+K2*a[1])+(d2 if t>25 else 0)
+        out=raw+(0.35 if mode else -1.6)
+        if mode and out<-0.1: mode=0; out=raw-1.6
+        elif (not mode) and out>-0.25: mode=1; out=raw+0.35
+        y2=out
+        if (t-phase)%4==0: hold=x
+        ys.append((hold,y2))
+        if t>=30: ok+= abs(hold-T1)<=0.35 and abs(y2-T2)<=0.35
+    return ok/30, ys[-1]
+for s in range(8):
+    print(sim(s,random.uniform(-3,3),random.choice([0,1]),random.randint(0,3),d1=random.uniform(-0.1,0.1),d2=random.uniform(-0.5,0.5),gain=random.uniform(0.8,1.2)))
+[resultado] (1.0, (-1.0568750945472456, 0.4285519527841399))
+(1.0, (-1.0584350389996124, 0.43321580415240213))
+(1.0, (-1.0549855998110245, 0.44108964370920734))
+(1.0, (-1.0666105076482508, 0.45486574971441684))
+(1.0, (-1.0634267420419818, 0.4577256084503607))
+(1.0, (-1.0648375036058335, 0.4354354397274201))
+(1.0, (-1.0611407421772294, 0.4463359333456827))
+(1.0, (-1.053976388712856, 0.4397331824452578))
+
+[pasos usados: 0; restantes: 215]
+=== TEXTO FINAL ===
+Cada ejecución es independiente; recargo.
