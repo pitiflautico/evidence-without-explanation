@@ -18,8 +18,15 @@ An offline auditor that the agent never sees replays every episode deterministic
 
 **Main finding so far:** when the agent fails, the evidence it needed was usually already in its data. In the
 hysteresis audit there were 18 interpretation failures and 0 exploration failures out of 36 episodes. Capabilities
-offered as options (sub-contexts, a validated hypothesis-testing module, a code store) are almost never used. See
-[`REPORT.md`](REPORT.md) for all results, including the null ones.
+offered as options (sub-contexts, a validated hypothesis-testing module, a code store) are almost never used; stored
+code is sometimes copied, but never imported. See [`REPORT.md`](REPORT.md) for all results, including the null ones.
+
+**Revised on 27 October 2026.** We re-checked every figure against the raw logs. Corrections, with the previous
+wording kept, are in §0 of [`REPORT.md`](REPORT.md):
+- interval levels (90 %, not 95 %);
+- qualifiers on the identifiability counts;
+- an effort comparison confounded by our own budget mechanism;
+- instrument issues.
 
 ## Layout
 | Path | Contents |
@@ -54,4 +61,5 @@ Re-running the agent needs `ANTHROPIC_API_KEY` and costs money (about 0.2–0.6 
 - Negative results are reported with the same weight as positive ones.
 
 ## Status
-Pilot-scale (n = 10–36 per comparison), one model (Claude Opus 5.5). Everything here is preliminary.
+Pilot-scale (n = 10–36 per comparison), one model (Claude Opus 5.5). Everything here is preliminary. Some of the
+failures we observed come from our instruments, not from the agent; `REPORT.md` §0 and §5 separate the two.
